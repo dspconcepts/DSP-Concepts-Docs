@@ -124,15 +124,10 @@ The modules used are:
 
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/375.jpeg) | ![](../../.gitbook/assets/376.png) | AGCAttackRelease | Creates envelope detector with specified attack and release times |
 | :--- | :--- | :--- | :--- |
-|  |  |  |  |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/377.jpeg) | ![](../../.gitbook/assets/378.png) | Db20 | Converts from linear units to dB |
-|  |  |  |  |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/379.jpeg) | ![](../../.gitbook/assets/380.png) | TwoPieceInterp | Applies two-piece piecewise function |
-|  |  |  |  |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/381.jpeg) | ![](../../.gitbook/assets/382.png) | TableInterp | Applies function from specified table interpolation |
-|  |  |  |  |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/383.jpeg) | ![](../../.gitbook/assets/384.png) | Subtract | Dynamically determines a gain based on a piecewise function in order to limit a signal |
-|  |  |  |  |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/385.jpeg) | ![](../../.gitbook/assets/386.png) | Undb20 | Converts from dB to linear units |
 
 With the TwoPieceInterp module specify the slow of the gain curve above and below the threshold. One simple change can expand the functionality even further. Using a TableInterp module instead of the TwoPieceInterp allows the user to visually map out exactly the desired behavior:

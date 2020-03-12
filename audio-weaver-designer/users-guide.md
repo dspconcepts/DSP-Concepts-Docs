@@ -33,13 +33,21 @@ The DSP Concepts web forum is a good place to collaborate and find solutions to 
 
 Once an Audio Weaver installer executable has been downloaded, double click on it and click ‘Accept’ when Windows asks if you want to allow the program to make changes to your computer. The first installation screen will look like this:
 
-![](../.gitbook/assets/3%20%286%29.png)Once all other applications are closed, click ‘Next’ to continue to the license agreement step.
+![](../.gitbook/assets/3%20%286%29.png)
 
-![](../.gitbook/assets/4.png)Read over the terms in the Audio Weaver license agreement and click ‘I Agree’ to accept and continue with the installation.
+Once all other applications are closed, click ‘Next’ to continue to the license agreement step.
 
-![](../.gitbook/assets/5%20%283%29.png)Two third-party components are required for the Standard and STMicro editions. The installer will check for preinstalled versions of Matlab Runtime and Microsoft Visual Studio C++ redistributable libraries. The checkbox will be set for any library that is needed. Manually select the appropriate checkbox to force a reinstall if desired. The appropriate libraries will be downloaded and installed during the Audio Weaver installation process. This may take a few minutes and of course, internet access is required. The MATLAB can also be installed directly by the user from: [https://www.mathworks.com/products/compiler/matlab-runtime.html](https://www.mathworks.com/products/compiler/matlab-runtime.html)
+![](../.gitbook/assets/4.png)
 
-![](../.gitbook/assets/6%20%285%29.png)For the next step, it is recommended that you install Audio Weaver in the default location of ‘C:\DSP Concepts\&lt;Audio Weaver Version&gt;’ to allow modification of local files and examples. Click ‘Install’ to begin the Audio Weaver installation process.
+Read over the terms in the Audio Weaver license agreement and click ‘I Agree’ to accept and continue with the installation.
+
+![](../.gitbook/assets/5%20%283%29.png)
+
+Two third-party components are required for the Standard and STMicro editions. The installer will check for preinstalled versions of Matlab Runtime and Microsoft Visual Studio C++ redistributable libraries. The checkbox will be set for any library that is needed. Manually select the appropriate checkbox to force a reinstall if desired. The appropriate libraries will be downloaded and installed during the Audio Weaver installation process. This may take a few minutes and of course, internet access is required. The MATLAB can also be installed directly by the user from: [https://www.mathworks.com/products/compiler/matlab-runtime.html](https://www.mathworks.com/products/compiler/matlab-runtime.html)
+
+![](../.gitbook/assets/6%20%285%29.png)
+
+For the next step, it is recommended that you install Audio Weaver in the default location of `C:\DSP Concepts\<Audio Weaver Version>` to allow modification of local files and examples. Click ‘Install’ to begin the Audio Weaver installation process.
 
 ### Launching AWE Designer Standard \(or STMicro\) Edition
 

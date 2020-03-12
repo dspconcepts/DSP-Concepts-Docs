@@ -21,6 +21,6 @@
 * [TODO: formatting API Quick Reference](audio-weaver-core/untitled-2.md)
 * [Flash Manager Guide](untitled-2.md)
 * [Linux Integration Guide](untitled.md)
-* [Command Line Server](untitled-3.md)
+* [todo: Command Line Server](command-line-server.md)
 * [Matlab API](matlab-api.md)
 
