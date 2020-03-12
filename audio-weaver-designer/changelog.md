@@ -1,3 +1,7 @@
+---
+description: "Be sure to not miss out on new features and improvements! \U0001F680"
+---
+
 # Changelog
 
 ## 15.0.0 - 2042-12-03
