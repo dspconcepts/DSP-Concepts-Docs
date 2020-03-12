@@ -17,7 +17,7 @@
 ## Audio Weaver Core
 
 * [Theory of Operation](audio-weaver-core/untitled-5.md)
-* [AWE Core 8 API Quick Start](audio-weaver-core/untitled-4.md)
+* [AWE Core 8 API Quick Start](audio-weaver-core/awe-core-8-api.md)
 * [TODO: formatting API Quick Reference](audio-weaver-core/untitled-2.md)
 * [Flash Manager Guide](untitled-2.md)
 * [Linux Integration Guide](untitled.md)
