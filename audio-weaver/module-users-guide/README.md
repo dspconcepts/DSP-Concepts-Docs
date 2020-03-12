@@ -10,7 +10,7 @@ This guide is separated into sections as outlined in the table of contents: Chap
 
 ### Other Audio Weaver Documents
 
-This document describes the Audio Weaver modules and module library. The MATLAB scripting interface is described in _Audio Weaver Matlab API_. Read more about the graphical designer in _Audio Weaver Designer User’s Guide_.
+This document describes the Audio Weaver modules and module library. The MATLAB scripting interface is described in [Audio Weaver Matlab API](../../matlab-api.md). Read more about the graphical designer in [Audio Weaver Designer User’s Guide](../../audio-weaver-designer/users-guide.md).
 
 {% page-ref page="../../audio-weaver-designer/users-guide.md" %}
 
