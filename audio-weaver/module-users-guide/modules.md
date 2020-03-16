@@ -104,7 +104,9 @@ Above the threshold the compressor reduces the signal level; below the threshold
 
 #### Envelope Modulation
 
-![](../../.gitbook/assets/28%20%281%29.png)Envelope modulators control the impact that relative peaks have. The Attack Release module uses attackTimeInitial and attackTimeFinal to smooth peaks. The Attack Decay Sustain Release is similar, but also includes 2 stages in between the attack and release. Decay lowers the level into a hold that is based on the sustain level. After this hold ends, the release occurs.
+![](../../.gitbook/assets/28%20%281%29.png)
+
+Envelope modulators control the impact that relative peaks have. The Attack Release module uses attackTimeInitial and attackTimeFinal to smooth peaks. The Attack Decay Sustain Release is similar, but also includes 2 stages in between the attack and release. Decay lowers the level into a hold that is based on the sustain level. After this hold ends, the release occurs.
 
 #### Limiters
 
@@ -408,7 +410,7 @@ To solve these noise issues Audio Weaver includes a High Precision filter module
 
 The High Precision modules are designed to be drop in replacements for the non-high precision filters. That way, numerical problems can be resolved by replacing the offending filter with its high precision version.
 
-|  |  |  |
+| Icon | Name | Description |
 | :--- | :--- | :--- |
 | ![](../../.gitbook/assets/72.png) | BiqudSmoothedHP | Smoothly varying Biquad |
 | ![](../../.gitbook/assets/73%20%281%29.png) | ButterworthFilterHP | Butterworth lowpass, highpass, and allpass filters |
@@ -553,7 +555,7 @@ Use as a high frequency tone control
   * filterType = 12
   * Applicable parameters: freq, gain, and Q
 
-{% hint style="info" %}
+{% hint style="success" %}
 Commonly used for generic equalization since it has controllable frequency, gain, and Q settings.
 {% endhint %}
 
@@ -666,7 +668,7 @@ The system below essentially does nothing except convert two mono signals into c
 
 Audio Weaver provides 3 different transform modules for converting between the time and frequency domains.
 
-|  |  | Block Name | Description |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../.gitbook/assets/117.png) | Cfft | Complex FFT. Supports both forward and inverse transforms |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/118.jpeg) | ![](../../.gitbook/assets/119.png) | Fft | Forward FFT of real data |
@@ -692,7 +694,7 @@ The Ifft takes N/2+1 complex samples and returns a real N-point sequence. The If
 
 Before an FFT is computed the signal is typically windowed to prevent edge effects from influencing the results. There are 3 modules which perform windowing.
 
-|  | Name | Description |
+| Icon | Name | Description |
 | :--- | :--- | :--- |
 | ![](../../.gitbook/assets/123.png) | Window | Simple Window |
 | ![](../../.gitbook/assets/124.png) | WindowOverlap | Window with overlapping |
@@ -710,9 +712,9 @@ The WindowOverlap module has an internal FIFO that buffers up data into overlapp
 
 The WindowAlias module applies a window followed by time aliasing the sequence to a shorter length. This module is used in the analysis back of short-term Fourier transform based filterbanks.
 
-| ![](../../.gitbook/assets/127.png) | OverlapAdd | Reduces block size by overlapping blocks |
+| Icon | Name | Description |
 | :--- | :--- | :--- |
-
+| ![](../../.gitbook/assets/127.png) | OverlapAdd | Reduces block size by overlapping blocks |
 
 The OverlapAdd module performs the opposite of the Rebuffer module. The module has a large input block size and a smaller output block size. The module contains an internal buffer equal to the input block size. The module takes the input data, adds it to the internal buffer, and then shifts out one block of output data. The data in the internal buffer is also left shifted and the leading samples are filled with zeros. The OverlapAdd module finds use in fast convolution algorithms.
 
@@ -735,7 +737,7 @@ The frequency domain modules have a large number of modules which operate on com
 <table>
   <thead>
     <tr>
-      <th style="text-align:left"></th>
+      <th style="text-align:left">Icon</th>
       <th style="text-align:left">Name</th>
       <th style="text-align:left">Description</th>
     </tr>

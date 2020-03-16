@@ -115,7 +115,11 @@ Wire information is resolved through a process known as _pin propagation._ The w
 
 #### Feedback Wires
 
-Feedback occurs when a wire is routed backwards to an input earlier in the system. Feedback wires must be manually specified[\[1\]](). **To make a feedback wire, right click a wire and select “Feedback”.** The wire will turn blue to indicate that it is a feedback wire. For each marked feedback wire, Audio Weaver will create a dedicated buffer to store its data. At system startup, data in the wire is initialized to all zeros.
+Feedback occurs when a wire is routed backwards to an input earlier in the system. Feedback wires must be manually specified[\[1\]]() . **To make a feedback wire, right click a wire and select “Feedback”.** The wire will turn blue to indicate that it is a feedback wire. For each marked feedback wire, Audio Weaver will create a dedicated buffer to store its data. At system startup, data in the wire is initialized to all zeros. 
+
+{% page-ref page="modules.md" %}
+
+
 
 ![](../../.gitbook/assets/11%20%283%29.png)
 

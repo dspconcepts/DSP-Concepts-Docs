@@ -18,8 +18,8 @@ Each edition of Audio Weaver has an associated license type. Once an account has
 
 This document describes the features and usage of the Audio Weaver Design graphical tool. For documentation regarding other parts of the Audio Weaver ecosystem, see the following files available in the ‘Docs’ folder of the Audio Weaver installation:
 
-* _Audio-Weaver—Module-User's-Guide.pdf_ – Describes how the audio modules are used in practice. Very important!
-* _Audio-Weaver—Matlab-API.pdf_ – Describes Audio Weaver’s MATLAB interface, available only with the Pro edition of Audio Weaver.
+* \_\_[Audio Weaver Module User's Guide](../audio-weaver/module-users-guide/) __– Describes how the audio modules are used in practice. Very important!
+* [Audio Weaver Matlab API ](../matlab-api.md) – Describes Audio Weaver’s MATLAB interface, available only with the Pro edition of Audio Weaver.
 * _Audio-Weaver—Module-Developers-Guide.pdf_ – Documents the process of creating new custom audio modules. This feature is only available to users with the Pro edition of Audio Weaver and the additional Custom Module Creator feature license.
 * _Audio-Weaver—Tuning-Command-Syntax.pdf_ – Documents the commands sent between MATLAB and the AWE Server. For advanced users only.
 
@@ -107,7 +107,9 @@ Playback Skip
 
 \(in seconds\)
 
-### Quick Start Usage![](../.gitbook/assets/12%20%281%29.png)
+### Quick Start Usage
+
+![](../.gitbook/assets/12%20%281%29.png)
 
 1. Modules are organized into libraries. Use the checkboxes “float” “fract32” and “int” to filter based on your appropriate processor. If you know the name of a module, use the search feature.
    1. The module browser, seen to the right, is organized based on module functionality. Expand each section to see the individual module options.
