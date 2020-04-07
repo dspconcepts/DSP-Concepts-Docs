@@ -654,7 +654,7 @@ L_real[0], L_imag[0], R_real[0], R_imag[0], L_real[1], L_imag[1], R_real[1], R_i
 
 Two modules are provided to convert between real and complex data
 
-| Icon | Block Name | Description |
+|  | Block Name | Description |
 | :--- | :--- | :--- |
 | ![](../../.gitbook/assets/114.png) | RealImagToComplex | Converts two real signals into complex data using one as the real part and the other as the imaginary part |
 | ![](../../.gitbook/assets/115.png) | ComplexToRealImag | Converts a complex signal into separate real and imaginary components |
