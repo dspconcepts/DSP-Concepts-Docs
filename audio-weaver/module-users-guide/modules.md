@@ -301,9 +301,9 @@ There are 5 coefficients that the user must set: b0, b1, b2, a1, and a2 \(a0 is 
 <table>
   <thead>
     <tr>
-      <th style="text-align:left"></th>
-      <th style="text-align:left"></th>
-      <th style="text-align:left"></th>
+      <th style="text-align:left">Icon</th>
+      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Description</th>
     </tr>
   </thead>
   <tbody>
@@ -311,8 +311,7 @@ There are 5 coefficients that the user must set: b0, b1, b2, a1, and a2 \(a0 is 
       <td style="text-align:left">
         <img src="../../.gitbook/assets/63 (1).png" alt/>
       </td>
-      <td style="text-align:left"><b>FIR</b>
-      </td>
+      <td style="text-align:left">FIR</td>
       <td style="text-align:left">
         <p>Time domain FIR filter</p>
         <p>Specify filter length in module properties</p>
