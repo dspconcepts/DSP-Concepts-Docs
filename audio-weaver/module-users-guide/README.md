@@ -105,7 +105,7 @@ Connections between audio modules are called _wires_ and correspond to buffers o
 * sample rate
 * complexity \(real or complex values\).
 
-**Most modules can operate on an arbitrary number of channels, block size, and sample rate.** The number of channels and block size of a wire is called its _size._ Show wire properties using the View--&gt;Wire Types menu item.
+**Most modules can operate on an arbitrary number of channels, block size, and sample rate.** The number of channels and block size of a wire is called its _size._ Show wire properties using the View $$\to$$ Wire Types menu item.
 
 #### Pin propagation
 
