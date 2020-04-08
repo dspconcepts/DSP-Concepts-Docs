@@ -21,8 +21,8 @@ This document describes the Audio Weaver modules and module library. The MATLAB 
 Audio samples are represented as 32-bit values. Several different data types are available:
 
 * **Float32** – standard 32-bit floating-point with 1 sign bit, 8 exponent bits, and 23 mantissa bits.
-* **Int32** – Standard twos complement 32-bit integer. The signed values are in the range \[-231 , +\(231-1\)\].
-* **Fract32** – Fractional representation where values are scaled in the range \[-1 +1\). This is standard integer representation with an implied scale factor of 2-31.
+* **Int32** – Standard twos complement 32-bit integer. The signed values are in the range $$[-2^{31},+(2^{31})]$$. 
+* **Fract32** – Fractional representation where values are scaled in the range $$[-1 +1)$$ . This is standard integer representation with an implied scale factor of $$2^{-31}$$ .  
 
 
 
