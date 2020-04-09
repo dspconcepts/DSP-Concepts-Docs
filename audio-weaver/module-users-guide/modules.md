@@ -471,7 +471,7 @@ Depending on the filter type, some parameters are not used. See the table below 
 * Applicable parameters: gain
 * A simple gain with coefficients set to b0=undb20\(gain\), b1=0, b2=0, a1=0, and a2=0
 
-![](../../.gitbook/assets/image%20%2823%29.png)
+![](../../.gitbook/assets/image%20%2828%29.png)
 
 \*\*\*\*
 
@@ -480,7 +480,7 @@ Depending on the filter type, some parameters are not used. See the table below 
 * filterType = 2
 * Applicable parameters: freq
 
-![](../../.gitbook/assets/image%20%2861%29.png)
+![](../../.gitbook/assets/image%20%2871%29.png)
 
 **1st order Butterworth highpass** 
 
@@ -491,28 +491,28 @@ Depending on the filter type, some parameters are not used. See the table below 
 * filterType = 4
 * Applicable parameters: freq 
 
-![](../../.gitbook/assets/image%20%2849%29.png)
+![](../../.gitbook/assets/image%20%2857%29.png)
 
 **2nd order Butterworth highpass** 
 
 * filterType = 5
 * Applicable parameters: freq
 
-![](../../.gitbook/assets/image%20%2850%29.png)
+![](../../.gitbook/assets/image%20%2859%29.png)
 
 **1st order allpass** 
 
 * filterType = 6
 * Applicable parameters: freq 
 
-![](../../.gitbook/assets/image%20%2818%29.png)
+![](../../.gitbook/assets/image%20%2822%29.png)
 
 **2nd order allpass** 
 
 * filterType = 7
 * Applicable parameters: freq and Q
 
-![](../../.gitbook/assets/image%20%2832%29.png)
+![](../../.gitbook/assets/image%20%2838%29.png)
 
 **2nd order low shelf** 
 
@@ -523,14 +523,14 @@ Depending on the filter type, some parameters are not used. See the table below 
 Use as a low frequency tone control
 {% endhint %}
 
-![](../../.gitbook/assets/image%20%2840%29.png)
+![](../../.gitbook/assets/image%20%2848%29.png)
 
 **2nd order low shelf with Q**
 
 * filterType = 9
 * Applicable parameters: freq, gain, and Q
 
-![](../../.gitbook/assets/image%20%2844%29.png)
+![](../../.gitbook/assets/image%20%2852%29.png)
 
 
 
@@ -542,7 +542,7 @@ Use as a low frequency tone control
 Use as a high frequency tone control
 {% endhint %}
 
-![](../../.gitbook/assets/image%20%2847%29.png)
+![](../../.gitbook/assets/image%20%2855%29.png)
 
 * **2nd order high shelf with Q** 
   * filterType = 11
@@ -558,55 +558,55 @@ Use as a high frequency tone control
 Commonly used for generic equalization since it has controllable frequency, gain, and Q settings.
 {% endhint %}
 
-![](../../.gitbook/assets/image%20%2855%29.png)
+![](../../.gitbook/assets/image%20%2865%29.png)
 
 * **2nd order notch** 
   * filterType = 13
   * Applicable parameters: freq and Q 
 
-![](../../.gitbook/assets/image%20%282%29.png)
+![](../../.gitbook/assets/image%20%283%29.png)
 
 * **2nd order bandpass filter** 
   * filterType = 14
   * Applicable parameters: freq and Q 
 
-![](../../.gitbook/assets/image%20%2822%29.png)
+![](../../.gitbook/assets/image%20%2826%29.png)
 
 * **1st order Bessel lowpass filter** 
   * filterType = 15
   * Applicable parameters: freq 
 
-![](../../.gitbook/assets/image%20%2810%29.png)
+![](../../.gitbook/assets/image%20%2812%29.png)
 
 * **1st order Bessel highpass filter**
   * filterType = 16
   * Applicable parameters: freq 
 
-![](../../.gitbook/assets/image%20%2824%29.png)
+![](../../.gitbook/assets/image%20%2830%29.png)
 
 * **1st order asymmetrical low shelf** 
   * filterType = 17
   * Applicable parameters: freq and gain
 
-![](../../.gitbook/assets/image%20%2815%29.png)
+![](../../.gitbook/assets/image%20%2818%29.png)
 
 * **1st order asymmetrical high shelf** 
   * filterType = 18
   * Applicable parameters: freq and gain 
 
-![](../../.gitbook/assets/image%20%2811%29.png)
+![](../../.gitbook/assets/image%20%2813%29.png)
 
 * **1st order symmetrical low shelf**
   * filterType = 19
   * Applicable parameters: freq and gain 
 
-![](../../.gitbook/assets/image%20%2831%29.png)
+![](../../.gitbook/assets/image%20%2837%29.png)
 
 * **1st order symmetrical high shelf** 
   * filterType = 2
   * Applicable parameters: freq and gain
 
-![](../../.gitbook/assets/image%20%2816%29.png)
+![](../../.gitbook/assets/image%20%2820%29.png)
 
 
 
