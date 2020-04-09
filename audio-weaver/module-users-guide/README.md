@@ -1,6 +1,8 @@
 # Module Users Guide
 
-## Introduction
+## **EMPHASIS FILTER**
+
+The EmphasisFilter ****module implements a pre-emphasis or de-emphasis, used for noise reduction. The cutoff frequency is specified by the time constant tau, which is set in the inspector. The examples below show emphasis and de-emphasis filters with 75 microsecond time contants.Introduction
 
 This document is an overview of the audio modules included in Audio Weaver. It is intended for training users how to get the most out of the module library by providing a high-level overview with in depth examples of the modules. Modules build up sophisticated audio functions and systems in a matter of clicks, similar to circuit design or using lego blocks. Further information is available in the detailed HTML documentation provided with the Audio Weaver installer. For more information about a specific module, run Audio Weaver Designer and right click a module to view its “Help” file.
 
@@ -167,7 +169,7 @@ Audio Weaver has over 400 different types of modules available. This section org
 
 In order to keep notes within layouts, Designer supports text boxes, rectangle panels, and arrows. While there are many ways to use these, the standard is to break the layout file into “processing sections” with information on how to tune the design. Annotation is also good for keeping “presets” or “modes” written down on the canvas.
 
-![](../../.gitbook/assets/image%20%285%29.png)
+![](../../.gitbook/assets/image%20%286%29.png)
 
 #### Documenting Layouts
 
@@ -201,7 +203,7 @@ Since delays tend to be memory intensive, memory efficient options are provided.
 
 #### Table of Delay Modules
 
-![](../../.gitbook/assets/image%20%283%29.png)
+![](../../.gitbook/assets/image%20%284%29.png)
 
 ### DSP Concepts IP
 
@@ -211,13 +213,13 @@ This **zero latency FIR** allows for large FIR filters by breaking a large convo
 
 ####  WOLA Forward Filterbank \(Analysis\)
 
-![](../../.gitbook/assets/image%20%2842%29.png)
+![](../../.gitbook/assets/image%20%2844%29.png)
 
 This module is used to convert a time domain\(real number\) signal into frequency domain\(complex number\) bins. The output of this module will operate according to this blocksize. From this point on, the data is complex. See the Frequency Domain folder for modules that operate within the complex domain. The first and last bin represent DC, and have no complex data.
 
 #### WOLA Inverse Filterbank \(Synthesis\)
 
-![](../../.gitbook/assets/image%20%2848%29.png)
+![](../../.gitbook/assets/image%20%2850%29.png)
 
 This module will convert a block of frequency bin\(complex number\) data into the time domain\(real number\). This is normally paired with WOLA Forward Filterbank \(Analysis\). Be sure to keep the WOLA Forward and Inverse sizes the same. More information is provided in the Frequency Domain section.
 
@@ -228,11 +230,11 @@ Dynamic modules de/emphasize the amplitude structure of data. AGC stands for Aut
   
 The dynamics modules operate with different gain variation speeds and different magnitude reference signals. **All dynamics modules with the suffix \*\*\*Core do not generate audio data, but instead output volume data to be sent to a scaler control pin or an AGC Multiplier.** The following diagrams represent the typical input/output response for various AGC types. 
 
-![](../../.gitbook/assets/image%20%2814%29.jpeg)
+![](../../.gitbook/assets/image%20%2816%29.jpeg)
 
 _**Compressor**_ – reduce the peak dynamic range of a signal
 
-![](../../.gitbook/assets/image%20%2810%29.jpeg)
+![](../../.gitbook/assets/image%20%2811%29.jpeg)
 
 _**Downward expander \(and noise gate\)**_ – reduce small signal levels and behave as noise gates
 
@@ -240,11 +242,11 @@ _**Downward expander \(and noise gate\)**_ – reduce small signal levels and be
 
 _**Limiter**_ – restrict peak signal levels to avoid digital clipping _\(limiters generally have a horizontal or flat slope, which means high ratio\)_
 
-![](../../.gitbook/assets/image%20%2845%29.png)
+![](../../.gitbook/assets/image%20%2847%29.png)
 
 _**Ducker**_ ****– use a trigger signal to determine when to boost or reduce gain of another signal.
 
-![](../../.gitbook/assets/image%20%2821%29.jpeg)
+![](../../.gitbook/assets/image%20%2823%29.jpeg)
 
 _**AGC Core**_– adjust the gain to keep the signal within a specified RMS range
 
@@ -252,27 +254,27 @@ _**AGC Core**_– adjust the gain to keep the signal within a specified RMS rang
 
 A compressor reduces the signal’s dynamic range, meaning that it lowers the level of loud signals and boosts quiet ones, reducing the difference between loud and soft signals. Make-up gain is usually applied after for increasing the perceived loudness. This can be used for scenarios when keeping the overall volume low is desired but hearing small details is still important, such as night-time movie watching. The behavior of the compressor is best understood by looking at its input-output response:
 
-![](../../.gitbook/assets/image%20%2817%29.jpeg)
+![](../../.gitbook/assets/image%20%2819%29.jpeg)
 
 Above the threshold the compressor reduces the signal level; below the threshold the compressor increases the signal level \(it’s expanding the system\). This brings all output signals closer to the threshold level and reduces the overall dynamic range. The AGCCompressorCore module is wired the same way as the limiter module, receiving its input from an Abs or MaxAbs module and outputting to a multiplier, as shown below:
 
-![](../../.gitbook/assets/image%20%2812%29.jpeg)
+![](../../.gitbook/assets/image%20%2814%29.jpeg)
 
 #### Envelope Modulation
 
 Envelope modulators control the impact that relative peaks have. The Attack Release module uses attackTimeInitial and attackTimeFinal to smooth peaks. The Attack Decay Sustain Release is similar, but also includes 2 stages in between the attack and release. Decay lowers the level into a hold that is based on the sustain level. After this hold ends, the release occurs.
 
-![](../../.gitbook/assets/image%20%2833%29.png)
+![](../../.gitbook/assets/image%20%2834%29.png)
 
 #### Limiters
 
 The AGCLimiterCore module is parameterized by its threshold, ratio, gain, knee depth, attack time, and decay time. The AGCLimiterCore module computes the time varying gain.
 
-![](../../.gitbook/assets/image%20%2822%29.jpeg)
+![](../../.gitbook/assets/image%20%2824%29.jpeg)
 
 Take the absolute value of the signal so that the AGCLimiterCore module treats positive and negative signals equally. The first pin on the AGCMultiplier is the gain to apply and the second input is the audio signal itself.
 
-![\(standard arrangement for a mono limiter\)](../../.gitbook/assets/image%20%2813%29.jpeg)
+![\(standard arrangement for a mono limiter\)](../../.gitbook/assets/image%20%2815%29.jpeg)
 
 When the input is below the threshold the line has a slope of 1 indicating that the signal level is unchanged. Above the threshold the slope drops indicating that the output level will be reduced compared to the input level. Limiters have a parameter called the “ratio” referring to the reciprocal slope of the gain ratio **above the threshold**. A high ratio provides hard limiting, close to 1 provides gentle limiting.
 
@@ -286,21 +288,21 @@ The speed with which a limiter responds to an increase in sound level is describ
 
 The DownwardExpanderCore module is also a limiter with a piecewise gain, but its piecewise function is different. Whereas most limiters use a slope of 1 below a threshold and a reduced slope above it, this module features a very steep slope below its threshold and a slope of 1 above it. Rather than reducing the level of loud signals, this reduces the level of quiet signals. The DownwardExpanderCore module’s response behavior is shown below:
 
-![](../../.gitbook/assets/image%20%2846%29.png)
+![](../../.gitbook/assets/image%20%2848%29.png)
 
 One use of this module is for filtering out low-level noise while retaining a louder signal. This is very useful for eliminating “hiss,” low level background noise in a signal. Like most dynamic processing modules, the DownwardExpanderCore is designed to take its input from the MaxAbs module and output its gain as an input to the AGCMultiplier module. Shown below is an example of a noise gate which eliminates low level signals.
 
-![](../../.gitbook/assets/image%20%2811%29.jpeg)
+![](../../.gitbook/assets/image%20%2813%29.jpeg)
 
 #### AGC Core
 
-![](../../.gitbook/assets/image%20%2819%29.jpeg)
+![](../../.gitbook/assets/image%20%2821%29.jpeg)
 
-![](../../.gitbook/assets/image%20%2830%29.png)
+![](../../.gitbook/assets/image%20%2831%29.png)
 
 This module has a slowly varying volume control which transfers the **input signal** level towards a targetLevel, a specified RMS level. The input RMS is smoothed via the smoothing time variable. This allows the gain to change gradually. The gain is limited to the range \[-maxAttenuation and maxGain\]. The ratio control determines the speed of the gain change for all signals above the **activation Threshold**. When the level of the input signal falls below **activationThreshold**, the AGCCore holds the last gain setting. If the enableRecovery checkbox is checked, the gain will slowly return to 0 dB when not activated. The rate of return is governed by recoveryRate.
 
-![](../../.gitbook/assets/image%20%2844%29.png)
+![](../../.gitbook/assets/image%20%2846%29.png)
 
 The Audio Weaver Filters folder lists over 60 filters. They have been broken down according to user needs, with the folder labels Adaptive, Calculated Coeffs, Controllable, High Precision, Raw Coeffs, and list the most commonly used filters. The Adaptive folder contains the LMS module, an adaptive filter with tracking capabilities. For those users less experienced with designing filters, the Calculated Coeffs filters take in frequency information, Q, Gain, and type, similar to tuning a filter in a DAW. Users with more DSP background can use the Raw Coeffs filters to tune filters with mathematical information. The most frequently used filters are the ButterworthFilter \(highpass, lowpass, allpass\), SecondOrderFilterSmoothed, with 20 different filter types, and the SecondOrderFilterSmoothedCascade: multiple 2nd order filters in series.
 
@@ -308,11 +310,11 @@ The Audio Weaver Filters folder lists over 60 filters. They have been broken dow
 
 The LMS filter predicts the FIR of a system whose transfer function is not given. It’s input and output adapt or “predict” what the system response is. Filter weights are updated over time based on mu speed, higher numbers being the faster update speed. Higher numtaps give higher chance to converge with the optimum filter weight\(meaning less error\). The error can be tracked realtime with the errorSignal output. The module comes with an option to output the predicted “coeffs”. The following system shows white noise being ran through a 10 point FIR. The LMS will predict the FIR coefficients, and sinks will display the error and coeff function.
 
-![](../../.gitbook/assets/image%20%2813%29.png)
+![](../../.gitbook/assets/image%20%2814%29.png)
 
 This sink shows the coeff prediction.
 
-![](../../.gitbook/assets/image%20%2839%29.png)
+![](../../.gitbook/assets/image%20%2841%29.png)
 
 The Error2 display shows a value of -125 dB, which means that our signal is very accurate. The sink to the right displays this as well.
 
@@ -356,9 +358,59 @@ The Crossover Filter module allows the configuration of 2 or more output channel
 
 ![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.44.36-pm.png)
 
+**Emphasis Filter**
 
+The EmphasisFilter ****module implements a pre-emphasis or de-emphasis, used for noise reduction. The cutoff frequency is specified by the time constant tau, which is set in the inspector. The examples below show emphasis and de-emphasis filters with 75 microsecond time contants.
 
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.46.13-pm.png)
 
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.47.20-pm.png)
+
+**GRAPHIC EQS**
+
+The GraphicEQ module splits up a signal into different bands and independently attenuates or amplifies each band. Under module names and arguments, the number of bands and the order of each filter are set. The bands are logarithmically spaced across the Nyquist frequency of the input signal. Each band’s gain can be set in the inspector. This EQ can automatically adjust its bands based on the lowEdge and highEdge arguments. After setting this to the desirable range, change the resetCenterFreqs flag to ‘1’. This will recalculate the bands, throwing away all slider data \(so change the bands before tuning\). 
+
+**TIP – The more bands there are, the higher the filter order should be to better isolate the bands.** 
+
+The GraphicEQBand module applies a gain to a specific frequency band. This module is the building block of the GraphicEQ. In the inspector, the gain, lower edge frequency and upper edge frequency are specified. The filter order is specified from by the module properties. This module is not typically used directly; use GraphicEQ instead.
+
+**Hilbert**
+
+The Hilbert module can be considered a filter which simply shifts phases of all frequency components of its input by -n/2 radians. This operates on complex \(real and imaginary\) data input and output.
+
+**Pink Filter**
+
+The PinkFilter is a low pass filter with a -3dB/octave slope. It is used to generate pink noise from white noise.
+
+**Three Band Tone Control**
+
+The ThreeBandToneControl module is similar to the GraphicEQ except there are only 3 bands. The low, mid, and high bands’ middle frequency and gain are set in the inspector. The ThreeBandToneControl module is very efficient and uses first order shelf filters for the low and high frequency gain adjustments. The middle band is a simple gain and the net result is that the ThreeBandToneControl takes as much computation as a single BiquadSmoothed filter.
+
+#### Controllable Filters
+
+The filters presented thus far get their high level design parameters from the inspectors. At times, it is useful to have a filter whose parameters are controlled by other signals or modules in the layout, such as a source or a hardware input pin. This is called a _controllable filter_. The controllable filters folder includes a first and second order filter, along with a lowpass filter, which all have control pins for their frequency. The second order filter can also enable more pins, like Q and Gain depending on the module arguments.
+
+**First Order Filter Control**
+
+The FOFControl module implements a first order lowpass or highpass filter. The control pin specifies the cutoff frequency of the filter and the design equations are executed every block allowing very rapid updates. 
+
+#### LPF Control
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.50.46-pm.png)
+
+The LPF Control module is a time varying first order low pass with smoothly varying frequency based on the input pin.
+
+**Second Order Filter Control**
+
+The SOFControl filter is built upon the SecondOrderFilterSmoothed ****module. It has a fixed filterType which is specified on the inspector. Under module arguments, specify which of the filter design parameters should be obtained via input pins:
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.53.25-pm.png)
+
+Parameters which aren’t specified by input pins are specified via the variables and properties tab. The SOFControl module uses deferred processing to compute the filter coefficients. That is, the design equation is not executed every block. Rather, when the control data on the input pin changes, the module sets a bit in its instance structure which causes the design function to be called from non-real-time code. This reduces the peak CPU load at the expense of having a slower update rate. In typical applications, the module will update every few 10s of milliseconds. If updating needs to happen more quickly, then use the FOFControl module or the ParamSetmodule coupled with a SecondOrderFilterSmoothed module.
+
+A very common use of the SOFControl module is within a perceptual volume control. As the volume of the system is reduced, overall spectral balance should be maintained. Due to the sensitivity of the human auditory system, low frequencies and high frequencies appear to drop off more quickly than mid frequencies. Thus, to maintain the overall spectral balance, boost low and high frequencies as the volume level decreases. The VolumeControl module accomplishes this with a fixed boost table. For finer control over the boost, use a TableInterp module together with a SOFControl filter as shown below. The control signal “Volume” specifies the listening level and ranges from 0 \(loud\) to -80 \(soft\). The lookup tables convert the Volume setting into low frequency and high frequency boosts which are applied using the SOFControl module. The low frequency SOFControl module implements a peaking filter at 40 Hz and the gain is taken from the control pin. The high frequency SOFControl module implements a high shelf in which the gain is taken from the control pin.
+
+![Figure 1. Example showing use of the SOFControl module in a table driven loudness control](../../.gitbook/assets/screen-shot-2020-04-08-at-7.54.56-pm.png)
 
 \`
 
