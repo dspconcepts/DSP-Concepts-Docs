@@ -167,7 +167,7 @@ Audio Weaver has over 400 different types of modules available. This section org
 
 In order to keep notes within layouts, Designer supports text boxes, rectangle panels, and arrows. While there are many ways to use these, the standard is to break the layout file into “processing sections” with information on how to tune the design. Annotation is also good for keeping “presets” or “modes” written down on the canvas.
 
-![](../../.gitbook/assets/image%20%286%29.png)
+![](../../.gitbook/assets/image%20%287%29.png)
 
 #### Documenting Layouts
 
@@ -211,13 +211,13 @@ This **zero latency FIR** allows for large FIR filters by breaking a large convo
 
 ####  WOLA Forward Filterbank \(Analysis\)
 
-![](../../.gitbook/assets/image%20%2844%29.png)
+![](../../.gitbook/assets/image%20%2851%29.png)
 
 This module is used to convert a time domain\(real number\) signal into frequency domain\(complex number\) bins. The output of this module will operate according to this blocksize. From this point on, the data is complex. See the Frequency Domain folder for modules that operate within the complex domain. The first and last bin represent DC, and have no complex data.
 
 #### WOLA Inverse Filterbank \(Synthesis\)
 
-![](../../.gitbook/assets/image%20%2850%29.png)
+![](../../.gitbook/assets/image%20%2857%29.png)
 
 This module will convert a block of frequency bin\(complex number\) data into the time domain\(real number\). This is normally paired with WOLA Forward Filterbank \(Analysis\). Be sure to keep the WOLA Forward and Inverse sizes the same. More information is provided in the Frequency Domain section.
 
@@ -240,11 +240,11 @@ _**Downward expander \(and noise gate\)**_ – reduce small signal levels and be
 
 _**Limiter**_ – restrict peak signal levels to avoid digital clipping _\(limiters generally have a horizontal or flat slope, which means high ratio\)_
 
-![](../../.gitbook/assets/image%20%2847%29.png)
+![](../../.gitbook/assets/image%20%2854%29.png)
 
 _**Ducker**_ ****– use a trigger signal to determine when to boost or reduce gain of another signal.
 
-![](../../.gitbook/assets/image%20%2823%29.jpeg)
+![](../../.gitbook/assets/image%20%2824%29.jpeg)
 
 _**AGC Core**_– adjust the gain to keep the signal within a specified RMS range
 
@@ -252,7 +252,7 @@ _**AGC Core**_– adjust the gain to keep the signal within a specified RMS rang
 
 A compressor reduces the signal’s dynamic range, meaning that it lowers the level of loud signals and boosts quiet ones, reducing the difference between loud and soft signals. Make-up gain is usually applied after for increasing the perceived loudness. This can be used for scenarios when keeping the overall volume low is desired but hearing small details is still important, such as night-time movie watching. The behavior of the compressor is best understood by looking at its input-output response:
 
-![](../../.gitbook/assets/image%20%2819%29.jpeg)
+![](../../.gitbook/assets/image%20%2820%29.jpeg)
 
 Above the threshold the compressor reduces the signal level; below the threshold the compressor increases the signal level \(it’s expanding the system\). This brings all output signals closer to the threshold level and reduces the overall dynamic range. The AGCCompressorCore module is wired the same way as the limiter module, receiving its input from an Abs or MaxAbs module and outputting to a multiplier, as shown below:
 
@@ -262,13 +262,13 @@ Above the threshold the compressor reduces the signal level; below the threshold
 
 Envelope modulators control the impact that relative peaks have. The Attack Release module uses attackTimeInitial and attackTimeFinal to smooth peaks. The Attack Decay Sustain Release is similar, but also includes 2 stages in between the attack and release. Decay lowers the level into a hold that is based on the sustain level. After this hold ends, the release occurs.
 
-![](../../.gitbook/assets/image%20%2834%29.png)
+![](../../.gitbook/assets/image%20%2839%29.png)
 
 #### Limiters
 
 The AGCLimiterCore module is parameterized by its threshold, ratio, gain, knee depth, attack time, and decay time. The AGCLimiterCore module computes the time varying gain.
 
-![](../../.gitbook/assets/image%20%2824%29.jpeg)
+![](../../.gitbook/assets/image%20%2825%29.jpeg)
 
 Take the absolute value of the signal so that the AGCLimiterCore module treats positive and negative signals equally. The first pin on the AGCMultiplier is the gain to apply and the second input is the audio signal itself.
 
@@ -286,7 +286,7 @@ The speed with which a limiter responds to an increase in sound level is describ
 
 The DownwardExpanderCore module is also a limiter with a piecewise gain, but its piecewise function is different. Whereas most limiters use a slope of 1 below a threshold and a reduced slope above it, this module features a very steep slope below its threshold and a slope of 1 above it. Rather than reducing the level of loud signals, this reduces the level of quiet signals. The DownwardExpanderCore module’s response behavior is shown below:
 
-![](../../.gitbook/assets/image%20%2848%29.png)
+![](../../.gitbook/assets/image%20%2855%29.png)
 
 One use of this module is for filtering out low-level noise while retaining a louder signal. This is very useful for eliminating “hiss,” low level background noise in a signal. Like most dynamic processing modules, the DownwardExpanderCore is designed to take its input from the MaxAbs module and output its gain as an input to the AGCMultiplier module. Shown below is an example of a noise gate which eliminates low level signals.
 
@@ -294,13 +294,13 @@ One use of this module is for filtering out low-level noise while retaining a lo
 
 #### AGC Core
 
-![](../../.gitbook/assets/image%20%2821%29.jpeg)
+![](../../.gitbook/assets/image%20%2822%29.jpeg)
 
-![](../../.gitbook/assets/image%20%2831%29.png)
+![](../../.gitbook/assets/image%20%2836%29.png)
 
 This module has a slowly varying volume control which transfers the **input signal** level towards a targetLevel, a specified RMS level. The input RMS is smoothed via the smoothing time variable. This allows the gain to change gradually. The gain is limited to the range \[-maxAttenuation and maxGain\]. The ratio control determines the speed of the gain change for all signals above the **activation Threshold**. When the level of the input signal falls below **activationThreshold**, the AGCCore holds the last gain setting. If the enableRecovery checkbox is checked, the gain will slowly return to 0 dB when not activated. The rate of return is governed by recoveryRate.
 
-![](../../.gitbook/assets/image%20%2846%29.png)
+![](../../.gitbook/assets/image%20%2853%29.png)
 
 The Audio Weaver Filters folder lists over 60 filters. They have been broken down according to user needs, with the folder labels Adaptive, Calculated Coeffs, Controllable, High Precision, Raw Coeffs, and list the most commonly used filters. The Adaptive folder contains the LMS module, an adaptive filter with tracking capabilities. For those users less experienced with designing filters, the Calculated Coeffs filters take in frequency information, Q, Gain, and type, similar to tuning a filter in a DAW. Users with more DSP background can use the Raw Coeffs filters to tune filters with mathematical information. The most frequently used filters are the ButterworthFilter \(highpass, lowpass, allpass\), SecondOrderFilterSmoothed, with 20 different filter types, and the SecondOrderFilterSmoothedCascade: multiple 2nd order filters in series.
 
@@ -308,11 +308,11 @@ The Audio Weaver Filters folder lists over 60 filters. They have been broken dow
 
 The LMS filter predicts the FIR of a system whose transfer function is not given. It’s input and output adapt or “predict” what the system response is. Filter weights are updated over time based on mu speed, higher numbers being the faster update speed. Higher numtaps give higher chance to converge with the optimum filter weight\(meaning less error\). The error can be tracked realtime with the errorSignal output. The module comes with an option to output the predicted “coeffs”. The following system shows white noise being ran through a 10 point FIR. The LMS will predict the FIR coefficients, and sinks will display the error and coeff function.
 
-![](../../.gitbook/assets/image%20%2814%29.png)
+![](../../.gitbook/assets/image%20%2817%29.png)
 
 This sink shows the coeff prediction.
 
-![](../../.gitbook/assets/image%20%2841%29.png)
+![](../../.gitbook/assets/image%20%2848%29.png)
 
 The Error2 display shows a value of -125 dB, which means that our signal is very accurate. The sink to the right displays this as well.
 
@@ -410,7 +410,85 @@ A very common use of the SOFControl module is within a perceptual volume control
 
 ![Example showing use of the SOFControl module in a table driven loudness control](../../.gitbook/assets/screen-shot-2020-04-08-at-7.54.56-pm.png)
 
-\`
+![Lookup tables used in the table driven loudness control example. The left table converts the volume setting into a bass boost and the right table does the same for the high frequency adjustment.](../../.gitbook/assets/screen-shot-2020-04-08-at-9.09.14-pm%20%281%29.png)
+
+#### Filters with Raw COEFFS
+
+Audio Weaver contains several filter types which operate on raw coefficients. These filters are for expert users who understand DSP and know how to calculate the filter coefficients. \[Matlab is often used by expert Audio Weaver users to compute coefficients and then update them in the block diagram.\] There are two types of filters – Finite Impulse Response \(FIR\) and Infinite Impulse Response \(IIR\). Although Audio Weaver supports both types of filters, the majority of the filters used in audio applications are IIR due to their computational efficiency.
+
+The most basic IIR filter is the Biquad and it is implemented with the difference equation:   
+
+
+                                             𝑎0𝑦𝑛=𝑏0𝑥𝑛+𝑏1𝑥𝑛−1+𝑏2𝑥𝑛−2−𝑎1𝑦𝑛−1−𝑎2𝑦𝑛−2
+
+There are 5 coefficients that the user must set: $$b_0$$, $$b_1$$, $$b_2$$, $$a_1$$ , and $$a_2$$ \( $$a_0$$ is always assumed to be 1\). Audio Weaver does not check for stability and care must be used when computing the filter coefficients. There are several variants of Biquad filters. The simples – Biquad – has a single stage and implements the different equation shown above. BiquadCascade implements N stages of filtering with each channel using the same coefficients. BiquadNCascade implements N stages with each channel have its own set of coefficients. Finally, BiquadSmoothed implements a single Biquad stage with coefficient smoothing on a block-by-block basis.
+
+![](../../.gitbook/assets/image%20%2844%29.png)
+
+#### High Precisions Filters
+
+Audio Weaver contains a variety of Biquad filters for equalizing audio. Some filters require raw coefficients \(such as Biquad or BiquadCascade\) while others contain built-in design equals \(such as the SecondOrderFilter or ButterworthFilter\). These filters are implemented using a Direct Form 2 \(DF2\) structure:
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-9.31.39-pm.png)
+
+All Biquad filters including the DF2 have 5 coefficients. The advantage of the DF2 structure is that it requires only 2 state variables per filter as compared to 4 state variables for the DF1 structure.
+
+These Biquad filters are implemented using floating-point arithmetic and are generally fine for most audio applications. Floating-point arithmetic, though, is not a panacea for all numerical issues and these filters can still suffer from quantization noise. The noise manifests itself as low-level noise correlated with the level of the input signal. Quantization noise is exacerbated by high sampling rates \(96 kHz and above\) and by having poles very close to the unit circle and this usually arises when making very low frequency EQ changes.
+
+To solve these noise issues Audio Weaver includes a High Precision filter modules. These modules use floating-point input and output data and are compatible with the other floating-point modules. Internally the high precision filters use a proprietary DSP Concepts filter structure which significantly reduces quantization noise. The filters are also efficient with a typical Biquad requiring 7 MAC operations vs the 5 needed in a DF2 Biquad.
+
+The High Precision modules are designed to be drop in replacements for the non-high precision filters. That way, numerical problems can be resolved by replacing the offending filter with its high precision version.
+
+![](../../.gitbook/assets/image%20%286%29.png)
+
+The crossover filter module \(XoverNway\) is actually a subsystem consisting of multiple individual modules. The module properties give the option to construct the crossover using standard Biquads or high precision Biquads:
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-9.37.39-pm.png)
+
+The graphic equalizer gives the option of using standard precision or high precision filters.
+
+Here is an example of the benefits of the high precision filter. The system in the example has a peaking filter at 20 Hz with a gain of 6 dB and a Q of 2 and operates at a 48 kHz sample rate. The total harmonic distortion and noise \(THD+N\) for different input frequencies is plotted below. First for standard Biquad filters.
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-9.40.15-pm.png)
+
+And now with a high precision filter, notice that the noise floor is reduced significantly – by up to 90 dB at low frequencies.
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-9.41.07-pm.png)
+
+For the interested reader, this measurement is performed by passing sine waves of different frequencies through the filter. Apply a notch filter at the output which removes the sine wave and then measure the RMS energy in the residual. This residual energy equals the THD+N. The measurement is repeated for many different frequencies and the plot reflects the measured THD+N at each input frequency.
+
+#### Common Filter Modules
+
+The following filters are found as modules with no folder in the Filters directory. This is because they are the most common types of filters, which cover most general cases of filtering needs.
+
+**Butterworthfilter**
+
+This module implements lowpass, highpass, or allpass filters using a Butterworth design. The filters have a gain of 0 dB in the passband and are then monotonically decreasing in the stopband. The filter order is specified under module properties and ranges from 1st order \(6dB/octave\) to 10th order \(60dB/octave\). The filter order can only be changed in Design mode. Specify the filter type on the inspector \(lowpass, highpass, or allpass\) as well as the cutoff frequency, in Hz. Since these parameters are on the inspector, the filter type and cutoff frequency can be changed at run-time. Unfortunately, the ButterworthFilter does not have coefficient smoothing and there may be discontinuities when coefficients are updated.
+
+![Butterworth lowpass filter frequency response as a function of filter order. The filter order goes from 1st order \(least steep line\) to 10th order \(steepest line\). The cutoff frequency is 100 Hz and the sample rate is 48 kHz](../../.gitbook/assets/screen-shot-2020-04-08-at-9.43.06-pm.png)
+
+![Butterworth high filter frequency response as a function of filter order. The filter order goes from 1st order \(least steep line\) to 10th order \(steepest line\). The cutoff frequency is 100 Hz and the sample rate is 48 kHz](../../.gitbook/assets/screen-shot-2020-04-08-at-9.45.26-pm.png)
+
+**SecondOrderFilterSmoothed**
+
+  
+This module is the most frequently used filter among all of the Audio Weaver modules. It implements a 2nd order Biquad filter and includes design equations for 20 different filter types. The filter type and high-level design parameters \(frequency, gain, and Q\) can be changed at run-time using the inspector:
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-9.48.02-pm.png)
+
+Depending on the filter type, some parameters are not used. See the table below for the filter types available and which control parameters are applicable.
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
