@@ -173,7 +173,7 @@ In order to keep notes within layouts, Designer supports text boxes, rectangle p
 
 To use the annotations, drag them onto the browser. Rescale them and position them accordingly. To edit a text box, double click it and type away on the canvas. To change text size or annotation color/width, check the properties panel for each annotation. In order to keep a standard across the design file, it is recommended to establish a standard annotation \(i.e. get the fonts/size/color set up\) and copy/paste this to keep the style throughout the annotations.  
 
-![](../../.gitbook/assets/image%20%281%29.jpeg)
+![](../../.gitbook/assets/image%20%284%29.jpeg)
 
 ### Delays
 
@@ -211,13 +211,13 @@ This **zero latency FIR** allows for large FIR filters by breaking a large convo
 
 ####  WOLA Forward Filterbank \(Analysis\)
 
-![](../../.gitbook/assets/image%20%2838%29.png)
+![](../../.gitbook/assets/image%20%2842%29.png)
 
 This module is used to convert a time domain\(real number\) signal into frequency domain\(complex number\) bins. The output of this module will operate according to this blocksize. From this point on, the data is complex. See the Frequency Domain folder for modules that operate within the complex domain. The first and last bin represent DC, and have no complex data.
 
 #### WOLA Inverse Filterbank \(Synthesis\)
 
-![](../../.gitbook/assets/image%20%2842%29.png)
+![](../../.gitbook/assets/image%20%2848%29.png)
 
 This module will convert a block of frequency bin\(complex number\) data into the time domain\(real number\). This is normally paired with WOLA Forward Filterbank \(Analysis\). Be sure to keep the WOLA Forward and Inverse sizes the same. More information is provided in the Frequency Domain section.
 
@@ -228,11 +228,11 @@ Dynamic modules de/emphasize the amplitude structure of data. AGC stands for Aut
   
 The dynamics modules operate with different gain variation speeds and different magnitude reference signals. **All dynamics modules with the suffix \*\*\*Core do not generate audio data, but instead output volume data to be sent to a scaler control pin or an AGC Multiplier.** The following diagrams represent the typical input/output response for various AGC types. 
 
-![](../../.gitbook/assets/image%20%289%29.jpeg)
+![](../../.gitbook/assets/image%20%2814%29.jpeg)
 
 _**Compressor**_ – reduce the peak dynamic range of a signal
 
-![](../../.gitbook/assets/image%20%285%29.jpeg)
+![](../../.gitbook/assets/image%20%2810%29.jpeg)
 
 _**Downward expander \(and noise gate\)**_ – reduce small signal levels and behave as noise gates
 
@@ -240,11 +240,11 @@ _**Downward expander \(and noise gate\)**_ – reduce small signal levels and be
 
 _**Limiter**_ – restrict peak signal levels to avoid digital clipping _\(limiters generally have a horizontal or flat slope, which means high ratio\)_
 
-![](../../.gitbook/assets/image%20%2839%29.png)
+![](../../.gitbook/assets/image%20%2845%29.png)
 
 _**Ducker**_ ****– use a trigger signal to determine when to boost or reduce gain of another signal.
 
-![](../../.gitbook/assets/image%20%2816%29.jpeg)
+![](../../.gitbook/assets/image%20%2821%29.jpeg)
 
 _**AGC Core**_– adjust the gain to keep the signal within a specified RMS range
 
@@ -252,33 +252,33 @@ _**AGC Core**_– adjust the gain to keep the signal within a specified RMS rang
 
 A compressor reduces the signal’s dynamic range, meaning that it lowers the level of loud signals and boosts quiet ones, reducing the difference between loud and soft signals. Make-up gain is usually applied after for increasing the perceived loudness. This can be used for scenarios when keeping the overall volume low is desired but hearing small details is still important, such as night-time movie watching. The behavior of the compressor is best understood by looking at its input-output response:
 
-![](../../.gitbook/assets/image%20%2812%29.jpeg)
+![](../../.gitbook/assets/image%20%2817%29.jpeg)
 
 Above the threshold the compressor reduces the signal level; below the threshold the compressor increases the signal level \(it’s expanding the system\). This brings all output signals closer to the threshold level and reduces the overall dynamic range. The AGCCompressorCore module is wired the same way as the limiter module, receiving its input from an Abs or MaxAbs module and outputting to a multiplier, as shown below:
 
-![](../../.gitbook/assets/image%20%287%29.jpeg)
+![](../../.gitbook/assets/image%20%2812%29.jpeg)
 
 #### Envelope Modulation
 
 Envelope modulators control the impact that relative peaks have. The Attack Release module uses attackTimeInitial and attackTimeFinal to smooth peaks. The Attack Decay Sustain Release is similar, but also includes 2 stages in between the attack and release. Decay lowers the level into a hold that is based on the sustain level. After this hold ends, the release occurs.
 
-![](../../.gitbook/assets/image%20%2830%29.png)
+![](../../.gitbook/assets/image%20%2833%29.png)
 
 #### Limiters
 
 The AGCLimiterCore module is parameterized by its threshold, ratio, gain, knee depth, attack time, and decay time. The AGCLimiterCore module computes the time varying gain.
 
-![](../../.gitbook/assets/image%20%2817%29.jpeg)
+![](../../.gitbook/assets/image%20%2822%29.jpeg)
 
 Take the absolute value of the signal so that the AGCLimiterCore module treats positive and negative signals equally. The first pin on the AGCMultiplier is the gain to apply and the second input is the audio signal itself.
 
-![\(standard arrangement for a mono limiter\)](../../.gitbook/assets/image%20%288%29.jpeg)
+![\(standard arrangement for a mono limiter\)](../../.gitbook/assets/image%20%2813%29.jpeg)
 
 When the input is below the threshold the line has a slope of 1 indicating that the signal level is unchanged. Above the threshold the slope drops indicating that the output level will be reduced compared to the input level. Limiters have a parameter called the “ratio” referring to the reciprocal slope of the gain ratio **above the threshold**. A high ratio provides hard limiting, close to 1 provides gentle limiting.
 
 The limiter applies a piecewise function to determine its gain: at a specified threshold, the slope changes. The transition between sections is smoothed by a connecting polynomial section, often referred to as the “knee”. The knee provides a gentle polynomial interpolation between the threshold and the requested slope. The kneeDepth parameter controls the extent of the polynomial section. The polynomial starts at threshold-kneeDepth and ends at threshold+kneeDepth.
 
-![](../../.gitbook/assets/image%20%283%29.jpeg)
+![](../../.gitbook/assets/image%20%286%29.jpeg)
 
 The speed with which a limiter responds to an increase in sound level is described by its “attack time”. The lower the attack time, the faster the limiter will respond to the sound level rising above its threshold. Similarly, decay \(or release\) time describes the speed with which the limiter’s effect is relaxed after the sound level drops back under its threshold. The time behavior of the dynamics processors is implemented with first order IIR smoothers with different attack and decay coefficients. The above image shows example attack and decay curves.
 
@@ -286,23 +286,81 @@ The speed with which a limiter responds to an increase in sound level is describ
 
 The DownwardExpanderCore module is also a limiter with a piecewise gain, but its piecewise function is different. Whereas most limiters use a slope of 1 below a threshold and a reduced slope above it, this module features a very steep slope below its threshold and a slope of 1 above it. Rather than reducing the level of loud signals, this reduces the level of quiet signals. The DownwardExpanderCore module’s response behavior is shown below:
 
-![](../../.gitbook/assets/image%20%2840%29.png)
+![](../../.gitbook/assets/image%20%2846%29.png)
 
 One use of this module is for filtering out low-level noise while retaining a louder signal. This is very useful for eliminating “hiss,” low level background noise in a signal. Like most dynamic processing modules, the DownwardExpanderCore is designed to take its input from the MaxAbs module and output its gain as an input to the AGCMultiplier module. Shown below is an example of a noise gate which eliminates low level signals.
 
-![](../../.gitbook/assets/image%20%286%29.jpeg)
+![](../../.gitbook/assets/image%20%2811%29.jpeg)
 
 #### AGC Core
 
-![](../../.gitbook/assets/image%20%2814%29.jpeg)
+![](../../.gitbook/assets/image%20%2819%29.jpeg)
 
-![](../../.gitbook/assets/image%20%2827%29.png)
+![](../../.gitbook/assets/image%20%2830%29.png)
 
 This module has a slowly varying volume control which transfers the **input signal** level towards a targetLevel, a specified RMS level. The input RMS is smoothed via the smoothing time variable. This allows the gain to change gradually. The gain is limited to the range \[-maxAttenuation and maxGain\]. The ratio control determines the speed of the gain change for all signals above the **activation Threshold**. When the level of the input signal falls below **activationThreshold**, the AGCCore holds the last gain setting. If the enableRecovery checkbox is checked, the gain will slowly return to 0 dB when not activated. The rate of return is governed by recoveryRate.
 
+![](../../.gitbook/assets/image%20%2844%29.png)
+
+The Audio Weaver Filters folder lists over 60 filters. They have been broken down according to user needs, with the folder labels Adaptive, Calculated Coeffs, Controllable, High Precision, Raw Coeffs, and list the most commonly used filters. The Adaptive folder contains the LMS module, an adaptive filter with tracking capabilities. For those users less experienced with designing filters, the Calculated Coeffs filters take in frequency information, Q, Gain, and type, similar to tuning a filter in a DAW. Users with more DSP background can use the Raw Coeffs filters to tune filters with mathematical information. The most frequently used filters are the ButterworthFilter \(highpass, lowpass, allpass\), SecondOrderFilterSmoothed, with 20 different filter types, and the SecondOrderFilterSmoothedCascade: multiple 2nd order filters in series.
+
+#### Adaptive \(LMS\)
+
+The LMS filter predicts the FIR of a system whose transfer function is not given. It’s input and output adapt or “predict” what the system response is. Filter weights are updated over time based on mu speed, higher numbers being the faster update speed. Higher numtaps give higher chance to converge with the optimum filter weight\(meaning less error\). The error can be tracked realtime with the errorSignal output. The module comes with an option to output the predicted “coeffs”. The following system shows white noise being ran through a 10 point FIR. The LMS will predict the FIR coefficients, and sinks will display the error and coeff function.
+
+![](../../.gitbook/assets/image%20%2813%29.png)
+
+This sink shows the coeff prediction.
+
+![](../../.gitbook/assets/image%20%2839%29.png)
+
+The Error2 display shows a value of -125 dB, which means that our signal is very accurate. The sink to the right displays this as well.
+
+#### Filters with Calculated Coeffs
+
+Audio Weaver has a several filters with built-in design equations. These filters are implemented using Biquad or BiquadCascade modules behind the scenes and the filter coefficients are computed by the design equations based on high-level filter specifications. The design equations use the sample rate on the input wire when computing coefficients. The following sections describe each of the calculated coeffs modules.
+
+**AllPass Pair**
+
+The Allpass Pair module creates a pair of allpass filters with the special property that their sum and difference form a doubly complementary highpass-lowpass filter pair. When used in conjunction with the Sum and Difference module \(available in the Math folder\) this Allpass Pair module can be used to construct more complex structures such as N-way crossovers and filter banks. The following design mixes one channel of white noise into two “bands” of white noise using this technique. The sink is an FFT showing the frequency response of the signal.
+
+![](../../.gitbook/assets/image%20%282%29.jpeg)
+
+**Audio Weighting Filters**
+
+The AudioWeighting module is located under Filters/Calculated Coeffs This module applies different standard audio weighting to a signal. The available weightings are selectable from the inspector and include: A, B, C, and D-weighting, as well as ITU468, LeqM, and ITU 1770. The WeightingFilter is used for noise measurements and broadcast loudness applications. The following frequency responses display each weighting’s filter.
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.32.48-pm.png)
+
+A crossover is a special type of filter that splits a signal into multiple bands, while sustaining a total gain of 0 dB. It will boost the level of one frequency band as the other drops to compensate to 0 dB gain. This behavior is shown in the figure below.
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.37.31-pm.png)
+
+Crossovers are used in loudspeaker applications to separate signals into different frequency bands to be output via woofers, mid-range, and tweeter speakers. They are implemented using ButterworthFilter \(odd-order\) or Linkwtiz-Riley \(even-order\) filters. Crossover filters can be made manually using individual filters. By cascading filters and applying an allpass filter during other lane filter stages \(shown below\), more crossover points can be added and the signal split into more frequency bands, while retaining the unity gain property.
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.39.37-pm.png)
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.40.13-pm.png)
+
+Alternatively, use the crossover module which contains all of the needed filters. The Crossover Filter module allows the user to set the type of filter, number of output bands, and filter order, specified in the module’s properties. Crossovers are used for separating different frequency bands of a signal. The example below demonstrates a crossover module being used to split a signal into a high band above 250 Hz and a low band below 250 Hz. The sum of the levels of the two bands is always 0 dB. As the input frequency changes near 250 Hz, one channel’s level drops and the other smoothly increases to compensate to 0 dB.
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.42.36-pm.png)
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.43.17-pm.png)
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.43.50-pm.png)
+
+This is the same behavior as using two ButterworthFilter filters:
+
+The Crossover Filter module allows the configuration of 2 or more output channels. The module will then be drawn with 3 output pins. The top pin is the low frequency; the center pin is the mid-range, and the bottom pin is the high frequencies. The inspector shows two cutoff frequencies: between the low and mid-range; and between the mid-range and high frequencies. For example, if implementing a 3-way loudspeaker crossover, configure it as:
+
+![](../../.gitbook/assets/screen-shot-2020-04-08-at-7.44.36-pm.png)
 
 
 
+
+
+\`
 
 
 
