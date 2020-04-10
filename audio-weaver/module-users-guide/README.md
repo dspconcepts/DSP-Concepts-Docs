@@ -167,13 +167,13 @@ Audio Weaver has over 400 different types of modules available. This section org
 
 In order to keep notes within layouts, Designer supports text boxes, rectangle panels, and arrows. While there are many ways to use these, the standard is to break the layout file into “processing sections” with information on how to tune the design. Annotation is also good for keeping “presets” or “modes” written down on the canvas.
 
-![](../../.gitbook/assets/image%20%2819%29.png)
+![](../../.gitbook/assets/image%20%2821%29.png)
 
 #### Documenting Layouts
 
 To use the annotations, drag them onto the browser. Rescale them and position them accordingly. To edit a text box, double click it and type away on the canvas. To change text size or annotation color/width, check the properties panel for each annotation. In order to keep a standard across the design file, it is recommended to establish a standard annotation \(i.e. get the fonts/size/color set up\) and copy/paste this to keep the style throughout the annotations.  
 
-![](../../.gitbook/assets/image%20%286%29.jpeg)
+![](../../.gitbook/assets/image%20%287%29.jpeg)
 
 ### Delays
 
@@ -201,7 +201,7 @@ Since delays tend to be memory intensive, memory efficient options are provided.
 
 #### Table of Delay Modules
 
-![](../../.gitbook/assets/image%20%2810%29.png)
+![](../../.gitbook/assets/image%20%2811%29.png)
 
 ### DSP Concepts IP
 
@@ -211,13 +211,13 @@ This **zero latency FIR** allows for large FIR filters by breaking a large convo
 
 ####  WOLA Forward Filterbank \(Analysis\)
 
-![](../../.gitbook/assets/image%20%2889%29.png)
+![](../../.gitbook/assets/image%20%2899%29.png)
 
 This module is used to convert a time domain\(real number\) signal into frequency domain\(complex number\) bins. The output of this module will operate according to this blocksize. From this point on, the data is complex. See the Frequency Domain folder for modules that operate within the complex domain. The first and last bin represent DC, and have no complex data.
 
 #### WOLA Inverse Filterbank \(Synthesis\)
 
-![](../../.gitbook/assets/image%20%2895%29.png)
+![](../../.gitbook/assets/image%20%28105%29.png)
 
 This module will convert a block of frequency bin\(complex number\) data into the time domain\(real number\). This is normally paired with WOLA Forward Filterbank \(Analysis\). Be sure to keep the WOLA Forward and Inverse sizes the same. More information is provided in the Frequency Domain section.
 
@@ -228,11 +228,11 @@ Dynamic modules de/emphasize the amplitude structure of data. AGC stands for Aut
   
 The dynamics modules operate with different gain variation speeds and different magnitude reference signals. **All dynamics modules with the suffix \*\*\*Core do not generate audio data, but instead output volume data to be sent to a scaler control pin or an AGC Multiplier.** The following diagrams represent the typical input/output response for various AGC types. 
 
-![](../../.gitbook/assets/image%20%2820%29.jpeg)
+![](../../.gitbook/assets/image%20%2821%29.jpeg)
 
 _**Compressor**_ – reduce the peak dynamic range of a signal
 
-![](../../.gitbook/assets/image%20%2814%29.jpeg)
+![](../../.gitbook/assets/image%20%2815%29.jpeg)
 
 _**Downward expander \(and noise gate\)**_ – reduce small signal levels and behave as noise gates
 
@@ -240,11 +240,11 @@ _**Downward expander \(and noise gate\)**_ – reduce small signal levels and be
 
 _**Limiter**_ – restrict peak signal levels to avoid digital clipping _\(limiters generally have a horizontal or flat slope, which means high ratio\)_
 
-![](../../.gitbook/assets/image%20%2892%29.png)
+![](../../.gitbook/assets/image%20%28102%29.png)
 
 _**Ducker**_ ****– use a trigger signal to determine when to boost or reduce gain of another signal.
 
-![](../../.gitbook/assets/image%20%2828%29.jpeg)
+![](../../.gitbook/assets/image%20%2829%29.jpeg)
 
 _**AGC Core**_– adjust the gain to keep the signal within a specified RMS range
 
@@ -252,33 +252,33 @@ _**AGC Core**_– adjust the gain to keep the signal within a specified RMS rang
 
 A compressor reduces the signal’s dynamic range, meaning that it lowers the level of loud signals and boosts quiet ones, reducing the difference between loud and soft signals. Make-up gain is usually applied after for increasing the perceived loudness. This can be used for scenarios when keeping the overall volume low is desired but hearing small details is still important, such as night-time movie watching. The behavior of the compressor is best understood by looking at its input-output response:
 
-![](../../.gitbook/assets/image%20%2824%29.jpeg)
+![](../../.gitbook/assets/image%20%2825%29.jpeg)
 
 Above the threshold the compressor reduces the signal level; below the threshold the compressor increases the signal level \(it’s expanding the system\). This brings all output signals closer to the threshold level and reduces the overall dynamic range. The AGCCompressorCore module is wired the same way as the limiter module, receiving its input from an Abs or MaxAbs module and outputting to a multiplier, as shown below:
 
-![](../../.gitbook/assets/image%20%2817%29.jpeg)
+![](../../.gitbook/assets/image%20%2818%29.jpeg)
 
 #### Envelope Modulation
 
 Envelope modulators control the impact that relative peaks have. The Attack Release module uses attackTimeInitial and attackTimeFinal to smooth peaks. The Attack Decay Sustain Release is similar, but also includes 2 stages in between the attack and release. Decay lowers the level into a hold that is based on the sustain level. After this hold ends, the release occurs.
 
-![](../../.gitbook/assets/image%20%2870%29.png)
+![](../../.gitbook/assets/image%20%2877%29.png)
 
 #### Limiters
 
 The AGCLimiterCore module is parameterized by its threshold, ratio, gain, knee depth, attack time, and decay time. The AGCLimiterCore module computes the time varying gain.
 
-![](../../.gitbook/assets/image%20%2829%29.jpeg)
+![](../../.gitbook/assets/image%20%2830%29.jpeg)
 
 Take the absolute value of the signal so that the AGCLimiterCore module treats positive and negative signals equally. The first pin on the AGCMultiplier is the gain to apply and the second input is the audio signal itself.
 
-![\(standard arrangement for a mono limiter\)](../../.gitbook/assets/image%20%2819%29.jpeg)
+![\(standard arrangement for a mono limiter\)](../../.gitbook/assets/image%20%2820%29.jpeg)
 
 When the input is below the threshold the line has a slope of 1 indicating that the signal level is unchanged. Above the threshold the slope drops indicating that the output level will be reduced compared to the input level. Limiters have a parameter called the “ratio” referring to the reciprocal slope of the gain ratio **above the threshold**. A high ratio provides hard limiting, close to 1 provides gentle limiting.
 
 The limiter applies a piecewise function to determine its gain: at a specified threshold, the slope changes. The transition between sections is smoothed by a connecting polynomial section, often referred to as the “knee”. The knee provides a gentle polynomial interpolation between the threshold and the requested slope. The kneeDepth parameter controls the extent of the polynomial section. The polynomial starts at threshold-kneeDepth and ends at threshold+kneeDepth.
 
-![](../../.gitbook/assets/image%20%289%29.jpeg)
+![](../../.gitbook/assets/image%20%2810%29.jpeg)
 
 The speed with which a limiter responds to an increase in sound level is described by its “attack time”. The lower the attack time, the faster the limiter will respond to the sound level rising above its threshold. Similarly, decay \(or release\) time describes the speed with which the limiter’s effect is relaxed after the sound level drops back under its threshold. The time behavior of the dynamics processors is implemented with first order IIR smoothers with different attack and decay coefficients. The above image shows example attack and decay curves.
 
@@ -286,21 +286,21 @@ The speed with which a limiter responds to an increase in sound level is describ
 
 The DownwardExpanderCore module is also a limiter with a piecewise gain, but its piecewise function is different. Whereas most limiters use a slope of 1 below a threshold and a reduced slope above it, this module features a very steep slope below its threshold and a slope of 1 above it. Rather than reducing the level of loud signals, this reduces the level of quiet signals. The DownwardExpanderCore module’s response behavior is shown below:
 
-![](../../.gitbook/assets/image%20%2893%29.png)
+![](../../.gitbook/assets/image%20%28103%29.png)
 
 One use of this module is for filtering out low-level noise while retaining a louder signal. This is very useful for eliminating “hiss,” low level background noise in a signal. Like most dynamic processing modules, the DownwardExpanderCore is designed to take its input from the MaxAbs module and output its gain as an input to the AGCMultiplier module. Shown below is an example of a noise gate which eliminates low level signals.
 
-![](../../.gitbook/assets/image%20%2816%29.jpeg)
+![](../../.gitbook/assets/image%20%2817%29.jpeg)
 
 #### AGC Core
 
-![](../../.gitbook/assets/image%20%2826%29.jpeg)
+![](../../.gitbook/assets/image%20%2827%29.jpeg)
 
-![](../../.gitbook/assets/image%20%2867%29.png)
+![](../../.gitbook/assets/image%20%2873%29.png)
 
 This module has a slowly varying volume control which transfers the **input signal** level towards a targetLevel, a specified RMS level. The input RMS is smoothed via the smoothing time variable. This allows the gain to change gradually. The gain is limited to the range \[-maxAttenuation and maxGain\]. The ratio control determines the speed of the gain change for all signals above the **activation Threshold**. When the level of the input signal falls below **activationThreshold**, the AGCCore holds the last gain setting. If the enableRecovery checkbox is checked, the gain will slowly return to 0 dB when not activated. The rate of return is governed by recoveryRate.
 
-![](../../.gitbook/assets/image%20%2891%29.png)
+![](../../.gitbook/assets/image%20%28101%29.png)
 
 The Audio Weaver Filters folder lists over 60 filters. They have been broken down according to user needs, with the folder labels Adaptive, Calculated Coeffs, Controllable, High Precision, Raw Coeffs, and list the most commonly used filters. The Adaptive folder contains the LMS module, an adaptive filter with tracking capabilities. For those users less experienced with designing filters, the Calculated Coeffs filters take in frequency information, Q, Gain, and type, similar to tuning a filter in a DAW. Users with more DSP background can use the Raw Coeffs filters to tune filters with mathematical information. The most frequently used filters are the ButterworthFilter \(highpass, lowpass, allpass\), SecondOrderFilterSmoothed, with 20 different filter types, and the SecondOrderFilterSmoothedCascade: multiple 2nd order filters in series.
 
@@ -308,11 +308,11 @@ The Audio Weaver Filters folder lists over 60 filters. They have been broken dow
 
 The LMS filter predicts the FIR of a system whose transfer function is not given. It’s input and output adapt or “predict” what the system response is. Filter weights are updated over time based on mu speed, higher numbers being the faster update speed. Higher numtaps give higher chance to converge with the optimum filter weight\(meaning less error\). The error can be tracked realtime with the errorSignal output. The module comes with an option to output the predicted “coeffs”. The following system shows white noise being ran through a 10 point FIR. The LMS will predict the FIR coefficients, and sinks will display the error and coeff function.
 
-![](../../.gitbook/assets/image%20%2840%29.png)
+![](../../.gitbook/assets/image%20%2844%29.png)
 
 This sink shows the coeff prediction.
 
-![](../../.gitbook/assets/image%20%2886%29.png)
+![](../../.gitbook/assets/image%20%2895%29.png)
 
 The Error2 display shows a value of -125 dB, which means that our signal is very accurate. The sink to the right displays this as well.
 
@@ -423,7 +423,7 @@ The most basic IIR filter is the Biquad and it is implemented with the differenc
 
 There are 5 coefficients that the user must set: $$b_0$$, $$b_1$$, $$b_2$$, $$a_1$$ , and $$a_2$$ \( $$a_0$$ is always assumed to be 1\). Audio Weaver does not check for stability and care must be used when computing the filter coefficients. There are several variants of Biquad filters. The simples – Biquad – has a single stage and implements the different equation shown above. BiquadCascade implements N stages of filtering with each channel using the same coefficients. BiquadNCascade implements N stages with each channel have its own set of coefficients. Finally, BiquadSmoothed implements a single Biquad stage with coefficient smoothing on a block-by-block basis.
 
-![](../../.gitbook/assets/image%20%2878%29.png)
+![](../../.gitbook/assets/image%20%2887%29.png)
 
 #### High Precisions Filters
 
@@ -439,7 +439,7 @@ To solve these noise issues Audio Weaver includes a High Precision filter module
 
 The High Precision modules are designed to be drop in replacements for the non-high precision filters. That way, numerical problems can be resolved by replacing the offending filter with its high precision version.
 
-![](../../.gitbook/assets/image%20%2861%29.png)
+![](../../.gitbook/assets/image%20%2866%29.png)
 
 
 
@@ -576,7 +576,7 @@ Applicable parameters: freq and gain
 
 Use as a high frequency tone control
 
-![](../../.gitbook/assets/image%20%2815%29.png)
+![](../../.gitbook/assets/image%20%2817%29.png)
 
 ![](../../.gitbook/assets/screen-shot-2020-04-08-at-10.06.03-pm.png)
 
@@ -596,7 +596,7 @@ Applicable parameters: freq, gain, and Q
 
 Commonly used for generic equalization since it has controllable frequency, gain, and Q settings.
 
-![](../../.gitbook/assets/image%20%2815%29.png)
+![](../../.gitbook/assets/image%20%2817%29.png)
 
 ![](../../.gitbook/assets/screen-shot-2020-04-08-at-10.08.09-pm.png)
 
@@ -701,7 +701,7 @@ For multichannel data the interleaving of real and complex data happens at the l
 
 Two modules are provided to convert between real and complex data
 
-![](../../.gitbook/assets/image%20%2847%29.png)
+![](../../.gitbook/assets/image%20%2852%29.png)
 
 The system below essentially does nothing except convert two mono signals into complex and then back again. If view wire info is enabled, \(“View $$\to$$ Data type”\) it will mark complex wires with a “C”.
 
@@ -711,7 +711,7 @@ The system below essentially does nothing except convert two mono signals into c
 
 Audio Weaver provides 3 different transform modules for converting between the time and frequency domains.
 
-![](../../.gitbook/assets/image%20%2811%29.png)
+![](../../.gitbook/assets/image%20%2812%29.png)
 
 The complex FFT takes a complex N-point input and generates a complex N-point output. The module is configured on the module properties as either a forward or inverse transform.
 
@@ -737,7 +737,7 @@ The Ifft takes N/2+1 complex samples and returns a real N-point sequence. The If
 
 Before an FFT is computed the signal is typically windowed to prevent edge effects from influencing the results. There are 3 modules which perform windowing.
 
-![](../../.gitbook/assets/image%20%2874%29.png)
+![](../../.gitbook/assets/image%20%2882%29.png)
 
 The windowing modules are for advanced users who use Matlab to compute window coefficients.
 
@@ -751,15 +751,15 @@ The WindowOverlap module has an internal FIFO that buffers up data into overlapp
 
 The WindowAlias module applies a window followed by time aliasing the sequence to a shorter length. This module is used in the analysis back of short-term Fourier transform based filterbanks. 
 
-![](../../.gitbook/assets/image%20%2838%29.png)
+![](../../.gitbook/assets/image%20%2842%29.png)
 
 The OverlapAdd module performs the opposite of the Rebuffer module. The module has a large input block size and a smaller output block size. The module contains an internal buffer equal to the input block size. The module takes the input data, adds it to the internal buffer, and then shifts out one block of output data. The data in the internal buffer is also left shifted and the leading samples are filled with zeros. The OverlapAdd module finds use in fast convolution algorithms.
 
-![](../../.gitbook/assets/image%20%2827%29.png)
+![](../../.gitbook/assets/image%20%2829%29.png)
 
 The RepWinOverlap module is for advanced users building synthesis filterbanks. The module replicates a signal N times, applies a window, and then performs overlap add.
 
-![](../../.gitbook/assets/image%20%2856%29.png)
+![](../../.gitbook/assets/image%20%2861%29.png)
 
 The ZeroPad module inserts zeros at the end of a signal. Specify the length of the output buffer under module properties. If the output is longer than the input then the signal is zero padded. If the output is shorter than the input then the signal is truncated.
 
@@ -769,7 +769,7 @@ The ZeroPad module inserts zeros at the end of a signal. Specify the length of t
 
 The frequency domain modules have a large number of modules which operate on complex data. The modules here are listed without detailed explanations because the underlying functions are basic and easily understood.
 
-![](../../.gitbook/assets/image%20%2845%29.png)
+![](../../.gitbook/assets/image%20%2850%29.png)
 
 The modules listed above operate on complex data only. A few of the other Audio Weaver modules found outside the Frequency Domain folder are also able to operate on complex data type:
 
@@ -924,7 +924,7 @@ The FIR filter example can be taken further. The example above had only a single
 
 Any of the Frequency Domain modules which operate on complex data operate in the subband domain. Audio Weaver also provides a special set of “Subband Processing” modules that start with the “Sb” prefix. These modules replicate some of the standard time domain modules but the operations occur separately in each subband.
 
-![](../../.gitbook/assets/image%20%2820%29.png)
+![](../../.gitbook/assets/image%20%2822%29.png)
 
 **Synthesis Filterbank**
 
@@ -952,11 +952,11 @@ If the scaler has individual gains per channel, then the initial number of chann
 
 In unsmoothed scalers the gain change takes place immediately and may result in an audible “pop” due to the discontinuity. To avoid this, use a scaler with built-in smoothing instead. The following list explains the differences between the deprecated scaler modules, which each had its own function. **THESE MODULES ARE OUT OF DATE, USE GENERAL PURPOSE SCALER**. This list is here to keep documentation for the deprecated modules, whose documentation is similar to the fract32 scaler modules.
 
-![](../../.gitbook/assets/image%20%2837%29.png)
+![](../../.gitbook/assets/image%20%2841%29.png)
 
 For the above modules, the gain to apply is specified by an inspector variable. The module library also has two controllable scalers. For these modules, the gain to apply is taken from the first input pin. There are linear and dB variants and both have built-in smoothing.
 
-![](../../.gitbook/assets/image%20%2822%29.png)
+![](../../.gitbook/assets/image%20%2824%29.png)
 
 These modules are frequently used to invert or add an offset to a signal by setting the scale factor equal to 1.0. This is easier than using separate DCSource and Adder modules.
 
@@ -964,11 +964,11 @@ These modules are frequently used to invert or add an offset to a signal by sett
 
 Several other modules exist which do smoothing scaling of signals between fixed values. The MuteSmoothed module scales between 0 and 1 and the Invert module scales between +1 and -1. There is also a MuteNSmoothed module which is designed for multichannel signals and allows the individual mute control for each channel.
 
-![](../../.gitbook/assets/image%20%286%29.png)
+![](../../.gitbook/assets/image%20%287%29.png)
 
 The SoloMute module allows muting of all channels except one \(like soloing on a soundboard\). The SoloMute module can have multiple input pin, where each input can have multiple channels. Or, if it has a single input pin, the soloing functionality is applied to individual channels.
 
-![](../../.gitbook/assets/image%20%2818%29.png)
+![](../../.gitbook/assets/image%20%2820%29.png)
 
 #### Crossfader
 
@@ -980,11 +980,11 @@ As mentioned earlier, the general purpose scaler supports smoothing, dB and line
 
 #### Table Of Mute Modules
 
-![](../../.gitbook/assets/image%20%2839%29.png)
+![](../../.gitbook/assets/image%20%2843%29.png)
 
 #### Table Of Gain Modules
 
-![](../../.gitbook/assets/image%20%2812%29.png)
+![](../../.gitbook/assets/image%20%2813%29.png)
 
 ### Logic
 
@@ -1002,9 +1002,177 @@ The VolumeSetting module is a DCSource which outputs the gain setting, in dB; th
 
 The first step is to reduce the signal level by VolumeSetting. This is accomplished using the ScalerDBControl module. This module takes its gain setting from an input pin rather than from an inspector and allows for a control signal-dependent gain.
 
-![](../../.gitbook/assets/image%20%2823%29.png)
+![](../../.gitbook/assets/image%20%2825%29.png)
 
 In this example it will be used to allow a DC source to adjust the overall volume. Thus begins the system as shown below:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.44.16-pm.png)
+
+Another example of a control signal module is the SOFControl module.
+
+![](../../.gitbook/assets/image%20%2886%29.png)
+
+The SOFControl module allows for a control signal to adjust parameters \(frequency, gain, or Q\) of a second order filter. The control parameter\(s\) are selected in the module’s module properties. In this case, only the gain is controlled as shown below:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.47.02-pm.png)
+
+In this example, this will allow for a volume-dependent bass \(and treble\) boost. The SOFControl module will take in the audio from the Scalar module as one of its inputs \(the lower input pin\):
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.47.52-pm.png)
+
+Since the purpose of this filter is to boost bass frequencies, a filter type of “Peak EQ” and a frequency of 30 Hz are selected in the module’s inspector. The upper input pin of the SOFControl module requires a control signal input. This control input will originate from the DCSource controlling the volume. To achieve the equal-loudness contour, the bass must be boosted in relation to the volume. The mapping between the volume and the bass boost is accomplished with the TableInterp module:
+
+![](../../.gitbook/assets/image%20%2840%29.png)
+
+The TableInterp module allows the user to map out the intended input-output relation visually and interpolates between given points to produce a continuous function. In this case, the relation shown below will be sufficient:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.49.54-pm.png)
+
+At full volume \(0 dB\) there is no bass boost. As the signal level drops more boost is progressively applied. At -80 dB 28 dB of boost is applied. Also note that the table interpolation both takes in and outputs a control signal. Only a single value is translated through the table’s function at a time.
+
+A sink module can be appended to the output of the table interpolation to show in real-time the computed gain. Note that when the sink module is given a control signal as input, it will only display the single value, rather than the graph it normally displays. 
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.50.48-pm.png)
+
+This has accomplished the boosting of the bass frequencies, and the same strategy can be employed to boost the treble frequencies. This SOFControl will be set to alter the treble frequencies, with a filter type of “Shelf High” and a frequency of 6000 Hz:.
+
+This TableInterp will use a slightly different relation but will achieve fundamentally the same function – boosting the level at lower volumes:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.51.39-pm.png)
+
+**Boolean Signals**
+
+A Boolean signal has only two possible values, 0 and 1. Boolean data is useful for controlling systems. Boolean signals are represented using 32-bit integer values. Audio Weaver includes several modules that perform logical operations on Boolean signals. 
+
+![](../../.gitbook/assets/image%20%286%29.png)
+
+By default the LogicAll and LogicAny modules do not have any output wires; they store the output in an internal variable \(“.result”\). By checking the box next to “outputValue” in the module properties, an output pin can be created.
+
+![](../../.gitbook/assets/image%20%2837%29.png)
+
+The LogicBinaryOp module allows the user to select a logical operation \(logical AND, OR, and XOR\). It takes two control signals as input and outputs one wire with the computed Boolean value.
+
+![](../../.gitbook/assets/image%20%2875%29.png)
+
+The BooleanSource module is a source module that supplies a buffer of Boolean data. As with any source module, the number of channels, block size, and sample rate are user-specified in the module properties.
+
+![](../../.gitbook/assets/image%20%2849%29.png)
+
+The LogicCompare module performs one of many possible comparisons on two input values. In its Inspector is a drop-down menu of the possible comparisons: EQUAL, NOTEQUAL, LESSTHAN, LESSOREQUAL, GREATERTHAN, and GREATEROREQUAL.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.01.20-pm.png)
+
+The module performs the comparison and outputs 1 if the comparison resolves to true and 0 if it resolves to false. 
+
+The LogicConstCompare module functions the same way, except it compares a single input to a constant, user-specified value. 
+
+A simple example of the use of the Boolean signals is shown below. This system selects the louder of the two input channels and outputs it on both channels. To accomplish this, the RMS module measures the levels of the two input signals and outputs control signals. These control signals are then fed into a LogicCompare control, set to LESSTHAN comparison type. Its output controls the index of the MultiplexorFadeControl module which selects the louder of the two input channels.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.02.06-pm.png)
+
+If RMS1 &lt; RMS2 then the LogicCompare module outputs 1 and the louder right channel is selcted; if RMS1 &gt;= RMS2 then the module outputs 0 and the louder left channel is selected.
+
+**Paramset And Paramget**
+
+Control signals can be used to adjust parameters of modules. This can also be accomplished with the Param Get and Param Set modules. These are found in the Misc. folder. The example from the previous section can be made even cleaner by using ParamSet. 
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.03.19-pm.png)
+
+The output of the LogicCompare module is fed straight into the ParamSet module, which in turn sets the index of the MultiplexorFade module. Note that in this version, the multiplexor does not have to be a control module. 
+
+Just like ParamGet, the target parameter is specified in the module properties, with “name of the module”.“parameter to be set”. Also specify the data type of the input wire. In its Inspector, the ParamSet module allows the user to change the when the parameter update occurs using the setBehavior drop-down menu:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.04.04-pm.png)
+
+The choices available are:
+
+_AlwaysNoSet_ – Always update the variable in the instance structure. Do not call the module’s set function.
+
+_AlwaysDeferredSet_ – Always update the variable in the instance structure. Call the module’s set function in the deferred processing thread.
+
+_OnChangeNoSet_ – Only update the variable when it has changed. Do not call the module’s set function.
+
+_OnChangeDeferredSet_ – Only update the variable when it was changed. Call the module’s set function in the deferred processing thread.
+
+_OnChangeInstantSet_ – Only update the variable when it has changed. Then call the module’s set function from the real-time thread. Change occurs immediately.
+
+The many options allow for optimization of computational efficiency by performing the change at a time when it is most appropriate for the system. In most cases, the OnChangeDeferredSet is the most appropriate.
+
+#### Advanced Math
+
+The advanced math modules include the functions seen below:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.06.29-pm.png)
+
+ The Convolve module is similar to the FIR module, with the property that it can ignore signal tails. It is normally not used for filtering. Its shape parameter acts as a truncation control. When the user selects shape 0, no truncating occurs, outputting normal convolution. If the user selects shape 1, the module will ignore the first N/2 samples of the output, then display the next N samples, followed by ignoring the last N/2 samples. This is useful for statistics between two data sets. This is essentially partial correlation.
+
+The Correlate module is similar to the convolve module, except it differs in the order of the output. 
+
+Derivative and Integral modules compute discrete derivative and integral equations respectively:
+
+y\[n\] = 1/dt \* \(x\[n\] - x\[n-1\]\)
+
+where dt is the time step, dt = 1/SR.
+
+y\[n\] = dt/K \* sum\(x\[0\] .. x\[n\]\)
+
+ where dt is the time step, dt = 1/SR and K is a gain.
+
+#### Basic Math
+
+These modules perform basic math operations.
+
+![](../../.gitbook/assets/image%20%2815%29.png)
+
+The Adder and Subtract module by default have two input pins. Additional pins can be specified on the module properties. For the Adder, all inputs are summed together. For the Subtract module, the last input pin is subtracted from the others. The Adder and Subtract modules both handle signals with multiple input channels.
+
+The Adder module has an additional property that can be selected on the module properties:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.13.10-pm.png)
+
+When oneChannelOutput is checked then the output will be mono and all input channels will be summed together to form the output. In this mode, the input pins can have _different numbers of channels_. By default, oneChannelOutput is unchecked and all input pins have to have the same number of channels and the output will be multichannel as well. A useful way of using the Adder is to sum together the left and right components of a stereo signal. The traditional way is to use a Deinterleave module.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.14.05-pm.png)
+
+Or, use an Adder module with the number of input pins set to 1 and oneChannelOutput checked:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.14.45-pm.png)
+
+In addition to these basic math functions, the Math folder has modules corresponding to the functions in the standard C math.h library. These modules will be skipped, but here is a preview:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.15.27-pm.png)
+
+#### DB Conversion
+
+To convert to and from dB10 and dB20, this folder hosts Approx and exact modules. The Approx modules are less cpu intensive, and less accurate. To be clear, the UndB modules convert from dB to linear scaling.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.18.06-pm.png)
+
+#### Lookup Tables
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.19.09-pm.png)
+
+The Table Interp module uses a table with clickable/movable points to discern how the input values scale into the output pin. For data in between the points, the scaling is interpolated either linearly or cubicly.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.22.14-pm.png)
+
+Table Interp2d takes in a vector input \(x and y pins\) and scales them according to the nPoints length matrix. It uses bilinear interpolation of the table values at the four neighboring points.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.26.42-pm.png)
+
+TableLookup uses either Linear or nearest interpolation. The user has to specify the upper and lower bounds of this table. Set the size of the table with the ‘L’ variable found in the arguments:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-6.29.14-pm.png)
+
+For non-interpolated lookup tables, an integer index is listed, and output is based on that index’s data value. That data can be float or int type data.
+
+![](../../.gitbook/assets/image%20%2871%29.png)
+
+
+
+
+
+
 
 
 
