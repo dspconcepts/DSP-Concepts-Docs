@@ -167,7 +167,7 @@ Audio Weaver has over 400 different types of modules available. This section org
 
 In order to keep notes within layouts, Designer supports text boxes, rectangle panels, and arrows. While there are many ways to use these, the standard is to break the layout file into “processing sections” with information on how to tune the design. Annotation is also good for keeping “presets” or “modes” written down on the canvas.
 
-![](../../.gitbook/assets/image%20%2812%29.png)
+![](../../.gitbook/assets/image%20%2819%29.png)
 
 #### Documenting Layouts
 
@@ -201,7 +201,7 @@ Since delays tend to be memory intensive, memory efficient options are provided.
 
 #### Table of Delay Modules
 
-![](../../.gitbook/assets/image%20%286%29.png)
+![](../../.gitbook/assets/image%20%2810%29.png)
 
 ### DSP Concepts IP
 
@@ -211,13 +211,13 @@ This **zero latency FIR** allows for large FIR filters by breaking a large convo
 
 ####  WOLA Forward Filterbank \(Analysis\)
 
-![](../../.gitbook/assets/image%20%2872%29.png)
+![](../../.gitbook/assets/image%20%2889%29.png)
 
 This module is used to convert a time domain\(real number\) signal into frequency domain\(complex number\) bins. The output of this module will operate according to this blocksize. From this point on, the data is complex. See the Frequency Domain folder for modules that operate within the complex domain. The first and last bin represent DC, and have no complex data.
 
 #### WOLA Inverse Filterbank \(Synthesis\)
 
-![](../../.gitbook/assets/image%20%2878%29.png)
+![](../../.gitbook/assets/image%20%2895%29.png)
 
 This module will convert a block of frequency bin\(complex number\) data into the time domain\(real number\). This is normally paired with WOLA Forward Filterbank \(Analysis\). Be sure to keep the WOLA Forward and Inverse sizes the same. More information is provided in the Frequency Domain section.
 
@@ -228,11 +228,11 @@ Dynamic modules de/emphasize the amplitude structure of data. AGC stands for Aut
   
 The dynamics modules operate with different gain variation speeds and different magnitude reference signals. **All dynamics modules with the suffix \*\*\*Core do not generate audio data, but instead output volume data to be sent to a scaler control pin or an AGC Multiplier.** The following diagrams represent the typical input/output response for various AGC types. 
 
-![](../../.gitbook/assets/image%20%2818%29.jpeg)
+![](../../.gitbook/assets/image%20%2820%29.jpeg)
 
 _**Compressor**_ – reduce the peak dynamic range of a signal
 
-![](../../.gitbook/assets/image%20%2813%29.jpeg)
+![](../../.gitbook/assets/image%20%2814%29.jpeg)
 
 _**Downward expander \(and noise gate\)**_ – reduce small signal levels and behave as noise gates
 
@@ -240,11 +240,11 @@ _**Downward expander \(and noise gate\)**_ – reduce small signal levels and be
 
 _**Limiter**_ – restrict peak signal levels to avoid digital clipping _\(limiters generally have a horizontal or flat slope, which means high ratio\)_
 
-![](../../.gitbook/assets/image%20%2875%29.png)
+![](../../.gitbook/assets/image%20%2892%29.png)
 
 _**Ducker**_ ****– use a trigger signal to determine when to boost or reduce gain of another signal.
 
-![](../../.gitbook/assets/image%20%2826%29.jpeg)
+![](../../.gitbook/assets/image%20%2828%29.jpeg)
 
 _**AGC Core**_– adjust the gain to keep the signal within a specified RMS range
 
@@ -252,33 +252,33 @@ _**AGC Core**_– adjust the gain to keep the signal within a specified RMS rang
 
 A compressor reduces the signal’s dynamic range, meaning that it lowers the level of loud signals and boosts quiet ones, reducing the difference between loud and soft signals. Make-up gain is usually applied after for increasing the perceived loudness. This can be used for scenarios when keeping the overall volume low is desired but hearing small details is still important, such as night-time movie watching. The behavior of the compressor is best understood by looking at its input-output response:
 
-![](../../.gitbook/assets/image%20%2822%29.jpeg)
+![](../../.gitbook/assets/image%20%2824%29.jpeg)
 
 Above the threshold the compressor reduces the signal level; below the threshold the compressor increases the signal level \(it’s expanding the system\). This brings all output signals closer to the threshold level and reduces the overall dynamic range. The AGCCompressorCore module is wired the same way as the limiter module, receiving its input from an Abs or MaxAbs module and outputting to a multiplier, as shown below:
 
-![](../../.gitbook/assets/image%20%2816%29.jpeg)
+![](../../.gitbook/assets/image%20%2817%29.jpeg)
 
 #### Envelope Modulation
 
 Envelope modulators control the impact that relative peaks have. The Attack Release module uses attackTimeInitial and attackTimeFinal to smooth peaks. The Attack Decay Sustain Release is similar, but also includes 2 stages in between the attack and release. Decay lowers the level into a hold that is based on the sustain level. After this hold ends, the release occurs.
 
-![](../../.gitbook/assets/image%20%2855%29.png)
+![](../../.gitbook/assets/image%20%2870%29.png)
 
 #### Limiters
 
 The AGCLimiterCore module is parameterized by its threshold, ratio, gain, knee depth, attack time, and decay time. The AGCLimiterCore module computes the time varying gain.
 
-![](../../.gitbook/assets/image%20%2827%29.jpeg)
+![](../../.gitbook/assets/image%20%2829%29.jpeg)
 
 Take the absolute value of the signal so that the AGCLimiterCore module treats positive and negative signals equally. The first pin on the AGCMultiplier is the gain to apply and the second input is the audio signal itself.
 
-![\(standard arrangement for a mono limiter\)](../../.gitbook/assets/image%20%2817%29.jpeg)
+![\(standard arrangement for a mono limiter\)](../../.gitbook/assets/image%20%2819%29.jpeg)
 
 When the input is below the threshold the line has a slope of 1 indicating that the signal level is unchanged. Above the threshold the slope drops indicating that the output level will be reduced compared to the input level. Limiters have a parameter called the “ratio” referring to the reciprocal slope of the gain ratio **above the threshold**. A high ratio provides hard limiting, close to 1 provides gentle limiting.
 
 The limiter applies a piecewise function to determine its gain: at a specified threshold, the slope changes. The transition between sections is smoothed by a connecting polynomial section, often referred to as the “knee”. The knee provides a gentle polynomial interpolation between the threshold and the requested slope. The kneeDepth parameter controls the extent of the polynomial section. The polynomial starts at threshold-kneeDepth and ends at threshold+kneeDepth.
 
-![](../../.gitbook/assets/image%20%288%29.jpeg)
+![](../../.gitbook/assets/image%20%289%29.jpeg)
 
 The speed with which a limiter responds to an increase in sound level is described by its “attack time”. The lower the attack time, the faster the limiter will respond to the sound level rising above its threshold. Similarly, decay \(or release\) time describes the speed with which the limiter’s effect is relaxed after the sound level drops back under its threshold. The time behavior of the dynamics processors is implemented with first order IIR smoothers with different attack and decay coefficients. The above image shows example attack and decay curves.
 
@@ -286,21 +286,21 @@ The speed with which a limiter responds to an increase in sound level is describ
 
 The DownwardExpanderCore module is also a limiter with a piecewise gain, but its piecewise function is different. Whereas most limiters use a slope of 1 below a threshold and a reduced slope above it, this module features a very steep slope below its threshold and a slope of 1 above it. Rather than reducing the level of loud signals, this reduces the level of quiet signals. The DownwardExpanderCore module’s response behavior is shown below:
 
-![](../../.gitbook/assets/image%20%2876%29.png)
+![](../../.gitbook/assets/image%20%2893%29.png)
 
 One use of this module is for filtering out low-level noise while retaining a louder signal. This is very useful for eliminating “hiss,” low level background noise in a signal. Like most dynamic processing modules, the DownwardExpanderCore is designed to take its input from the MaxAbs module and output its gain as an input to the AGCMultiplier module. Shown below is an example of a noise gate which eliminates low level signals.
 
-![](../../.gitbook/assets/image%20%2815%29.jpeg)
+![](../../.gitbook/assets/image%20%2816%29.jpeg)
 
 #### AGC Core
 
-![](../../.gitbook/assets/image%20%2824%29.jpeg)
+![](../../.gitbook/assets/image%20%2826%29.jpeg)
 
-![](../../.gitbook/assets/image%20%2852%29.png)
+![](../../.gitbook/assets/image%20%2867%29.png)
 
 This module has a slowly varying volume control which transfers the **input signal** level towards a targetLevel, a specified RMS level. The input RMS is smoothed via the smoothing time variable. This allows the gain to change gradually. The gain is limited to the range \[-maxAttenuation and maxGain\]. The ratio control determines the speed of the gain change for all signals above the **activation Threshold**. When the level of the input signal falls below **activationThreshold**, the AGCCore holds the last gain setting. If the enableRecovery checkbox is checked, the gain will slowly return to 0 dB when not activated. The rate of return is governed by recoveryRate.
 
-![](../../.gitbook/assets/image%20%2874%29.png)
+![](../../.gitbook/assets/image%20%2891%29.png)
 
 The Audio Weaver Filters folder lists over 60 filters. They have been broken down according to user needs, with the folder labels Adaptive, Calculated Coeffs, Controllable, High Precision, Raw Coeffs, and list the most commonly used filters. The Adaptive folder contains the LMS module, an adaptive filter with tracking capabilities. For those users less experienced with designing filters, the Calculated Coeffs filters take in frequency information, Q, Gain, and type, similar to tuning a filter in a DAW. Users with more DSP background can use the Raw Coeffs filters to tune filters with mathematical information. The most frequently used filters are the ButterworthFilter \(highpass, lowpass, allpass\), SecondOrderFilterSmoothed, with 20 different filter types, and the SecondOrderFilterSmoothedCascade: multiple 2nd order filters in series.
 
@@ -308,11 +308,11 @@ The Audio Weaver Filters folder lists over 60 filters. They have been broken dow
 
 The LMS filter predicts the FIR of a system whose transfer function is not given. It’s input and output adapt or “predict” what the system response is. Filter weights are updated over time based on mu speed, higher numbers being the faster update speed. Higher numtaps give higher chance to converge with the optimum filter weight\(meaning less error\). The error can be tracked realtime with the errorSignal output. The module comes with an option to output the predicted “coeffs”. The following system shows white noise being ran through a 10 point FIR. The LMS will predict the FIR coefficients, and sinks will display the error and coeff function.
 
-![](../../.gitbook/assets/image%20%2827%29.png)
+![](../../.gitbook/assets/image%20%2840%29.png)
 
 This sink shows the coeff prediction.
 
-![](../../.gitbook/assets/image%20%2869%29.png)
+![](../../.gitbook/assets/image%20%2886%29.png)
 
 The Error2 display shows a value of -125 dB, which means that our signal is very accurate. The sink to the right displays this as well.
 
@@ -423,7 +423,7 @@ The most basic IIR filter is the Biquad and it is implemented with the differenc
 
 There are 5 coefficients that the user must set: $$b_0$$, $$b_1$$, $$b_2$$, $$a_1$$ , and $$a_2$$ \( $$a_0$$ is always assumed to be 1\). Audio Weaver does not check for stability and care must be used when computing the filter coefficients. There are several variants of Biquad filters. The simples – Biquad – has a single stage and implements the different equation shown above. BiquadCascade implements N stages of filtering with each channel using the same coefficients. BiquadNCascade implements N stages with each channel have its own set of coefficients. Finally, BiquadSmoothed implements a single Biquad stage with coefficient smoothing on a block-by-block basis.
 
-![](../../.gitbook/assets/image%20%2862%29.png)
+![](../../.gitbook/assets/image%20%2878%29.png)
 
 #### High Precisions Filters
 
@@ -439,7 +439,7 @@ To solve these noise issues Audio Weaver includes a High Precision filter module
 
 The High Precision modules are designed to be drop in replacements for the non-high precision filters. That way, numerical problems can be resolved by replacing the offending filter with its high precision version.
 
-![](../../.gitbook/assets/image%20%2846%29.png)
+![](../../.gitbook/assets/image%20%2861%29.png)
 
 
 
@@ -576,7 +576,7 @@ Applicable parameters: freq and gain
 
 Use as a high frequency tone control
 
-![](../../.gitbook/assets/image%20%289%29.png)
+![](../../.gitbook/assets/image%20%2815%29.png)
 
 ![](../../.gitbook/assets/screen-shot-2020-04-08-at-10.06.03-pm.png)
 
@@ -596,7 +596,7 @@ Applicable parameters: freq, gain, and Q
 
 Commonly used for generic equalization since it has controllable frequency, gain, and Q settings.
 
-![](../../.gitbook/assets/image%20%289%29.png)
+![](../../.gitbook/assets/image%20%2815%29.png)
 
 ![](../../.gitbook/assets/screen-shot-2020-04-08-at-10.08.09-pm.png)
 
@@ -701,7 +701,7 @@ For multichannel data the interleaving of real and complex data happens at the l
 
 Two modules are provided to convert between real and complex data
 
-![](../../.gitbook/assets/image%20%2833%29.png)
+![](../../.gitbook/assets/image%20%2847%29.png)
 
 The system below essentially does nothing except convert two mono signals into complex and then back again. If view wire info is enabled, \(“View $$\to$$ Data type”\) it will mark complex wires with a “C”.
 
@@ -711,7 +711,7 @@ The system below essentially does nothing except convert two mono signals into c
 
 Audio Weaver provides 3 different transform modules for converting between the time and frequency domains.
 
-![](../../.gitbook/assets/image%20%287%29.png)
+![](../../.gitbook/assets/image%20%2811%29.png)
 
 The complex FFT takes a complex N-point input and generates a complex N-point output. The module is configured on the module properties as either a forward or inverse transform.
 
@@ -737,7 +737,7 @@ The Ifft takes N/2+1 complex samples and returns a real N-point sequence. The If
 
 Before an FFT is computed the signal is typically windowed to prevent edge effects from influencing the results. There are 3 modules which perform windowing.
 
-![](../../.gitbook/assets/image%20%2859%29.png)
+![](../../.gitbook/assets/image%20%2874%29.png)
 
 The windowing modules are for advanced users who use Matlab to compute window coefficients.
 
@@ -751,15 +751,15 @@ The WindowOverlap module has an internal FIFO that buffers up data into overlapp
 
 The WindowAlias module applies a window followed by time aliasing the sequence to a shorter length. This module is used in the analysis back of short-term Fourier transform based filterbanks. 
 
-![](../../.gitbook/assets/image%20%2826%29.png)
+![](../../.gitbook/assets/image%20%2838%29.png)
 
 The OverlapAdd module performs the opposite of the Rebuffer module. The module has a large input block size and a smaller output block size. The module contains an internal buffer equal to the input block size. The module takes the input data, adds it to the internal buffer, and then shifts out one block of output data. The data in the internal buffer is also left shifted and the leading samples are filled with zeros. The OverlapAdd module finds use in fast convolution algorithms.
 
-![](../../.gitbook/assets/image%20%2817%29.png)
+![](../../.gitbook/assets/image%20%2827%29.png)
 
 The RepWinOverlap module is for advanced users building synthesis filterbanks. The module replicates a signal N times, applies a window, and then performs overlap add.
 
-![](../../.gitbook/assets/image%20%2841%29.png)
+![](../../.gitbook/assets/image%20%2856%29.png)
 
 The ZeroPad module inserts zeros at the end of a signal. Specify the length of the output buffer under module properties. If the output is longer than the input then the signal is zero padded. If the output is shorter than the input then the signal is truncated.
 
@@ -769,55 +769,261 @@ The ZeroPad module inserts zeros at the end of a signal. Specify the length of t
 
 The frequency domain modules have a large number of modules which operate on complex data. The modules here are listed without detailed explanations because the underlying functions are basic and easily understood.
 
-![](../../.gitbook/assets/image%20%2831%29.png)
+![](../../.gitbook/assets/image%20%2845%29.png)
 
 The modules listed above operate on complex data only. A few of the other Audio Weaver modules found outside the Frequency Domain folder are also able to operate on complex data type:
 
-BlockConcatenate                   Combines blocks of complex data
+![](../../.gitbook/assets/image%20%283%29.png)
 
-BlockDelay                        Delays by multiples of the block size
+#### Filterbank Processing
 
-BlockExtract                     Extracts a portion of the complex data
+**Introduction**
 
-BlockFlip                           Frequency flips data
+This Section describes the filterbank blocks. The blocks are based on a weighted overlap-add \(WOLA\) design and are applicable to a wide range of audio processing tasks. The document first describes how the blocks work from an end user’s point of view. It then describes the theory behind the filterbanks and how they lead to efficiency during runtime.
 
-Deinterleave                    Pulls apart multichannel complex signals into individual mono complex signals
+**Using Wola And Sub-Band Blocks**
 
-Demultiplexor                 Outputs complex data to one output pin; zeros the rest
+The WOLA filterbank blocks are part of the DSPC Concepts IP Folder. The Frequency Domain  contains the key set of Audio Weaver modules which are used for performing frequency domain computations. There are blocks for FFTs, windowing, complex operations, etc. Frequency domain operations often involve filterbanks, and Audio Weaver also includes modules for implementing entire weighted overlap-add filterbanks. There are separate modules for the forward filterbank \(the analysis bank\) and the inverse filterbank \(the synthesis bank\).
 
-Interleave                 Combines multiple mono complex signals into a single multichannel complex signal
+The blocks are called “WOLA Analysis” and “WOLA Synthesis”. When dragged out, they will appear as follows in the layout:
 
-Multiplexor                               Selects one of N complex signals
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.23.05-pm.png)
 
-ShiftSamples                            Left or right shifts complex signals
+The input to the WOLA Analysis bank is real time domain data and the output is complex frequency domain data. Similarly, the input to the WOLA Synthesis bank is complex frequency domain data and the output is real time domain data. When configuring the filterbanks using Module Name and Arguments, the FFT size \(K\) and the stopband attenuation between subbands is specified. This holds for both the analysis and the synthesis banks. Under module name and arguments, this would show:
 
-Adder                                          Adds two complex signals
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.24.21-pm.png)
 
-ClipAsym                                    Clips the real and imaginary components
+The FFT specifies the number of frequency domain “bins” and the input \(and output\) block size is always ½ of the FFT size. For example, if using a 32 sample block size will only work with an FFT size K = 64. Manually set this on both the analysis and the synthesis filterbanks. This will error out if improperly specified:
 
-Invert                                    Multiplies by + or -1. Set smoothingTime = 0.
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.25.38-pm.png)
 
-Mixer                                    Mixers together complex signals
+The attenuation relates to the separation between outputs of the filterbank, in dB, and will be described in more detail later in the guide. A “safe” value to use is somewhere in the range from 40 to 80 dB. When combining analysis and synthesis filterbanks, ensure that the same value of attenuation is used throughout.
 
-MixerDense                        - Mixers together complex signals
+  
+Assuming a block size of 32, set the FFT size K = 64. Making connections between blocks and then showing wire sizes:
 
-MuteSmoothed                  Multiplies by +1 or 0. Set smoothingTime = 0.
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.26.59-pm.png)
 
-ScaleOffset                        Scale both the real and imaginary components and adds an offset
+Note that the output of the filterbank contains 33 complex samples rather than 64. This is because the filterbank modules use _real_ FFTs and as a result discard the redundant conjugate symmetric data. Only K/2+1 bins are kept, which in this case equals 33. The bins have the following properties:
 
-ScalerDB                           dB gain without smoothing
+Bin k=0.               Real data.
 
-Scaler                                Linear gain without smoothing
+Bin k=1.               Complex data.
 
-Subtract                           Subtracts two complex signals
+Bin k=2.               Complex data.
 
-SumDiff                           Adds and subtracts complex signals
+…
 
-WhiteNoise                    Generates uncorrelated noise in both real and imaginary components
+Bin k=31.             Complex data
 
-ScalerDBControl           dB gain with gain value taken from a control pin. Set smoothingTime = 0.
+Bin k=32.             Real data
 
-ScalerControl                Linear gain with the gain value taken from a control pin. Set smoothingTime = 0.
+The first and last bins have real data; this is a property of the FFT and results from the fact that the input data is real. Audio Weaver stores the output of the FFT as 33 complex values with the imaginary parts of bins k=0 and k=32 set to zero.
+
+The filterbanks accept any number of channels of input data, but it is not a typical scenario in Audio Weaver. \[Note that although the analysis and synthesis filterbanks accept any number of channels, most modules in the Frequency Domain folder only operate on mono signals.  It is recommended to design systems with mono frequency domain data for greatest flexibility.\]
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.29.05-pm.png)
+
+The text below the filterbank modules also shows the latency through the filterbanks, in samples. The latency is the combined latency through the analysis and synthesis filterbanks given the current values of K and attenuation. Increasing K or increasing the attenuation increases the latency through the filterbanks. use the displayed latency to time align other signals in the system. For example, to check the reconstruction properties of the filterbanks, compensate using a sample delay module:
+
+![The output of the WOLA synthesis bank equals the input of the analysis bank but delayed by 352 samples. In the example above, this latency is compensated with a delay, so the output of the subtract module is essentially zero.](../../.gitbook/assets/screen-shot-2020-04-09-at-4.29.57-pm.png)
+
+This example shows the meter module with a residual difference at around -80 dB. The filterbanks are not perfect reconstruction but introduce a small amount of aliasing noise. The level of aliasing noise is directly related to the attenuation setting of the filterbanks.
+
+The frequency domain outputs of the analysis filterbank represent the outputs of a series of bandpass filters. There are K filters and the spacing between bins is  $$\frac{2π}{K}$$ radians, or if the sample rate of the system is SR, then the spacing between bins is $$\frac{SR}{K}$$Hz. For example, if the sample rate of the system is 48 kHz and K=64, then the spacing between bins is 750 Hz. The first bin \(with real data\) is centered at 0 Hz. The next bin is centered at 750 Hz, and so on. The last bin \(with real data\) is centered at 24 kHz.
+
+The filterbanks also contain built in decimation. The outputs of the analysis bank represent the decimated outputs of bandpass filters. The decimation factor equals the block size, that is, K/2. Continuing the example from above, the sample rate of the system is 48 kHz and the block size is 32 samples. Thus, the sample rate of the frequency domain subbands is 1500 Hz. see this by showing the sample rate on the wires.
+
+**Theory**
+
+This section describes more of the mathematical theory behind the filterbanks. The design of the filterbanks was based primarily on chapter 7 of the book Multirate Digital Signal Processing by Crochiere and Rabiner. This is an excellent and very readable introduction to the subject of filterbanks. Our description follows the derivation found in this book.A classical filterbank uses a time domain window function followed by an FFT as shown below: 
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.38.11-pm.png)
+
+The length of the FFT equals the length of the window function. In many cases, the window function is a raised cosine, or Hanning window:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.39.01-pm.png)
+
+The input blocks of the filterbank are overlapped in time. There are many ways to describe the amount of overlapping. The terminology “50% overlap” indicates that from FFT to FFT, K/2 new input samples are made. If there is “75% overlap” then there are K/4 new samples for each FFT computed. In this discussion, the phrase “block size” is used to describe how many new samples arrive each time. This approach is also referred to as a short-term Fourier transform \(STFT\).
+
+There are two different ways of looking at the output of the STFT analysis bank. On is to segment the input signal into blocks which are windowed and then FFT’ed. The output of the analysis bank thus corresponds to frequency spectra. On the other hand, a careful study of the analysis bank shows that it is in effect implementing a set of parallel bandpass filters as shown below.
+
+![Analysis filterbank implementation as a parallel set of bandpass filters and decimators.](../../.gitbook/assets/screen-shot-2020-04-09-at-4.39.59-pm.png)
+
+The input signal is filtered and then decimated by the block size M. The filters are all related by the mathematical expression
+
+ℎ𝑘𝑛=ℎ0𝑛𝑒𝑗2𝜋𝑘𝑛/𝐾
+
+where  is the prototype lowpass filter and all other filters are related to the prototype filter by complex modulation. In the frequency domain, the filters are shifted versions of the prototype filter
+
+𝐻𝑘𝜔=𝐻0𝜔−2𝜋𝑘/𝐾
+
+For example, if a Hanning window is used as the prototype filter,
+
+ℎ𝑛=121−cos2𝜋𝑛𝐾−1
+
+then the frequency response $$H_0$$\(𝜔\) for K = 32 is
+
+![Frequency response of a 32-point Hanning window. The graph shows normalized frequencies in the range 0 to 1.0 which corresponds to 0 to &#x3C0; radians/sample.](../../.gitbook/assets/screen-shot-2020-04-09-at-4.46.39-pm.png)
+
+Subsequent bins are spaced by 2π/32 \(or 1/16 when viewed as normalized frequencies\) and the first 4 bins are shown below:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.48.03-pm.png)
+
+Note that the prototype filter is quite wide in the frequency domain and there is significant overlap between neighboring bins. Not only does bin k overlap with bin k+1, but also with k+2 and k+3. If a decimation factor of 16 is picked, then aliasing will start at normalized frequency of 1/16 as shown below. The prototype filter has only attenuated the signal by 0.5 and severe aliasing will occur.
+
+![Frequency response of a 32-point Hanning window overlayed with a rectangle indicating where aliasing would occur if the filter output is decimated by a factor of 16.](../../.gitbook/assets/screen-shot-2020-04-09-at-4.48.51-pm.png)
+
+If the decimation factor is changed to 8, then aliasing begins at a normalized frequency of 1/8 SR and the filter has attenuated the signal. However, with a decimation factor of 8 the 32 sample Hanning window only advances 8 samples each time and this corresponds to an overlap factor of 75%.
+
+![This time the rectangle indicates where aliasing occurs for a decimation factor of 4.](../../.gitbook/assets/screen-shot-2020-04-09-at-4.50.00-pm.png)
+
+Is there a way to achieve high decimation while at the same time avoiding aliasing? This brings up the weighted overlap-add filterbank \(WOLA\). The block based derivation from Crochiere and Rabiner avoids aliasing while supplying high decimation. The analysis filterbank is implemented as shown on the next page.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.51.15-pm.png)
+
+The main difference is that the prototype filter is N times longer and that after multiplying the input signal, the output is time aliased to the FFT length. Time aliasing is a standard property of the FFT. Suppose an input signal is given: 𝑟\[𝑛\] of length KN. Time alias this to a shorter signal x\[n\] of length K
+
+𝑥𝑛=𝑝=0𝑁−1𝑟\[𝑛+𝑝𝐾\]
+
+The FFT  of  is related to the FFT  of  by subsampling
+
+That is, 𝑋\[𝑘\] contains samples of  spaced by  bins.
+
+The advantage of using a longer prototype filter is that it allows us to get better frequency separation between bands. Consider the designs shown below with N=1, N=2, and N=4. The filters get progressively sharper in frequency and for N=4, the passband of the filter falls within the rectangle indicating the aliasing region for a decimation factor of 16. Thus a high decimation factor is achieved while avoiding high amounts of aliasing.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.52.40-pm.png)
+
+Now let’s plot the frequency response of the first 4 filters in the filterbank assuming an FFT size of 32 samples, a window length of 128 samples, and a decimation factor of 16.
+
+![First 3 subband filters for the WOLA filterbank with K=32, N=4, and a decimation factor of 16.](../../.gitbook/assets/screen-shot-2020-04-09-at-4.54.30-pm.png)
+
+When N is increased to a very high number to achieve a decimation factor of 32, the result is a critically sampled filterbank with no net increase in data. This limit can be approaced, but never achieved in practice. With realizable filters, a filter will always overlap its immediate neighbors. In Audio Weaver, a decimation factor of K/2 is used and the filterbanks are oversampled by a factor of 2. There is a net doubling of the data rate, but this is important because it decouples the subbands and allows them to be modified without introducing further aliasing distortion.
+
+Recent theory of filterbanks has been focused on critically sampled filterbanks. These filterbanks find use in audio compression and since the goal in compression is to reduce the overall data rate, it is important not to oversample and introduce more data in the subband representation. However, the operations performed on subbands in audio codecs are very gentle compared to what is possible with our WOLA filterbanks. In audio compression, the goal is for the output to equal the input. In Audio Weaver processing systems, the focus is to be able to make gross changes to the subbands without introducing objectionable aliasing artifacts. This requires a fundamentally different approach. Furthermore, if the algo calls for a frame overlap add and overlap save convolution in a filterbank framework, oversampling is needed. _In general, in order to perform subband modifications of audio signals without introducing objectionable aliasing distortion, some amount of oversampling is required._
+
+As noted above, the filters in the filterbanks are not ideal and introduce some amount of aliasing. The amount of aliasing depends upon the stopband attenuation used in the design of the filters. This section provides details on the amplitude of this aliasing noise. To test this, use the system shown below:
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-4.56.07-pm.png)
+
+Analysis and synthesis filterbanks are placed back-to-back. The input is white noise, the output is subtraction of the inputs while compensating for the delay through the filterbanks. Comparing the energy at the input to the energy of the residual noise provides an indication of the level of the aliasing components. The following table shows the aliasing level and latency as a factor of the stopband attenuation of the prototype low pass filter. In the test, an FFT size of 256 samples was used with a resulting blockSize of 128 samples.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.01.32-pm.png)
+
+Keep in mind that the aliasing components are linearly related to the input signals. That is, reducing the level of the input signal by 20 dB results in the level of the aliasing components dropping by 20 dB. Thus, the aliasing level is more similar to a signal to noise ratio \(SNR\) rather than total harmonic distortion.
+
+**Subband Signal Manipulation**
+
+Part of the beauty of these filterbanks is that it is possible to manipulate the signals in the subband domain. For example, if scaling the subband signals as shown below, the result will be an equalizer with linearly spaced frequency bins.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.02.35-pm.png)
+
+Another nice property of the WOLA filterbanks is that they have built in smoothing. That is, making an instantaneous gain change to one of the subband signals then the net effect at the output will be smooth. This is because the synthesis bank has built in low pass filters in each subband and these smooth out discontinuities.
+
+The FIR filter example can be taken further. The example above had only a single gain within each subband. What if the goal is to have more frequency resolution? Place FIR filters into each subband. A longer FIR filter would provide more resolution within that particular frequency band. Consider the following example. A filterbank has an FFT size of 64 samples and is operating with a decimation factor of 32. If the input is 48 kHz then each subband has a sample rate of 1.5 kHz. If an FIR filter of length 500 samples is placed in the DC subband \(bin k=0\), then this yields an effective frequency resolution of 3 Hz within this band. The amount of computation needed to implement this filter is approximately 1500 x 500 = 0.75 MIPs. High resolution is needed in audio applications at low frequencies. For higher frequencies, reduce the lengths of the FIR filters and achieve something close to “log frequency resolution”. By proper design of the subband filters, designing phase response becomes simple.
+
+Any of the Frequency Domain modules which operate on complex data operate in the subband domain. Audio Weaver also provides a special set of “Subband Processing” modules that start with the “Sb” prefix. These modules replicate some of the standard time domain modules but the operations occur separately in each subband.
+
+![](../../.gitbook/assets/image%20%2820%29.png)
+
+**Synthesis Filterbank**
+
+The synthesis filterbank takes the subband signals and reconstructs a time domain output. **Error! Reference source not found.** __Remember that the analysis filterbank can be considered to be a parallel set of bandpass filters and decimators. The synthesis filterbank uses the inverse of this with upsamplers, filters, and adders. The upsamplers take the decimated subband signals and return them to the original sampling rate by inserting M-1 zeros between each sample value. In the frequency domain, upsampling creates copies of the input spectrum at multiples of  and the filters remove the high frequency copies.
+
+![Synthesis filterbank implementation using upsamplers and bandpass filters.](../../.gitbook/assets/screen-shot-2020-04-09-at-5.07.21-pm.png)
+
+For efficiency, the synthesis filterbank is implemented using an inverse FFT and periodic replication. As in the analysis filterbank, the window function $$ f[n] $$corresponds to the impulse response of the prototype lowpass filter used in subband k=0.
+
+![Synthesis bank implemented using an inverse FFT followed by windowing and overlapping.](../../.gitbook/assets/screen-shot-2020-04-09-at-5.09.08-pm.png)
+
+### Gains
+
+Scaler modules multiply the input signal by a constant value. think of scalers as gain controls or faders. There are many different types of scalers and they have the following characteristics:
+
+1.     Smoothed or unsmoothed
+
+2.     Linear or dB gains
+
+3.     Single gain applied to all channels or individual gains per channel
+
+All scalers support multichannel data and arbitrary block sizes. The scaler modules with a single gain support multiple input and output pins and the number of pins is specified as a constructor argument.
+
+If the scaler has individual gains per channel, then the initial number of channels can be specified as a constructor argument. This makes it easy to enter initial gains before completing the entire block diagram. Thereafter the number of gains is updated by pin propagation. For these modules, the gain values are specified using an array. **The module to use for multiple gain channels is the General Purpose Vector Scaler. It supports smoothing/non, linear/dB, and multichannel gain control.**
+
+In unsmoothed scalers the gain change takes place immediately and may result in an audible “pop” due to the discontinuity. To avoid this, use a scaler with built-in smoothing instead. The following list explains the differences between the deprecated scaler modules, which each had its own function. **THESE MODULES ARE OUT OF DATE, USE GENERAL PURPOSE SCALER**. This list is here to keep documentation for the deprecated modules, whose documentation is similar to the fract32 scaler modules.
+
+![](../../.gitbook/assets/image%20%2837%29.png)
+
+For the above modules, the gain to apply is specified by an inspector variable. The module library also has two controllable scalers. For these modules, the gain to apply is taken from the first input pin. There are linear and dB variants and both have built-in smoothing.
+
+![](../../.gitbook/assets/image%20%2822%29.png)
+
+These modules are frequently used to invert or add an offset to a signal by setting the scale factor equal to 1.0. This is easier than using separate DCSource and Adder modules.
+
+#### Mutes
+
+Several other modules exist which do smoothing scaling of signals between fixed values. The MuteSmoothed module scales between 0 and 1 and the Invert module scales between +1 and -1. There is also a MuteNSmoothed module which is designed for multichannel signals and allows the individual mute control for each channel.
+
+![](../../.gitbook/assets/image%20%286%29.png)
+
+The SoloMute module allows muting of all channels except one \(like soloing on a soundboard\). The SoloMute module can have multiple input pin, where each input can have multiple channels. Or, if it has a single input pin, the soloing functionality is applied to individual channels.
+
+![](../../.gitbook/assets/image%20%2818%29.png)
+
+#### Crossfader
+
+The Crossfader module takes in two sources and smoothly varies between the two input sources. It also has energy levelling during the crossfade based on either a Linear scale \(amplitude\) or the energy of the signal \(rms\). This module has a control pin that varies between 0 and 1, correlating to the next two input pins. It is limited to two channels. 
+
+#### General Purpose Scalers
+
+As mentioned earlier, the general purpose scaler supports smoothing, dB and linear gain values, optional input pin, and even pin counts. If a multichannel-multivalued gain is needed, the General Purpose Vector Scaler supports up to 256 simultaneous channels. 
+
+#### Table Of Mute Modules
+
+![](../../.gitbook/assets/image%20%2839%29.png)
+
+#### Table Of Gain Modules
+
+![](../../.gitbook/assets/image%20%2812%29.png)
+
+### Logic
+
+#### Control Signals And Boolean Logic
+
+Control signals are defined as having a block size of one. This useful for reducing the computational load when only a single value is needed. Wires holding control signals are shown as dashed lines \(---&gt;\). 
+
+To illustrate the use of control signals we’ll build up a Fletcher-Munson equal-loudness contour. This guide is not intended to go into depth on topics of audio processing, but in simplest terms, this system adapts frequency as the level of audio drops. The human ear perceives both the low- and high-range frequencies dropping off more quickly than the mid-range frequencies. A common method for dealing with this in audio processing is to boost the bass and treble frequencies as the volume drops to create what is called an “equal-loudness contour,” or a “Fletcher-Munson curve.” This can be achieved by a filter which varies based on the desired volume level. This example will demonstrate the process, including the use of several control signals.
+
+The complete system \(shown below\) has a few key points. As the volume is reduced at the DCSource, the levels of the bass and treble frequencies will be boosted so that they sound as though they are dropping off at the same rate as the mid-range frequencies. Note the dotted lines representing all the control signals. This implementation is also computationally efficient. The control signals have a block size of 1 and do not require much computation. The main processing is performed by the Scaler and two SOFControl modules.
+
+![](../../.gitbook/assets/screen-shot-2020-04-09-at-5.41.27-pm.png)
+
+The VolumeSetting module is a DCSource which outputs the gain setting, in dB; this is a control signal and is drawn as a dotted line. When configuring the VolumeSetting using module properties set its blockSize and number of channels to 1.
+
+The first step is to reduce the signal level by VolumeSetting. This is accomplished using the ScalerDBControl module. This module takes its gain setting from an input pin rather than from an inspector and allows for a control signal-dependent gain.
+
+![](../../.gitbook/assets/image%20%2823%29.png)
+
+In this example it will be used to allow a DC source to adjust the overall volume. Thus begins the system as shown below:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+.
 
 
 
