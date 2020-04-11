@@ -54,7 +54,7 @@ In the Matlab code for an FIR module, the module properties maps directly to the
 
 ![](../../.gitbook/assets/6%20%283%29.png)
 
-Most modules also have an associated _Inspector._ The inspector allows changing of the module’s tunable parameters. Inspectors can be used in Design mode and Tuning mode by double-clicking on a module, or by right-clicking and selecting “Inspector.” The inspector for an FIR filter holds the filter coefficients \(see above\). These parameters can also be changed under the “Variables” tab in the module properties window.
+Most modules also have an associated _Inspector._ The inspector allows changing of the module’s tunable parameters. Inspectors can be used in Design mode and Tuning mode by double-clicking on a module, or by right-clicking and selecting “Inspector.” The inspector for an FIR filter holds the filter coefficients. \(_See above._\) These parameters can also be changed under the “Variables” tab in the module properties window.
 
 **Save a set of inspectors for later by using inspector groups.** Usually, many inspectors are shown at the same time. To use an inspector group, click ‘Inspector’ on the top menu of Designer. Here inspector group names are managed. The inspector group will save the inspector configuration, including positioning. To reposition an inspector group, simply adjust the inspectors and save the group again with the same name.
 
@@ -1190,7 +1190,7 @@ This module outputs the number of blocks processed based on the system BlockSize
 
 #### Coeff Table
 
-This module is similar to paramSet, except it sends a vectored variable rather than a singular numeric variable. Set the coeffs to be sent to the variable by typing into the properties sheet, then clicking apply\(see right\). Upon clicking apply, the coefficient data is sent to whatever module lies within the modVar argument. \(See below.\)
+This module is similar to paramSet, except it sends a vectored variable rather than a singular numeric variable. Set the coeffs to be sent to the variable by typing into the properties sheet, then clicking apply. \(_See below._\) Upon clicking apply, the coefficient data is sent to whatever module lies within the modVar argument. \(_See below_.\)
 
 ![](../../.gitbook/assets/screen-shot-2020-04-10-at-5.55.13-pm.png)
 
@@ -1482,7 +1482,7 @@ Suppose that there are two wires holding 5.1 channel data. The channels are orde
 
 ![](../../.gitbook/assets/screen-shot-2020-04-10-at-8.45.18-pm.png)
 
-The values in the channelIndex array are computed as \[The notation \(pin &lt;&lt; 16\) represents a left shift by 16 bits. Alternatively this equals \(pin \* 65536\).\]: 
+The values in the channelIndex array are computed as: \[The notation \(pin &lt;&lt; 16\) represents a left shift by 16 bits. Alternatively this equals \(pin \* 65536\).\]
 
 ![](../../.gitbook/assets/image%20%28125%29.png)
 
