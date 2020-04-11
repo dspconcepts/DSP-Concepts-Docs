@@ -131,7 +131,7 @@ To solve this, locate the feedback point in the block diagram and then mark the 
 
 Each hardware target has a fundamental block size to specify how many samples per block are handled by the real-time audio I/O functions. This is shown on the Server window when the Server launches. \(_See below_.\)
 
-Layouts can use any multiple of the target’s fundamental blockSize. **Change blockSize at any time by adjusting the hardware input parameters in SYS\_in**. BlockSize information is propagated from the input pin, through the modules, to the output pin. **The blockSize of the output pin is set by pin propagation**. \[The exact behavior is controlled by the checkbox “Validate system output pin” in Layout-&gt;Layout Properties dialog. There is the option of inheriting the output pin size from the wire attached to it \(Validate system output pin unchecked; this is the default\). Or force the wire to match the output pin \(Validate system output pin checked.\)\]
+Layouts can use any multiple of the target’s fundamental blockSize. **Change blockSize at any time by adjusting the hardware input parameters in SYS\_in**. BlockSize information is propagated from the input pin, through the modules, to the output pin. **The blockSize of the output pin is set by pin propagation**. \[The exact behavior is controlled by the checkbox “Validate system output pin” in Layout-&gt;Layout Properties dialog. There is the option of inheriting the output pin size from the wire attached to it. \(Validate system output pin unchecked; this is the default.\) Or force the wire to match the output pin \(Validate system output pin checked.\)\]
 
 **Interpolator and decimator modules increase or decrease the blockSize**. Some modules also output a single value _control signal_ \(blockSize = 1\). For example, the BlockStatistics module can be configured to output the average value of a block of samples. This data will be one value per block. Control signals are drawn with dashed lines instead of solid lines.
 
@@ -153,9 +153,9 @@ The figure below shows a ScalerSmoothed module with a 10 msec time constant. The
 
 Time constants correspond to the familiar definition of time constants used in analog filters:
 
-                                                           𝑔𝑡=𝑒−𝑡/𝜏
+                                                                        𝑔𝑡=𝑒−𝑡/𝜏
 
-Where 𝜏 is the time constant. After 1 time constant has elapsed the gain has decayed by by $$e^{-1}=0.3679$$ . After 3 time constants, the gain has decayed by 95%, because 𝑒−3=0.0498. Thus, it takes several time constants for the gain change to fully take effect and this is reflected in the figure above.
+Where 𝜏 is the time constant. After 1 time constant has elapsed the gain has decayed by by $$e^{-1}=0.3679$$ . After 3 time constants, the gain has decayed by 95%, because $$ 𝑒−3=0.0498$$. Thus, it takes several time constants for the gain change to fully take effect and this is reflected in the figure above.
 
 ## Modules in Browser Order
 
