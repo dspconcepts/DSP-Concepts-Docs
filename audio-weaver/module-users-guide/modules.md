@@ -104,9 +104,9 @@ Above the threshold the compressor reduces the signal level; below the threshold
 
 #### Envelope Modulation
 
-![](../../.gitbook/assets/28%20%281%29.png)
-
 Envelope modulators control the impact that relative peaks have. The Attack Release module uses attackTimeInitial and attackTimeFinal to smooth peaks. The Attack Decay Sustain Release is similar, but also includes 2 stages in between the attack and release. Decay lowers the level into a hold that is based on the sustain level. After this hold ends, the release occurs.
+
+![](../../.gitbook/assets/28%20%281%29.png)
 
 #### Limiters
 
@@ -132,7 +132,7 @@ The DownwardExpanderCore module is also a limiter with a piecewise gain, but its
 
 ![The DownwardExpanderCore module&#x2019;s response behavior](../../.gitbook/assets/31%20%282%29.png)
 
-One use of this module is for filtering out low-level noise while retaining a louder signal.This is very useful for eliminating “hiss,” low level background noise in a signal. Like most dynamic processing modules, the DownwardExpanderCore is designed to take its input from the MaxAbs module and output its gain as an input to the AGCMultiplier module. 
+One use of this module is for filtering out low-level noise while retaining a louder signal. This is very useful for eliminating “hiss,” low level background noise in a signal. Like most dynamic processing modules, the DownwardExpanderCore is designed to take its input from the MaxAbs module and output its gain as an input to the AGCMultiplier module. 
 
 ![Example of a noise gate which eliminates low level signals](../../.gitbook/assets/33%20%283%29.png)
 
@@ -142,7 +142,7 @@ One use of this module is for filtering out low-level noise while retaining a lo
 
 This module has a slowly varying volume control which transfers the **input signal** level towards a targetLevel, a specified RMS level. The input RMS is smoothed via the smoothing time variable. This allows the gain to change gradually. The gain is limited to the range \[-maxAttenuation and maxGain\]. The ratio control determines the speed of the gain change for all signals above the **activation Threshold**. When the level of the input signal falls below **activationThreshold**, the AGCCore holds the last gain setting. If the enableRecovery checkbox is checked, the gain will slowly return to 0 dB when not activated. The rate of return is governed by recoveryRate.
 
-#### ![](../../.gitbook/assets/35%20%282%29.png)
+![](../../.gitbook/assets/35%20%282%29.png)
 
 #### ![](../../.gitbook/assets/34%20%281%29.png)
 
@@ -154,7 +154,7 @@ This module has a slowly varying volume control which transfers the **input sign
 
 ### Filters
 
- The Audio Weaver Filters folder lists over 60 filters. They have been broken down according to user needs, with the folder labels Adaptive, Calculated Coeffs, Controllable, High Precision, Raw Coeffs, and list the most commonly used filters. The Adaptive folder contains the LMS module, an adaptive filter with tracking capabilities. For those users less experienced with designing filters, the Calculated Coeffs filters take in frequency information, Q, Gain, and type, similar to tuning a filter in a DAW. Users with more DSP background can use the Raw Coeffs filters to tune filters with mathematical information. The most frequently used filters are the ButterworthFilter \(highpass, lowpass, allpass\), SecondOrderFilterSmoothed, with 20 different filter types, and the SecondOrderFilterSmoothedCascade: multiple 2nd order filters in series.
+The Audio Weaver Filters folder lists over 60 filters. They have been broken down according to user needs, with the folder labels Adaptive, Calculated Coeffs, Controllable, High Precision, Raw Coeffs, and list the most commonly used filters. The Adaptive folder contains the LMS module, an adaptive filter with tracking capabilities. For those users less experienced with designing filters, the Calculated Coeffs filters take in frequency information, Q, Gain, and type, similar to tuning a filter in a DAW. Users with more DSP background can use the Raw Coeffs filters to tune filters with mathematical information. The most frequently used filters are the ButterworthFilter \(highpass, lowpass, allpass\), SecondOrderFilterSmoothed, with 20 different filter types, and the SecondOrderFilterSmoothedCascade: multiple 2nd order filters in series.
 
 #### Adaptive \(LMS\)
 
@@ -284,19 +284,21 @@ A very common use of the SOFControl module is within a perceptual volume control
 
 ![Example showing use of the SOFControl module in a table driven loudness control](../../.gitbook/assets/60%20%283%29.png)
 
-![](../../.gitbook/assets/61%20%283%29.png)![](../../.gitbook/assets/62%20%282%29.png)
+![](../../.gitbook/assets/62%20%282%29.png)![](../../.gitbook/assets/61%20%283%29.png)
 
 _Figure 2. Lookup tables used in the table driven loudness control example. The left table converts the volume setting into a bass boost and the right table does the same for the high frequency adjustment._
 
 #### Filters with Raw Coeffs
 
-Audio Weaver contains several filter types which operate on raw coefficients. These filters are for expert users who understand DSP and know how to calculate the filter coefficients[\[3\]](). There are two types of filters – Finite Impulse Response \(FIR\) and Infinite Impulse Response \(IIR\). Although Audio Weaver supports both types of filters, the majority of the filters used in audio applications are IIR due to their computational efficiency.
+Audio Weaver contains several filter types which operate on raw coefficients. These filters are for expert users who understand DSP and know how to calculate the filter coefficients \[Matlab is often used by expert Audio Weaver users to compute coefficients and then update them in the block diagram\]. There are two types of filters – Finite Impulse Response \(FIR\) and Infinite Impulse Response \(IIR\). Although Audio Weaver supports both types of filters, the majority of the filters used in audio applications are IIR due to their computational efficiency.
 
 The most basic IIR filter is the Biquad and it is implemented with the difference equation:
 
-𝑎0𝑦𝑛=𝑏0𝑥𝑛+𝑏1𝑥𝑛−1+𝑏2𝑥𝑛−2−𝑎1𝑦𝑛−1−𝑎2𝑦𝑛−2
+$$
+a_0𝑦𝑛=𝑏_0𝑥𝑛+𝑏_1𝑥𝑛−1+𝑏_2𝑥𝑛−2−𝑎_1𝑦𝑛−1−𝑎_2𝑦𝑛−2
+$$
 
-There are 5 coefficients that the user must set: b0, b1, b2, a1, and a2 \(a0 is always assumed to be 1\). Audio Weaver does not check for stability and care must be used when computing the filter coefficients. There are several variants of Biquad filters. The simples – Biquad – has a single stage and implements the different equation shown above. BiquadCascade implements N stages of filtering with each channel using the same coefficients. BiquadNCascade implements N stages with each channel have its own set of coefficients. Finally, BiquadSmoothed implements a single Biquad stage with coefficient smoothing on a block-by-block basis.
+There are 5 coefficients that the user must set: $$b_0$$, $$b_1$$, $$b_2$$, $$a_1$$, and $$a_2$$  \( $$a_0$$ is always assumed to be 1\). Audio Weaver does not check for stability and care must be used when computing the filter coefficients. There are several variants of Biquad filters. The simples – Biquad – has a single stage and implements the different equation shown above. BiquadCascade implements N stages of filtering with each channel using the same coefficients. BiquadNCascade implements N stages with each channel have its own set of coefficients. Finally, BiquadSmoothed implements a single Biquad stage with coefficient smoothing on a block-by-block basis.
 
 <table>
   <thead>
@@ -426,15 +428,15 @@ The crossover filter module \(XoverNway\) is actually a subsystem consisting of 
 
 The graphic equalizer gives the option of using standard precision or high precision filters.
 
-![](../../.gitbook/assets/81.png)Here is an example of the benefits of the high precision filter. The system in the example has a peaking filter at 20 Hz with a gain of 6 dB and a Q of 2 and operates at a 48 kHz sample rate. The total harmonic distortion and noise \(THD+N\) for different input frequencies is plotted below. First for standard Biquad filters
+Here is an example of the benefits of the high precision filter. The system in the example has a peaking filter at 20 Hz with a gain of 6 dB and a Q of 2 and operates at a 48 kHz sample rate. The total harmonic distortion and noise \(THD+N\) for different input frequencies is plotted below. First for standard Biquad filters
 
+![](../../.gitbook/assets/picture1%20%281%29.png)
 
+And now with a high precision filter, notice that the noise floor is reduced significantly – by up to 90 dB at low frequencies.
 
-![](../../.gitbook/assets/picture1.png)
+ 
 
-![](../../.gitbook/assets/82%20%281%29.png)And now with a high precision filter, notice that the noise floor is reduced significantly – by up to 90 dB at low frequencies.
-
-![](../../.gitbook/assets/picture2.png) 
+![](../../.gitbook/assets/picture2%20%281%29.png)
 
 For the interested reader, this measurement is performed by passing sine waves of different frequencies through the filter. Apply a notch filter at the output which removes the sine wave and then measure the RMS energy in the residual. This residual energy equals the THD+N. The measurement is repeated for many different frequencies and the plot reflects the measured THD+N at each input frequency.
 
@@ -473,32 +475,33 @@ Depending on the filter type, some parameters are not used. See the table below 
 
 ![](../../.gitbook/assets/image%20%2870%29.png)
 
-\*\*\*\*
-
 **1st order Butterworth lowpass filter**
 
 * filterType = 2
 * Applicable parameters: freq
 
-![](../../.gitbook/assets/image%20%28144%29.png)
+![](../../.gitbook/assets/image%20%28147%29.png)
+
+**2nd order Butterworth lowpass**
+
+* filterType = 3
+* Applicable parameters: freq
+
+![](../../.gitbook/assets/picture1.png)
 
 **1st order Butterworth highpass** 
-
-```text
-
-```
 
 * filterType = 4
 * Applicable parameters: freq 
 
-![](../../.gitbook/assets/image%20%28119%29.png)
+![](../../.gitbook/assets/image%20%28120%29.png)
 
 **2nd order Butterworth highpass** 
 
 * filterType = 5
 * Applicable parameters: freq
 
-![](../../.gitbook/assets/image%20%28122%29.png)
+![](../../.gitbook/assets/image%20%28123%29.png)
 
 **1st order allpass** 
 
@@ -512,7 +515,7 @@ Depending on the filter type, some parameters are not used. See the table below 
 * filterType = 7
 * Applicable parameters: freq and Q
 
-![](../../.gitbook/assets/image%20%2886%29.png)
+![](../../.gitbook/assets/image%20%2887%29.png)
 
 **2nd order low shelf** 
 
@@ -523,14 +526,14 @@ Depending on the filter type, some parameters are not used. See the table below 
 Use as a low frequency tone control
 {% endhint %}
 
-![](../../.gitbook/assets/image%20%28100%29.png)
+![](../../.gitbook/assets/image%20%28101%29.png)
 
 **2nd order low shelf with Q**
 
 * filterType = 9
 * Applicable parameters: freq, gain, and Q
 
-![](../../.gitbook/assets/image%20%28108%29.png)
+![](../../.gitbook/assets/image%20%28109%29.png)
 
 
 
@@ -542,7 +545,7 @@ Use as a low frequency tone control
 Use as a high frequency tone control
 {% endhint %}
 
-![](../../.gitbook/assets/image%20%28114%29.png)
+![](../../.gitbook/assets/image%20%28115%29.png)
 
 * **2nd order high shelf with Q** 
   * filterType = 11
@@ -558,7 +561,7 @@ Use as a high frequency tone control
 Commonly used for generic equalization since it has controllable frequency, gain, and Q settings.
 {% endhint %}
 
-![](../../.gitbook/assets/image%20%28136%29.png)
+![](../../.gitbook/assets/image%20%28138%29.png)
 
 * **2nd order notch** 
   * filterType = 13
@@ -600,7 +603,7 @@ Commonly used for generic equalization since it has controllable frequency, gain
   * filterType = 19
   * Applicable parameters: freq and gain 
 
-![](../../.gitbook/assets/image%20%2885%29.png)
+![](../../.gitbook/assets/image%20%2886%29.png)
 
 * **1st order symmetrical high shelf** 
   * filterType = 2
@@ -615,10 +618,8 @@ The Butterworth filter from SecondOrderFilterSmoothed is the same as the Butterw
 
 The SecondOrderFilterSmoothed implementation of the first order Butterworth filter is more computationally efficient than the ButterworthFilter module.
 
-Low/high shelf filter and low/high shelf filter Q are identical if Q is set to 0.707 \( \).
+Low/high shelf filter and low/high shelf filter Q are identical if Q is set to 0.707 \( ****$$√0.5$$ \).
 {% endhint %}
-
-
 
 **Second Order Filter Smoothed Cascade**
 
@@ -654,12 +655,12 @@ L_real[0], L_imag[0], R_real[0], R_imag[0], L_real[1], L_imag[1], R_real[1], R_i
 
 Two modules are provided to convert between real and complex data
 
-|  | Block Name | Description |
+| Icon | Block Name | Description |
 | :--- | :--- | :--- |
 | ![](../../.gitbook/assets/114.png) | RealImagToComplex | Converts two real signals into complex data using one as the real part and the other as the imaginary part |
 | ![](../../.gitbook/assets/115.png) | ComplexToRealImag | Converts a complex signal into separate real and imaginary components |
 
-The system below essentially does nothing except convert two mono signals into complex and then back again. If view wire info is enabled, \(“ViewData type”\) it will mark complex wires with a “C”.
+The system below essentially does nothing except convert two mono signals into complex and then back again. If view wire info is enabled, \(“View ---&gt; Data type”\) it will mark complex wires with a “C”.
 
 ![](../../.gitbook/assets/116.png)
 
@@ -717,15 +718,15 @@ The WindowAlias module applies a window followed by time aliasing the sequence t
 
 The OverlapAdd module performs the opposite of the Rebuffer module. The module has a large input block size and a smaller output block size. The module contains an internal buffer equal to the input block size. The module takes the input data, adds it to the internal buffer, and then shifts out one block of output data. The data in the internal buffer is also left shifted and the leading samples are filled with zeros. The OverlapAdd module finds use in fast convolution algorithms.
 
-| ![](../../.gitbook/assets/128.png) | RepWinOverlap | Replicates data, applies a window, and then performs overlap add |
+| Icon | Name | Description |
 | :--- | :--- | :--- |
-
+| ![](../../.gitbook/assets/128.png) | RepWinOverlap | Replicates data, applies a window, and then performs overlap add |
 
 The RepWinOverlap module is for advanced users building synthesis filterbanks. The module replicates a signal N times, applies a window, and then performs overlap add.
 
-| ![](../../.gitbook/assets/129.png) | ZeroPad | Adds zeros at the end of a buffer |
+| Icon | Name | Description |
 | :--- | :--- | :--- |
-
+| ![](../../.gitbook/assets/129.png) | ZeroPad | Adds zeros at the end of a buffer |
 
 The ZeroPad module inserts zeros at the end of a signal. Specify the length of the output buffer under module properties. If the output is longer than the input then the signal is zero padded. If the output is shorter than the input then the signal is truncated.
 
@@ -765,6 +766,13 @@ The frequency domain modules have a large number of modules which operate on com
     </tr>
     <tr>
       <td style="text-align:left">
+        <img src="../../.gitbook/assets/picture2.png" alt/>
+      </td>
+      <td style="text-align:left">ComplexMagSquared</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
         <img src="../../.gitbook/assets/134.png" alt/>
       </td>
       <td style="text-align:left">ComplexModulate</td>
@@ -792,7 +800,7 @@ The frequency domain modules have a large number of modules which operate on com
         <img src="../../.gitbook/assets/137.png" alt/>
       </td>
       <td style="text-align:left">PolarToComplex</td>
-      <td style="text-align:left">Converts from Polar to Real/Imag</td>
+      <td style="text-align:left">Converts from Polar to Real/Image</td>
     </tr>
   </tbody>
 </table>The modules listed above operate on complex data only. A few of the other Audio Weaver modules found outside the Frequency Domain folder are also able to operate on complex data type:
@@ -905,7 +913,7 @@ The frequency domain modules have a large number of modules which operate on com
   </tbody>
 </table>
 
-####  FilterBank Processing
+#### FilterBank Processing
 
 **Introduction**
 
@@ -962,13 +970,13 @@ The output of the WOLA synthesis bank equals the input of the analysis bank but 
 
 This example shows the meter module with a residual difference at around -80 dB. The filterbanks are not perfect reconstruction but introduce a small amount of aliasing noise. The level of aliasing noise is directly related to the attenuation setting of the filterbanks.
 
-The frequency domain outputs of the analysis filterbank represent the outputs of a series of bandpass filters. There are K filters and the spacing between bins is $$2π/K$$ radians, or if the sample rate of the system is SR, then the spacing between bins is $$SR/K$$ Hz. For example, if the sample rate of the system is 48 kHz and K=64, then the spacing between bins is 750 Hz. The first bin \(with real data\) is centered at 0 Hz. The next bin is centered at 750 Hz, and so on. The last bin \(with real data\) is centered at 24 kHz.
+The frequency domain outputs of the analysis filterbank represent the outputs of a series of bandpass filters. There are K filters and the spacing between bins is $$\frac{2π}{K}$$ radians, or if the sample rate of the system is SR, then the spacing between bins is $$\frac{SR}{K}$$ Hz. For example, if the sample rate of the system is 48 kHz and K=64, then the spacing between bins is 750 Hz. The first bin \(with real data\) is centered at 0 Hz. The next bin is centered at 750 Hz, and so on. The last bin \(with real data\) is centered at 24 kHz.
 
 The filterbanks also contain built in decimation. The outputs of the analysis bank represent the _decimated_ outputs of bandpass filters. The decimation factor equals the block size, that is, K/2. Continuing the example from above, the sample rate of the system is 48 kHz and the block size is 32 samples. Thus, the sample rate of the frequency domain subbands is 1500 Hz. see this by showing the sample rate on the wires.
 
 **Theory**
 
-This section describes more of the mathematical theory behind the filterbanks. The design of the filterbanks was based primarily on chapter 7 of the book _Multirate Digital Signal Processing_ by Crochiere and Rabiner. This is an excellent and very readable introduction to the subject of filterbanks. Our description follows the derivation found in this book.A classical filterbank uses a time domain window function followed by an FFT as shown below: ![](../../.gitbook/assets/144.png)
+This section describes more of the mathematical theory behind the filterbanks. The design of the filterbanks was based primarily on chapter 7 of the book _Multirate Digital Signal Processing_ by Crochiere and Rabiner. This is an excellent and very readable introduction to the subject of filterbanks. Our description follows the derivation found in this book.A classical filterbank uses a time domain window function followed by an FFT as shown below: 
 
 ![](../../.gitbook/assets/screen-shot-2020-03-11-at-11.59.26-pm.png)
 
@@ -980,7 +988,7 @@ The input blocks of the filterbank are overlapped in time. There are many ways t
 
 There are two different ways of looking at the output of the STFT analysis bank. On is to segment the input signal into blocks which are windowed and then FFT’ed. The output of the analysis bank thus corresponds to frequency spectra. On the other hand, a careful study of the analysis bank shows that it is in effect implementing a set of parallel bandpass filters as shown below.
 
-![Analysis filterbank implementation as a parallel set of bandpass filters and decimators.](../../.gitbook/assets/screen-shot-2020-03-12-at-12.00.29-am.png)
+![Analysis filterbank implementation as a parallel set of bandpass filters and decimators](../../.gitbook/assets/screen-shot-2020-03-12-at-12.00.29-am.png)
 
 The input signal is filtered and then decimated by the block size M. The filters are all related by the mathematical expression
 
