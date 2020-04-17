@@ -618,7 +618,7 @@ The Butterworth filter from SecondOrderFilterSmoothed is the same as the Butterw
 
 The SecondOrderFilterSmoothed implementation of the first order Butterworth filter is more computationally efficient than the ButterworthFilter module.
 
-Low/high shelf filter and low/high shelf filter Q are identical if Q is set to 0.707 \( ****$$√0.5$$ \).
+Low/high shelf filter and low/high shelf filter Q are identical if Q is set to 0.707 \($$\sqrt{0.5}$$ \).
 {% endhint %}
 
 **Second Order Filter Smoothed Cascade**
@@ -994,7 +994,7 @@ The input signal is filtered and then decimated by the block size M. The filters
 
 ℎ𝑘𝑛=ℎ0𝑛𝑒𝑗2𝜋𝑘𝑛/𝐾
 
-where is the _prototype lowpass filter_ and all other filters are related to the prototype filter by complex modulation. In the frequency domain, the filters are shifted versions of the prototype filter
+where h\[n\] is the _prototype lowpass filter_ and all other filters are related to the prototype filter by complex modulation. In the frequency domain, the filters are shifted versions of the prototype filter
 
 𝐻𝑘𝜔=𝐻0𝜔−2𝜋𝑘/𝐾
 
@@ -1002,7 +1002,7 @@ For example, if a Hanning window is used as the prototype filter,
 
 ℎ𝑛=121−cos2𝜋𝑛𝐾−1
 
-then the frequency response for K = 32 is
+then the frequency response for $$H_0 (ω) $$ K = 32 is
 
 ![Frequency response of a 32-point Hanning window. The graph shows normalized frequencies in the range 0 to 1.0 which corresponds to 0 to &#x3C0; radians/sample.](../../.gitbook/assets/147.png)
 
