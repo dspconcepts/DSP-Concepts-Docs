@@ -122,8 +122,9 @@ The main steps are:
 
 The modules used are:
 
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/375.jpeg) | ![](../../.gitbook/assets/376.png) | AGCAttackRelease | Creates envelope detector with specified attack and release times |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/375.jpeg) | ![](../../.gitbook/assets/376.png) | AGCAttackRelease | Creates envelope detector with specified attack and release times |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/377.jpeg) | ![](../../.gitbook/assets/378.png) | Db20 | Converts from linear units to dB |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/379.jpeg) | ![](../../.gitbook/assets/380.png) | TwoPieceInterp | Applies two-piece piecewise function |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/381.jpeg) | ![](../../.gitbook/assets/382.png) | TableInterp | Applies function from specified table interpolation |
