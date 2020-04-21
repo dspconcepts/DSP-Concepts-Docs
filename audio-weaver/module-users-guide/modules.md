@@ -1047,7 +1047,7 @@ As noted above, the filters in the filterbanks are not ideal and introduce some 
 Analysis and synthesis filterbanks are placed back-to-back. The input is white noise, the output is subtraction of the inputs while compensating for the delay through the filterbanks. Comparing the energy at the input to the energy of the residual noise provides an indication of the level of the aliasing components. The following table shows the aliasing level and latency as a factor of the stopband attenuation of the prototype low pass filter. In the test, an FFT size of 256 samples was used with a resulting blockSize of 128 samples.
 
 | Stopband Attenuation \(dB\) | Measured Aliasing Noise \(dB\) | Latency \(samples\) | Latency \(blocks\) |
-| :--- | :--- | :--- | :--- |
+| :---: | :---: | :---: | :---: |
 | 30 | -28 | 384 | 3 |
 | 40 | -39 | 640 | 5 |
 | 50 | -50 | 896 | 7 |
