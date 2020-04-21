@@ -2,11 +2,11 @@
 
 ## Audio Weaver Overview
 
-AWE Designer is a Windows-based, graphical IDE for the AWE Core™ embedded processing engine. AWE Designer is used to easily design, debug, and tune audio processing flows in real time. Unlike other graphical tools, Audio Weaver does not generate code; instead, it generates run-time configurations for the data-driven AWE Core. Using a palette of over 400 optimized processing modules, complex audio processing chains can be quickly designed, run, profiled and tuned on hardware without writing any DSP software.
+AWE Designer is a Windows-based, graphical IDE for the AWE Core embedded processing engine. AWE Designer is used to easily design, debug, and tune audio processing flows in real time. Unlike other graphical tools, Audio Weaver does not generate code; instead, it generates run-time configurations for the data-driven AWE Core. Using a palette of over 400 optimized processing modules, complex audio processing chains can be quickly designed, run, profiled and tuned on hardware without writing any DSP software.
 
 ### Audio Weaver Editions
 
-Audio Weaver comes in three different editions, STMicro Edition, Standard Edition, and Pro Edition. STMicro and Standard Editions run as stand-alone applications, while \(Pro\) runs as an application launched from MATLAB. The editions differ in the stand-alone editions of AWE Designer require the MATLAB Compiler Runtime \(MCR\), which will be downloaded during the install process. The Pro edition requires that the user have an installed version of MATLAB \(R2017b or later recommended\).
+Audio Weaver comes in two different editions: Standard Edition, and Pro Edition. Standard Edition runs as a stand-alone application, while \(Pro\) runs as an application launched from MATLAB. The editions differ in the stand-alone editions of AWE Designer require the MATLAB Compiler Runtime \(MCR\), which will be downloaded during the install process. The Pro edition requires that the user have an installed version of MATLAB \(R2017b or later recommended\).
 
 The summary of features available for the different editions of Audio Weaver are listed in the table below.
 
