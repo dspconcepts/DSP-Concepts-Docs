@@ -911,9 +911,7 @@ The frequency domain modules have a large number of modules which operate on com
       <td style="text-align:left">Linear gain with the gain value taken from a control pin. Set <code>smoothingTime = 0</code>.</td>
     </tr>
   </tbody>
-</table>
-
-#### FilterBank Processing
+</table>**FilterBank Processing**
 
 **Introduction**
 
@@ -1020,8 +1018,6 @@ If the decimation factor is changed to 8, then aliasing begins at a normalized f
 
 Is there a way to achieve high decimation while at the same time avoiding aliasing? This brings up the weighted overlap-add filterbank \(WOLA\). The block based derivation from Crochiere and Rabiner avoids aliasing while supplying high decimation. 
 
-
-
 ![Overview of analysis filterbank implementation](../../.gitbook/assets/screen-shot-2020-03-12-at-12.05.00-am.png)
 
 The main difference is that the prototype filter is N times longer and that after multiplying the input signal, the output is time aliased to the FFT length. Time aliasing is a standard property of the FFT. Suppose an input signal is given: $$r[n]$$of length $$KN$$ . Time alias this to a shorter signal $$x[n]$$ of length $$K$$ 
@@ -1095,7 +1091,7 @@ Any of the Frequency Domain modules which operate on complex data operate in the
 
 **Synthesis Filterbank**
 
-The synthesis filterbank takes the subband signals and reconstructs a time domain output. **Error! Reference source not found.**Remember that the analysis filterbank can be considered to be a parallel set of bandpass filters and decimators. The synthesis filterbank uses a the inverse of this with upsamplers, filters, and adders. The upsamplers take the decimated subband signals and return them to the original sampling rate by inserting M-1 zeros between each sample value. In the frequency domain, upsampling creates copies of the input spectrum at multiples of and the filters remove the high frequency copies.
+The synthesis filterbank takes the subband signals and reconstructs a time domain output. **Error! Reference source not found.** Remember that the analysis filterbank can be considered to be a parallel set of bandpass filters and decimators. The synthesis filterbank uses the inverse of this with upsamplers, filters, and adders. The upsamplers take the decimated subband signals and return them to the original sampling rate by inserting M-1 zeros between each sample value. In the frequency domain, upsampling creates copies of the input spectrum at multiples of and the filters remove the high frequency copies.
 
 ![Synthesis filterbank implementation using upsamplers and bandpass filters.](../../.gitbook/assets/screen-shot-2020-03-12-at-1.02.52-am.png)
 
