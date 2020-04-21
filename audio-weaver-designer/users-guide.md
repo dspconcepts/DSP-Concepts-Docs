@@ -8,11 +8,34 @@ AWE Designer is a Windows-based, graphical IDE for the AWE Core™ embedded proc
 
 Audio Weaver comes in three different editions, STMicro Edition, Standard Edition, and Pro Edition. STMicro and Standard Editions run as stand-alone applications, while \(Pro\) runs as an application launched from MATLAB. The editions differ in the stand-alone editions of AWE Designer require the MATLAB Compiler Runtime \(MCR\), which will be downloaded during the install process. The Pro edition requires that the user have an installed version of MATLAB \(R2017b or later recommended\).
 
-The summary of features available for the three different editions of Audio Weaver are listed in the table below.
+The summary of features available for the different editions of Audio Weaver are listed in the table below.
 
-![](../.gitbook/assets/2%20%285%29.png)
 
-Each edition of Audio Weaver has an associated license type. Once an account has been created on the DSP Concepts website, users can acquire evaluation licenses for the Standard and STMicro editions of Audio Weaver from the downloads page: [https://dspconcepts.com/downloads](https://dspconcepts.com/downloads). For questions or purchase information for non-evaluation licenses, please contact [info@dspconcepts.com](mailto:info@dspconcepts.com).
+
+| Feature | Standard Edition | Pro Edition |
+| ---: | :---: | :---: |
+| Graphical Interface | ✔️ | ✔️ |
+| Real-time Tuning | ✔️ | ✔️ |
+| Control Wires | ✔️ | ✔️ |
+| Flash / File Management | ✔️ | ✔️ |
+| Cycle-Accurate Layout Profiling | ✔️ | ✔️ |
+| Windows Native AWE Core | ✔️ | ✔️ |
+| Real-time Waveform Debug | ✔️ | ✔️ |
+| Hierarchical Subsystems | ✔️ | ✔️ |
+| Configure any version of AWE Core | ✔️ | ✔️ |
+| Per-Module Layout Profiling | ✔️ | ✔️ |
+| Inspector Groups | ✔️ | ✔️ |
+| Point-to-Point Layout Measurements | ✔️ | ✔️ |
+| Diff Layouts | ✔️ | ✔️ |
+| File Processing for Rapid Iteration | ✔️ | ✔️ |
+| Attach to Running Targets | ✔️ | ✔️ |
+| Requires Matlab  \(R2013b or later\) |  | ✔️ |
+| Matlab Automation API |  | ✔️ |
+| Regression Testing Scripts |  | ✔️ |
+| Use and tune Custom Modules |  | ✔️ |
+| Supports Custom Module SDK |  | ✔️ |
+
+Each edition of Audio Weaver has an associated license type. Once an account has been created on the DSP Concepts website, users can acquire evaluation licenses for the Standard edition of Audio Weaver from the [downloads page](https://dspconcepts.com/downloads). For questions or purchase information for non-evaluation licenses, please contact [info@dspconcepts.com](mailto:info@dspconcepts.com).
 
 ### Additional Documentation
 
