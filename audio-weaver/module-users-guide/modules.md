@@ -202,27 +202,19 @@ Crossovers are used in loudspeaker applications to separate signals into differe
 
 Alternatively, use the crossover module which contains all of the needed filters. The Crossover Filter module allows the user to set the type of filter, number of output bands, and filter order, specified in the module’s properties. Crossovers are used for separating different frequency bands of a signal. The example below demonstrates a crossover module being used to split a signal into a high band above 250 Hz and a low band below 250 Hz. The sum of the levels of the two bands is always 0 dB. As the input frequency changes near 250 Hz, one channel’s level drops and the other smoothly increases to compensate to 0 dB.
 
-![](../../.gitbook/assets/48%20%281%29.png)
-
-![](../../.gitbook/assets/49%20%282%29.png)
+![](../../.gitbook/assets/48%20%281%29.png)![](../../.gitbook/assets/49%20%282%29.png)
 
 
 
-
-
-
-
-
-
-![](../../.gitbook/assets/51.png) 
+![](../../.gitbook/assets/51.png)     ![](../../.gitbook/assets/52%20%281%29.png)
 
 This is the same behavior as using two ButterworthFilter filters:
 
-![](../../.gitbook/assets/50%20%282%29.png)![](../../.gitbook/assets/52%20%281%29.png)
+![](../../.gitbook/assets/50%20%282%29.png)
 
 
 
-The Crossover Filter module allows the configuration of 2 or more output channels. The module will then be drawn with 3 output pins. The top pin is the low frequency; the center pin is the mid-range, and the bottom pin is the high frequencies. The inspector shows two cutoff frequencies: between the low and mid-range; and between the mid-range and high frequencies. For example, if implementing a 3-way loudspeaker crossover, configure it as:
+ allows the configuration of 2 or more output channels. The module will then be drawn with 3 output pins. The top pin is the low frequency; the center pin is the mid-range, and the bottom pin is the high frequencies. The inspector shows two cutoff frequencies: between the low and mid-range; and between the mid-range and high frequencies. For example, if implementing a 3-way loudspeaker crossover, configure it as:
 
 ![](../../.gitbook/assets/54%20%281%29.png)
 
@@ -655,7 +647,7 @@ L_real[0], L_imag[0], R_real[0], R_imag[0], L_real[1], L_imag[1], R_real[1], R_i
 
 Two modules are provided to convert between real and complex data
 
-| Icon | Block Name | Description |
+| Icon | Name | Description |
 | :--- | :--- | :--- |
 | ![](../../.gitbook/assets/114.png) | RealImagToComplex | Converts two real signals into complex data using one as the real part and the other as the imaginary part |
 | ![](../../.gitbook/assets/115.png) | ComplexToRealImag | Converts a complex signal into separate real and imaginary components |
@@ -962,9 +954,9 @@ Although the analysis and synthesis filterbanks accept any number of channels, m
 
 The text below the filterbank modules also shows the latency through the filterbanks, in samples. The latency is the combined latency through the analysis and synthesis filterbanks given the current values of K and attenuation. Increasing K or increasing the attenuation increases the latency through the filterbanks. use the displayed latency to time align other signals in the system. For example, to check the reconstruction properties of the filterbanks, compensate using a sample delay module:
 
-![The output of the WOLA synthesis bank equals the input of the analysis bank but delayed by 352 samples. In the example above, this latency is compensated with a delay, so the output of the subtract module is essentially zero.](../../.gitbook/assets/143.png)
+![The output of the WOLA synthesis bank equals the input of the analysis bank but delayed by 352 samples.](../../.gitbook/assets/143.png)
 
-The output of the WOLA synthesis bank equals the input of the analysis bank but delayed by 352 samples. In the example above, this latency is compensated with a delay, so the output of the subtract module is essentially zero.
+In the example above, this latency is compensated with a delay, so the output of the subtract module is essentially zero.
 
 This example shows the meter module with a residual difference at around -80 dB. The filterbanks are not perfect reconstruction but introduce a small amount of aliasing noise. The level of aliasing noise is directly related to the attenuation setting of the filterbanks.
 
@@ -974,7 +966,7 @@ The filterbanks also contain built in decimation. The outputs of the analysis ba
 
 **Theory**
 
-This section describes more of the mathematical theory behind the filterbanks. The design of the filterbanks was based primarily on chapter 7 of the book _Multirate Digital Signal Processing_ by Crochiere and Rabiner. This is an excellent and very readable introduction to the subject of filterbanks. Our description follows the derivation found in this book.A classical filterbank uses a time domain window function followed by an FFT as shown below: 
+This section describes more of the mathematical theory behind the filterbanks. The design of the filterbanks was based primarily on chapter 7 of the book _Multirate Digital Signal Processing_ by Crochiere and Rabiner. This is an excellent and very readable introduction to the subject of filterbanks. Our description follows the derivation found in this book. A classical filterbank uses a time domain window function followed by an FFT as shown below: 
 
 ![](../../.gitbook/assets/screen-shot-2020-03-11-at-11.59.26-pm.png)
 
@@ -992,7 +984,7 @@ The input signal is filtered and then decimated by the block size M. The filters
 
 ℎ𝑘𝑛=ℎ0𝑛𝑒𝑗2𝜋𝑘𝑛/𝐾
 
-where h\[n\] is the _prototype lowpass filter_ and all other filters are related to the prototype filter by complex modulation. In the frequency domain, the filters are shifted versions of the prototype filter
+where $$h[n]$$ is the _prototype lowpass filter_ and all other filters are related to the prototype filter by complex modulation. In the frequency domain, the filters are shifted versions of the prototype filter
 
 𝐻𝑘𝜔=𝐻0𝜔−2𝜋𝑘/𝐾
 
@@ -1004,7 +996,7 @@ then the frequency response for $$H_0 (ω) $$ K = 32 is
 
 ![Frequency response of a 32-point Hanning window. The graph shows normalized frequencies in the range 0 to 1.0 which corresponds to 0 to &#x3C0; radians/sample.](../../.gitbook/assets/147.png)
 
-Subsequent bins are spaced by \(or when viewed as normalized frequencies\) and the first 4 bins are shown below:
+Subsequent bins are spaced by $$2π/32$$ \(or $$1/16$$ when viewed as normalized frequencies\) and the first 4 bins are shown below:
 
 ![](../../.gitbook/assets/148.png)
 
@@ -1023,7 +1015,7 @@ Is there a way to achieve high decimation while at the same time avoiding aliasi
 The main difference is that the prototype filter is N times longer and that after multiplying the input signal, the output is time aliased to the FFT length. Time aliasing is a standard property of the FFT. Suppose an input signal is given: $$r[n]$$of length $$KN$$ . Time alias this to a shorter signal $$x[n]$$ of length $$K$$ 
 
 $$
-𝑥𝑛=𝑝=0𝑁−1𝑟[𝑛+𝑝𝐾]
+𝑥𝑛 = 𝑝 = 0𝑁−1𝑟[𝑛+𝑝𝐾]
 $$
 
  The FFT$$X[k]$$of $$x[n]$$ is related to the FFT$$R[k]$$of$$r[n]$$by subsampling  
@@ -1042,7 +1034,7 @@ Now let’s plot the frequency response of the first 4 filters in the filterbank
 
 ![ First 3 subband filters for the WOLA filterbank with K=32, N=4, and a decimation factor of 16.](../../.gitbook/assets/153.png)
 
-When N is increased to a very high number to achieve a decimation factor of 32, the result is a critically sampled filterbank with no net increase in data. This limit can be approaced, but never achieved in practice. With realizable filters, a filter will always overlap its immediate neighbors. In Audio Weaver, a decimation factor of K/2 is used and the filterbanks are _oversampled_ by a factor of 2. There is a net doubling of the data rate, but this is important because it decouples the subbands and allows them to be modified without introducing further aliasing distortion.
+When N is increased to a very high number to achieve a decimation factor of 32, the result is a critically sampled filterbank with no net increase in data. This limit can be approaced, but never achieved in practice. With realizable filters, a filter will always overlap its immediate neighbors. In Audio Weaver, a decimation factor of 2 $$K/2$$ is used and the filterbanks are _oversampled_ by a factor of 2. There is a net doubling of the data rate, but this is important because it decouples the subbands and allows them to be modified without introducing further aliasing distortion.
 
 Recent theory of filterbanks has been focused on critically sampled filterbanks. These filterbanks find use in audio compression and since the goal in compression is to reduce the overall data rate, it is important not to oversample and introduce more data in the subband representation. However, the operations performed on subbands in audio codecs are very gentle compared to what is possible with our WOLA filterbanks. In audio compression, the goal is for the output to equal the input. In Audio Weaver processing systems, the focus is to be able to make gross changes to the subbands without introducing objectionable aliasing artifacts. This requires a fundamentally different approach. Furthermore, if the algo calls for a frame overlap add and overlap save convolution in a filterbank framework, oversampling is needed. _In general, in order to perform subband modifications of audio signals without introducing objectionable aliasing distortion, some amount of oversampling is required._
 
@@ -1074,11 +1066,11 @@ Part of the beauty of these filterbanks is that it is possible to manipulate the
 
 Another nice property of the WOLA filterbanks is that they have built in smoothing. That is, making an instantaneous gain change to one of the subband signals then the net effect at the output will be smooth. This is because the synthesis bank has built in low pass filters in each subband and these smooth out discontinuities.
 
-The FIR filter example can be taken further. The example above had only a single gain within each subband. What if the goal is to have more frequency resolution? Place FIR filters into each subband. A longer FIR filter would provide more resolution within that particular frequency band. Consider the following example. A filterbank has an FFT size of 64 samples and is operating with a decimation factor of 32. If the input is 48 kHz then each subband has a sample rate of 1.5 kHz. If an FIR filter of length 500 samples is placed in the DC subband \(bin k=0\), then this yields an effective frequency resolution of 3 Hz within this band. The amount of computation needed to implement this filter is approximately 1500 x 500 = 0.75 MIPs. High resolution is needed in audio applications at low frequencies. For higher frequencies, reduce the lengths of the FIR filters and achieve something close to “log frequency resolution”. By proper design of the subband filters, designing phase response becomes simple.
+The FIR filter example can be taken further. The example above had only a single gain within each subband. What if the goal is to have more frequency resolution? Place FIR filters into each subband. A longer FIR filter would provide more resolution within that particular frequency band. Consider the following example. A filterbank has an FFT size of 64 samples and is operating with a decimation factor of 32. If the input is 48 kHz then each subband has a sample rate of 1.5 kHz. If an FIR filter of length 500 samples is placed in the DC subband \(bin $$k=0$$ \), then this yields an effective frequency resolution of 3 Hz within this band. The amount of computation needed to implement this filter is approximately 1500 x 500 = 0.75 MIPs. High resolution is needed in audio applications at low frequencies. For higher frequencies, reduce the lengths of the FIR filters and achieve something close to “log frequency resolution”. By proper design of the subband filters, designing phase response becomes simple.
 
 Any of the Frequency Domain modules which operate on complex data operate in the subband domain. Audio Weaver also provides a special set of “Subband Processing” modules that start with the “Sb” prefix. These modules replicate some of the standard time domain modules but the operations occur separately in each subband.
 
-|  |  |  |  |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../.gitbook/assets/157.png) | SbAttackRelease | Attack and release envelope follower \(real data only\) |
 |  | ![](../../.gitbook/assets/158.png) | SbDerivative | Derivative \(real data only\) |
@@ -1091,11 +1083,11 @@ Any of the Frequency Domain modules which operate on complex data operate in the
 
 **Synthesis Filterbank**
 
-The synthesis filterbank takes the subband signals and reconstructs a time domain output. **Error! Reference source not found.** Remember that the analysis filterbank can be considered to be a parallel set of bandpass filters and decimators. The synthesis filterbank uses the inverse of this with upsamplers, filters, and adders. The upsamplers take the decimated subband signals and return them to the original sampling rate by inserting M-1 zeros between each sample value. In the frequency domain, upsampling creates copies of the input spectrum at multiples of and the filters remove the high frequency copies.
+The synthesis filterbank takes the subband signals and reconstructs a time domain output. **Error! Reference source not found.** Remember that the analysis filterbank can be considered to be a parallel set of bandpass filters and decimators. The synthesis filterbank uses the inverse of this with upsamplers, filters, and adders. The upsamplers take the decimated subband signals and return them to the original sampling rate by inserting $$M-1$$ zeros between each sample value. In the frequency domain, upsampling creates copies of the input spectrum at multiples of  $$2π/M $$ and the filters remove the high frequency copies.
 
 ![Synthesis filterbank implementation using upsamplers and bandpass filters.](../../.gitbook/assets/screen-shot-2020-03-12-at-1.02.52-am.png)
 
-For efficiency, the synthesis filterbank is implemented using an inverse FFT and periodic replication. As in the analysis filterbank, the window function corresponds to the impulse response of the prototype lowpass filter used in subband k=0.
+For efficiency, the synthesis filterbank is implemented using an inverse FFT and periodic replication. As in the analysis filterbank, the window function $$f[n] $$ corresponds to the impulse response of the prototype lowpass filter used in subband  $$k=0$$ .
 
 ![Synthesis bank implemented using an inverse FFT followed by windowing and overlapping.](../../.gitbook/assets/screen-shot-2020-03-12-at-1.01.56-am.png)
 
@@ -1123,7 +1115,7 @@ This list is here to keep documentation for the deprecated modules, whose docume
   <thead>
     <tr>
       <th style="text-align:left"></th>
-      <th style="text-align:left"></th>
+      <th style="text-align:left">Icon</th>
       <th style="text-align:left">Name</th>
       <th style="text-align:left">Description</th>
     </tr>
@@ -1213,7 +1205,7 @@ This list is here to keep documentation for the deprecated modules, whose docume
   </tbody>
 </table>For the above modules, the gain to apply is specified by an inspector variable. The module library also has two controllable scalers. For these modules, the gain to apply is taken from the first input pin. There are linear and dB variants and both have built-in smoothing.
 
-|  |  | Name | Description |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../.gitbook/assets/174.png) | ScalerControl | Controllable scaler with linear gain |
 |  | ![](../../.gitbook/assets/175.png) | ScalerDBControl | Controllable scaler with dB gain |
@@ -1226,16 +1218,16 @@ These modules are frequently used to invert or add an offset to a signal by sett
 
 Several other modules exist which do smoothing scaling of signals between fixed values. The MuteSmoothed module scales between 0 and 1 and the Invert module scales between +1 and -1. There is also a MuteNSmoothed module which is designed for multichannel signals and allows the individual mute control for each channel.
 
-|  |  | Name | Description |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/179.jpeg) | ![](../../.gitbook/assets/180.png) | MuteSmoothed | Smoothly mutes and unmutes a signal. |
 |  | ![](../../.gitbook/assets/181.png) | MuteNSmoothed | Multichannel mute with separate controls for each channel. Similar to ScalerNSmoothed. |
 
 The SoloMute module allows muting of all channels except one \(like soloing on a soundboard\). The SoloMute module can have multiple input pin, where each input can have multiple channels. Or, if it has a single input pin, the soloing functionality is applied to individual channels.
 
-|  | ![](../../.gitbook/assets/182.png) | SoloMute | Similar to MuteN except that it includes the ability to solo or listen to only 1 channel. |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-
+|  | ![](../../.gitbook/assets/182.png) | SoloMute | Similar to MuteN except that it includes the ability to solo or listen to only 1 channel. |
 
 #### Crossfader
 
@@ -1275,9 +1267,9 @@ The VolumeSetting module is a DCSource which outputs the gain setting, in dB; th
 
 The first step is to reduce the signal level by VolumeSetting. This is accomplished using the ScalerDBControl module. This module takes its gain setting from an input pin rather than from an inspector and allows for a control signal-dependent gain.
 
-|  | ![](../../.gitbook/assets/187.png) | ScalarDBControl | Simple dB scalar; gain controlled by control signal input |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-
+|  | ![](../../.gitbook/assets/187.png) | ScalarDBControl | Simple dB scalar; gain controlled by control signal input |
 
 In this example it will be used to allow a DC source to adjust the overall volume. Thus begins the system as shown below:
 
@@ -1285,9 +1277,9 @@ In this example it will be used to allow a DC source to adjust the overall volum
 
 Another example of a control signal module is the SOFControl module.
 
-|  | ![](../../.gitbook/assets/189.png) | SOF Control | Second-order filter with gain determined by control signal input |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-
+|  | ![](../../.gitbook/assets/189.png) | SOF Control | Second-order filter with gain determined by control signal input |
 
 The SOFControl module allows for a control signal to adjust parameters \(frequency, gain, or Q\) of a second order filter. The control parameter\(s\) are selected in the module’s module properties. In this case, only the gain is controlled as shown below:
 
@@ -1301,9 +1293,9 @@ In this example, this will allow for a volume-dependent bass \(and treble\) boos
 
 Since the purpose of this filter is to boost bass frequencies, a filter type of “Peak EQ” and a frequency of 30 Hz are selected in the module’s inspector. The upper input pin of the SOFControl module requires a control signal input. This control input will originate from the DCSource controlling the volume. To achieve the equal-loudness contour, the bass must be boosted in relation to the volume. The mapping between the volume and the bass boost is accomplished with the TableInterp module:
 
-|  | ![](../../.gitbook/assets/193.png) | TableInterp | Second-order filter with gain determined by control signal input |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-
+|  | ![](../../.gitbook/assets/193.png) | TableInterp | Second-order filter with gain determined by control signal input |
 
 The TableInterp module allows the user to map out the intended input-output relation visually and interpolates between given points to produce a continuous function. In this case, the relation shown below will be sufficient:
 
@@ -1325,7 +1317,7 @@ This TableInterp will use a slightly different relation but will achieve fundame
 
 A Boolean signal has only two possible values, 0 and 1. Boolean data is useful for controlling systems. Boolean signals are represented using 32-bit integer values. Audio Weaver includes several modules that perform logical operations on Boolean signals.
 
-|  |  | Name | Description |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../.gitbook/assets/197.png) | BooleanInvert | Inverts a Boolean signal \(logical NOT gate\) |
 |  | ![](../../.gitbook/assets/198.png) | LogicAll | Resolves to 1 if and only if all its inputs are non-zero \(logical AND gate\) |
@@ -1333,19 +1325,19 @@ A Boolean signal has only two possible values, 0 and 1. Boolean data is useful f
 
 By default the LogicAll and LogicAny modules do not have any output wires; they store the output in an internal variable \(“.result”\). By checking the box next to “outputValue” in the module properties, an output pin can be created.
 
-|  |  | Name | Description |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../.gitbook/assets/200.png) | LogicBinaryOp | Performs binary operations on Boolean data |
 
 The LogicBinaryOp module allows the user to select a logical operation \(logical AND, OR, and XOR\). It takes two control signals as input and outputs one wire with the computed Boolean value.
 
-|  |  | Name | Description |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../.gitbook/assets/201.png) | BooleanSource | Source module with Boolean data output |
 
 The BooleanSource module is a source module that supplies a buffer of Boolean data. As with any source module, the number of channels, block size, and sample rate are user-specified in the module properties.
 
-|  |  | Name | Description |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../.gitbook/assets/202.png) | LogicCompare | Compares input values |
 |  | ![](../../.gitbook/assets/203.png) | LogicConstCompare | Compares input to constant |
@@ -1420,7 +1412,7 @@ $$
 
 These modules perform basic math operations.
 
-|  |  |  |  |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/209.jpeg) | ![](../../.gitbook/assets/210.png) | Adder | Adds signals |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/209.jpeg) | ![](../../.gitbook/assets/212.png) | Subtract | Subtracts signals |
@@ -1457,14 +1449,6 @@ To convert to and from dB10 and dB20, this folder hosts Approx and exact modules
 #### Lookup Tables
 
 ![](../../.gitbook/assets/222.png)
-
-
-
-
-
-The Table Interp module uses a table with clickable/movable points to discern how the input values scale into the output pin. For data in between the points, the scaling is interpolated either linearly or cubicly
-
-![](../../.gitbook/assets/2%20%283%29.png)
 
 <table>
   <thead>
@@ -1530,7 +1514,7 @@ For non-interpolated lookup tables, an integer index is listed, and output is ba
 
 Modules which implement point nonlinearities and are stateless and easy to understand. They are listed below and used in the examples later on.
 
-|  |  | Name | Description |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/232.jpeg) | ![](../../.gitbook/assets/233.png) | ClipAsym | Hard clipper |
 |  | ![](../../.gitbook/assets/234.png) | Polynomial | Polynomial f\(x\) |
@@ -1554,7 +1538,7 @@ This module builds virtual biquads in memory with a number of max stages, and a 
 
 ![](../../.gitbook/assets/239.png)
 
-Set maxStages in the Arguments tab.
+Set `maxStages` in the Arguments tab.
 
 ![](../../.gitbook/assets/243.png)
 
@@ -1600,19 +1584,17 @@ This module is used to measure a room based on a periodic output of the input si
 
 The ParamGet module reads the value of a parameter from an existing module and outputs it on a wire for use elsewhere in the system. Which parameter to output is specified in the module properties, with “name of the module”.“parameter to be output”. An example of this module can be found in ParamSet and ParamGet.
 
-|  | ![](../../.gitbook/assets/244.png) | ParamGet | Outputs a parameter from a specified module |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-
-
-#### 
+|  | ![](../../.gitbook/assets/244.png) | ParamGet | Outputs a parameter of a specified module |
 
 ![ParamGet Inspector](../../.gitbook/assets/243.png)
 
 #### Param Set
 
-|  | ![](../../.gitbook/assets/245.png) | ParamSet |  | Sets a parameter of a specified module |
-| :--- | :--- | :--- | :--- | :--- |
-
+|  | Icon | Name | Description |
+| :--- | :--- | :--- | :--- |
+|  | ![](../../.gitbook/assets/245.png) | ParamSet | Sets a parameter of a specified module |
 
 The ParamSet module does the opposite: it takes an input from the system and sets its value to a parameter of an existing module. The key is that this module can set parameters of any type of module, which eliminates the need to create separate controllable versions of each module. An example of this module can be found in ParamSet and ParamGet.
 
@@ -1660,11 +1642,13 @@ The Mixer module holds a matrix representing the downmix equations, which are sh
 
 ![](../../.gitbook/assets/249.png)
 
-```text
+$$
 Lt = L + -3dB*C + -3dB*(-Ls -Rs)
+$$
 
-Rt = R + -3dB*C + -3dB*(Ls + Rs),
-```
+$$
+Rt = R + -3dB*C + -3dB*(Ls + Rs)
+$$
 
 The Mixer module stores a matrix of all the gain coefficients and performs matrix multiplication to apply the gains to the appropriate channels. When the matrix becomes large, this computation becomes very expensive. It may be beneficial to deinterleave out channels if they don’t require the mixing stage.
 
@@ -1699,7 +1683,7 @@ The sampling rate is 48 kHz and the block size is 32 samples. Each block of audi
 
 There are 4 modules which can be used to change the sampling rate and still maintain the same block time.
 
-|  |  |  |  |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../.gitbook/assets/253.png) | Upsampler | Inserts zeros between samples. No filtering |
 |  | ![](../../.gitbook/assets/254.png) | Downsampler | Discards samples. No filtering. |
@@ -1722,13 +1706,13 @@ On the module properties for the FIRInterpolator / FIRDecimator specify the up /
 
 The Rebuffer module stores and overlaps buffer data into larger block sizes, allowing for more data to be displayed. It does not change the fundamental block size for the system.
 
-|  | ![](../../.gitbook/assets/261.png) | Rebuffer | Overlaps data into larger block sizes, allowing for longer time displays. Does not change fundamental block size |
+|  | ![](../../.gitbook/assets/261.png) | Name | Description |
 | :--- | :--- | :--- | :--- |
+|  | ![](../../.gitbook/assets/261.png) | Rebuffer | Overlaps data into larger block sizes, allowing for longer time displays. Does not change fundamental block size |
 
+The Rebuffer can accept data of any type. In its module properties is a variable called `outBlockSize`, which allows the user to set the output block size for the module. If a positive value is entered, that value is used as the output block size. If a negative value is entered, the value is used as a multiplier to the input block size. For example, an `outBlockSize` of 32 will yield an output of block size 32, and an `outBlockSize` of -8 yields an output with 8 times the block size of the input.
 
-The Rebuffer can accept data of any type. In its module properties is a variable called “outBlockSize,” which allows the user to set the output block size for the module. If a positive value is entered, that value is used as the output block size. If a negative value is entered, the value is used as a multiplier to the input block size. For example, an outBlockSize of 32 will yield an output of block size 32, and an outBlockSize of -8 yields an output with 8 times the block size of the input.
-
-For example, the following block diagram shows a SinGen source wired directly to a Sink module to view in the scope display:
+For example, the following block diagram shows a `SinGen` source wired directly to a Sink module to view in the scope display:
 
 ![](../../.gitbook/assets/262.png)
 
@@ -1758,7 +1742,7 @@ The Rebuffer module is useful for frequency domain processing when it is necessa
 
 In some applications processing needs to be performed at multiple block times. Consider a system that has low latency processing with a block size of 32 samples combined with frequency domain processing at a block size of 256 samples. At a 48 kHz sampling rate, the 32 sample processing would occur every 2/3 millisecond while the 256 sample processing would occur every 5 1/3 millisecond. This type of processing is achieved using the BufferUp and BufferDown modules.
 
-|  | Name | Description |
+| Icon | Name | Description |
 | :--- | :--- | :--- |
 | ![](../../.gitbook/assets/268.png) | BufferUp | Buffers up to larger blocks without overlapping. |
 | ![](../../.gitbook/assets/269.png) | BufferDown | Buffers down to smaller blocks without dropping samples. |
@@ -1800,7 +1784,7 @@ There are 3 different types of muxes:
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Icon</th>
       <th style="text-align:left">Name</th>
       <th style="text-align:left">Description</th>
     </tr>
@@ -1900,8 +1884,9 @@ Finally, the plot will pop up in its own window with the standard matlab plot ca
 
 Two of the most basic modules are the Interleave and Deinterleave modules.
 
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/291.jpeg) | ![](../../.gitbook/assets/292.png) | Deinterleave | Turns multichannel signals into separate mono signals. |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/291.jpeg) | ![](../../.gitbook/assets/292.png) | Deinterleave | Turns multichannel signals into separate mono signals. |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/293.jpeg) | ![](../../.gitbook/assets/294.png) | Interleave | Combines multiple mono channels into a single interleaved signal. |
 
 These modules are part of the default system which is created when starting a new design. For the Deinterleave module specify the number of output channels on module properties and it must match the number of input channels. If there is a mismatch an error will pop up when the system is built.
@@ -1923,26 +1908,26 @@ The Router module simply copies input channels to output channels. The module so
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">
-        <img src="../../.gitbook/assets/297.jpeg" alt="http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg"
-        />
-      </th>
-      <th style="text-align:left">
-        <img src="../../.gitbook/assets/298.png" alt/>
-      </th>
-      <th style="text-align:left">Router</th>
-      <th style="text-align:left">
-        <p>Copies and combines audio channels.</p>
-        <p>No smoothing.</p>
-      </th>
+      <th style="text-align:left"></th>
+      <th style="text-align:left">Icon</th>
+      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/297.jpeg" alt="http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg"
+        />
+      </td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/298.png" alt/>
+      </td>
+      <td style="text-align:left">Router</td>
+      <td style="text-align:left">
+        <p>Copies and combines audio channels.</p>
+        <p>No smoothing.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"></td>
@@ -1984,9 +1969,13 @@ In the second example, a sound card with 12 input channels is used. The 2 target
 
 For the final example, crossfeed between the left and right channels. That is…
 
+$$
 𝐿𝑜𝑢𝑡=𝐿𝑖𝑛+0.25𝑅𝑖𝑛
+$$
 
+$$
 𝑅𝑜𝑢𝑡=𝑅𝑖𝑛+0.25𝐿𝑖𝑛
+$$
 
 The router module can be used to swap the order of the left and right channels making it easy to implement the crossfeed utilizing stereo processing.
 
@@ -2004,7 +1993,7 @@ Suppose that there are two wires holding 5.1 channel data. The channels are orde
 
 ![](../../.gitbook/assets/307.png)
 
-The values in the channelIndex array are computed as[\[5\]]():
+The values in the channelIndex array are computed as:
 
 ```text
 Pin 0, Channel 0 -->    (0 << 16) + 0    =    0
@@ -2015,7 +2004,7 @@ Pin 0, Channel 4 -->    (0 << 16) + 4    =    4
 Pin 0, Channel 5 -->    (0 << 16) + 5    =    5
 ```
 
-
+Note: The notation \(pin &lt;&lt; 16\) represents a left shift by 16 bits. Alternatively this equals \(pin \* 65536\).
 
 {% hint style="info" %}
 The notation \(pin &lt;&lt; 16\) represents a left shift by 16 bits. Alternatively this equals \(pin \* 65536\).
@@ -2027,7 +2016,7 @@ The Router module can handle any 32-bit data type. The channelIndex array can be
 
 Sink modules have an input pin but no output. Sinks are used to tie off unused module pins or for plotting of immediate data.
 
-|  |  |  |  |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/308.jpeg) | ![](../../.gitbook/assets/309.png) | NullSink | Ties off unused module outputs. No internal buffer. |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/310.jpeg) | ![](../../.gitbook/assets/311.png) | Sink | Copies Floating point data from the wire to an internal buffer. Can be used as a scope display. |
@@ -2051,7 +2040,7 @@ If the Sink module is displaying a signal with a block size of 1 then the inspec
 
 ![](../../.gitbook/assets/316.png)
 
-The Sink module shown above is in a system that has a 32 sample block size and displays less than a millisecond of data. The Sink module is often used in conjunction with the Rebuffer module to display longer time sequences. For example, Rebuffer[\[6\]]() the data into a 1024 sample block and then attach this to a Sink module.
+The Sink module shown above is in a system that has a 32 sample block size and displays less than a millisecond of data. The Sink module is often used in conjunction with the Rebuffer module to display longer time sequences. For example, Rebuffer \(described in the [Multirate](modules.md#multirate) section\) the data into a 1024 sample block and then attach this to a Sink module.
 
 ![](../../.gitbook/assets/317.png)
 
@@ -2063,19 +2052,19 @@ The waveform shows would be about 23 msec in length as shown below and also show
 
 If only an instantaneous view of a system value is desired, the Meter module can be used instead.
 
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/319.jpeg) | ![](../../.gitbook/assets/320.png) | Meter | Shows instantaneous dB level in inspector; has multichannel input and separately meters each channel |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/319.jpeg) | ![](../../.gitbook/assets/320.png) | Meter | Shows instantaneous dB level in inspector; has multichannel input and separately meters each channel |
 
+ The Meter module’s instantaneous display is shown in its inspector and the inspector expands to include multiple channels.
 
-The Meter module’s instantaneous display is shown in its inspector and the inspector expands to include multiple channels.
-
- ![](../../.gitbook/assets/321.png) ![](../../.gitbook/assets/322.png)
+![](../../.gitbook/assets/321.png) ![](../../.gitbook/assets/322.png)
 
 The ClipIndicator module also provides instantaneous feedback in real-time, but it only displays whether or not audio is being clipped \(i.e. the signal exceeds 0 dB\).
 
-|  | ![](../../.gitbook/assets/323.png) | ClipIndicator | Shows instances of clipping in real-time |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-
+|  | ![](../../.gitbook/assets/323.png) | ClipIndicator | Shows instances of clipping in real-time |
 
 A black box in the inspector indicates no clipping is occurring:
 
@@ -2099,9 +2088,9 @@ This module folder hosts the balance module, used for arranging a stereo space u
 
 The RunningMin/Max module can be used to find minimum and maximum of values being processed in real-time. The module keeps track of the min and max values seen over all time and the process can be restarted using a checkbox on the inspector.
 
-|  | ![](../../.gitbook/assets/327.png) | RunningMin/Max | Stores the minimum and maximum values seen thus far. Can output the value, but this is off by default |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-
+|  | ![](../../.gitbook/assets/327.png) | RunningMin/Max | Stores the minimum and maximum values seen thus far. Can output the value, but this is off by default |
 
 This module can output the minimum and maximum values as well as storing and displaying them in the inspector, but this is off by default. It can be turned on by selecting the checkbox next to “outputValue – output type” in the module’s module properties:
 
@@ -2123,9 +2112,9 @@ Sources are often very loud \(0 dB\) and must be followed by a scalar to reduce 
 
 The following source modules are available in the Source folder:
 
-|  |  | Name | Sine wave generator with no smoothing |
+|  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/329.png) | SineGen |  |
+|  | ![](../../.gitbook/assets/329.png) | SineGen | Sine wave generator with no smoothing |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/330.jpeg) | ![](../../.gitbook/assets/331.png) | SineSmoothedGen | Sine wave generator with smoothing |
 |  | ![](../../.gitbook/assets/332.png) | Source | Continuously copies data from internal buffer to output wire |
 | ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/333.jpeg) | ![](../../.gitbook/assets/334.png) | DCSource | Continuously outputs DC value to output wire |
