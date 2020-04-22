@@ -1070,16 +1070,16 @@ The FIR filter example can be taken further. The example above had only a single
 
 Any of the Frequency Domain modules which operate on complex data operate in the subband domain. Audio Weaver also provides a special set of “Subband Processing” modules that start with the “Sb” prefix. These modules replicate some of the standard time domain modules but the operations occur separately in each subband.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/157.png) | SbAttackRelease | Attack and release envelope follower \(real data only\) |
-|  | ![](../../.gitbook/assets/158.png) | SbDerivative | Derivative \(real data only\) |
-|  | ![](../../.gitbook/assets/159.png) | SbComplexFIR | Complex FIR filter |
-|  | ![](../../.gitbook/assets/160.png) | SbNLMS | Normalized LMS adaptive filter |
-|  | ![](../../.gitbook/assets/161.png) | SbSmooth | Performs smoothing across subbands \(real data only\) |
-|  | ![](../../.gitbook/assets/162.png) | SbRMS | RMS with settable time constant \(real data only\) |
-|  | ![](../../.gitbook/assets/163.png) | SbSOF | Second order filter \(real data only\) |
-|  | ![](../../.gitbook/assets/164.png) | SbSplitter | Subdivides the spectrum into overlapping regions. Similar to a crossover |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/157.png) | SbAttackRelease | Attack and release envelope follower \(real data only\) |
+| ![](../../.gitbook/assets/158.png) | SbDerivative | Derivative \(real data only\) |
+| ![](../../.gitbook/assets/159.png) | SbComplexFIR | Complex FIR filter |
+| ![](../../.gitbook/assets/160.png) | SbNLMS | Normalized LMS adaptive filter |
+| ![](../../.gitbook/assets/161.png) | SbSmooth | Performs smoothing across subbands \(real data only\) |
+| ![](../../.gitbook/assets/162.png) | SbRMS | RMS with settable time constant \(real data only\) |
+| ![](../../.gitbook/assets/163.png) | SbSOF | Second order filter \(real data only\) |
+| ![](../../.gitbook/assets/164.png) | SbSplitter | Subdivides the spectrum into overlapping regions. Similar to a crossover |
 
 **Synthesis Filterbank**
 
@@ -1114,7 +1114,6 @@ This list is here to keep documentation for the deprecated modules, whose docume
 <table>
   <thead>
     <tr>
-      <th style="text-align:left"></th>
       <th style="text-align:left">Icon</th>
       <th style="text-align:left">Name</th>
       <th style="text-align:left">Description</th>
@@ -1122,7 +1121,6 @@ This list is here to keep documentation for the deprecated modules, whose docume
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"></td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/167.png" alt/>
       </td>
@@ -1134,7 +1132,6 @@ This list is here to keep documentation for the deprecated modules, whose docume
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"></td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/168.png" alt/>
       </td>
@@ -1146,7 +1143,6 @@ This list is here to keep documentation for the deprecated modules, whose docume
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"></td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/169.png" alt/>
       </td>
@@ -1158,7 +1154,6 @@ This list is here to keep documentation for the deprecated modules, whose docume
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"></td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/170.png" alt/>
       </td>
@@ -1170,7 +1165,6 @@ This list is here to keep documentation for the deprecated modules, whose docume
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"></td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/171.png" alt/>
       </td>
@@ -1181,7 +1175,6 @@ This list is here to keep documentation for the deprecated modules, whose docume
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"></td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/172.png" alt/>
       </td>
@@ -1192,7 +1185,6 @@ This list is here to keep documentation for the deprecated modules, whose docume
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"></td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/173.png" alt/>
       </td>
@@ -1225,9 +1217,9 @@ Several other modules exist which do smoothing scaling of signals between fixed 
 
 The SoloMute module allows muting of all channels except one \(like soloing on a soundboard\). The SoloMute module can have multiple input pin, where each input can have multiple channels. Or, if it has a single input pin, the soloing functionality is applied to individual channels.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/182.png) | SoloMute | Similar to MuteN except that it includes the ability to solo or listen to only 1 channel. |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/182.png) | SoloMute | Similar to MuteN except that it includes the ability to solo or listen to only 1 channel. |
 
 #### Crossfader
 
@@ -1267,9 +1259,9 @@ The VolumeSetting module is a DCSource which outputs the gain setting, in dB; th
 
 The first step is to reduce the signal level by VolumeSetting. This is accomplished using the ScalerDBControl module. This module takes its gain setting from an input pin rather than from an inspector and allows for a control signal-dependent gain.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/187.png) | ScalarDBControl | Simple dB scalar; gain controlled by control signal input |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/187.png) | ScalarDBControl | Simple dB scalar; gain controlled by control signal input |
 
 In this example it will be used to allow a DC source to adjust the overall volume. Thus begins the system as shown below:
 
@@ -1277,9 +1269,9 @@ In this example it will be used to allow a DC source to adjust the overall volum
 
 Another example of a control signal module is the SOFControl module.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/189.png) | SOF Control | Second-order filter with gain determined by control signal input |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/189.png) | SOF Control | Second-order filter with gain determined by control signal input |
 
 The SOFControl module allows for a control signal to adjust parameters \(frequency, gain, or Q\) of a second order filter. The control parameter\(s\) are selected in the module’s module properties. In this case, only the gain is controlled as shown below:
 
@@ -1293,9 +1285,9 @@ In this example, this will allow for a volume-dependent bass \(and treble\) boos
 
 Since the purpose of this filter is to boost bass frequencies, a filter type of “Peak EQ” and a frequency of 30 Hz are selected in the module’s inspector. The upper input pin of the SOFControl module requires a control signal input. This control input will originate from the DCSource controlling the volume. To achieve the equal-loudness contour, the bass must be boosted in relation to the volume. The mapping between the volume and the bass boost is accomplished with the TableInterp module:
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/193.png) | TableInterp | Second-order filter with gain determined by control signal input |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/193.png) | TableInterp | Second-order filter with gain determined by control signal input |
 
 The TableInterp module allows the user to map out the intended input-output relation visually and interpolates between given points to produce a continuous function. In this case, the relation shown below will be sufficient:
 
@@ -1317,30 +1309,30 @@ This TableInterp will use a slightly different relation but will achieve fundame
 
 A Boolean signal has only two possible values, 0 and 1. Boolean data is useful for controlling systems. Boolean signals are represented using 32-bit integer values. Audio Weaver includes several modules that perform logical operations on Boolean signals.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/197.png) | BooleanInvert | Inverts a Boolean signal \(logical NOT gate\) |
-|  | ![](../../.gitbook/assets/198.png) | LogicAll | Resolves to 1 if and only if all its inputs are non-zero \(logical AND gate\) |
-|  | ![](../../.gitbook/assets/199.png) | LogicAny | Resolves to 1 if any of its inputs are non-zero \(logical OR gate\) |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/197.png) | BooleanInvert | Inverts a Boolean signal \(logical NOT gate\) |
+| ![](../../.gitbook/assets/198.png) | LogicAll | Resolves to 1 if and only if all its inputs are non-zero \(logical AND gate\) |
+| ![](../../.gitbook/assets/199.png) | LogicAny | Resolves to 1 if any of its inputs are non-zero \(logical OR gate\) |
 
 By default the LogicAll and LogicAny modules do not have any output wires; they store the output in an internal variable \(“.result”\). By checking the box next to “outputValue” in the module properties, an output pin can be created.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/200.png) | LogicBinaryOp | Performs binary operations on Boolean data |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/200.png) | LogicBinaryOp | Performs binary operations on Boolean data |
 
 The LogicBinaryOp module allows the user to select a logical operation \(logical AND, OR, and XOR\). It takes two control signals as input and outputs one wire with the computed Boolean value.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/201.png) | BooleanSource | Source module with Boolean data output |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/201.png) | BooleanSource | Source module with Boolean data output |
 
 The BooleanSource module is a source module that supplies a buffer of Boolean data. As with any source module, the number of channels, block size, and sample rate are user-specified in the module properties.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/202.png) | LogicCompare | Compares input values |
-|  | ![](../../.gitbook/assets/203.png) | LogicConstCompare | Compares input to constant |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/202.png) | LogicCompare | Compares input values |
+| ![](../../.gitbook/assets/203.png) | LogicConstCompare | Compares input to constant |
 
 The LogicCompare module performs one of many possible comparisons on two input values. In its Inspector is a drop-down menu of the possible comparisons: EQUAL, NOTEQUAL, LESSTHAN, LESSOREQUAL, GREATERTHAN, and GREATEROREQUAL.
 
@@ -1460,22 +1452,28 @@ To convert to and from dB10 and dB20, this folder hosts Approx and exact modules
   <tbody>
     <tr>
       <td style="text-align:left">
-        <p>The Table Interp module uses a table with clickable/movable points to
-          discern how the input values scale into the output pin. For data in between
-          the points, the scaling is interpolated either linearly or cubicly</p>
+        <p></p>
         <p>
           <img src="../../.gitbook/assets/2 (3).png" alt/>
         </p>
+        <p>The Table Interp module uses a table with clickable/movable points to
+          discern how the input values scale into the output pin. For data in between
+          the points, the scaling is interpolated either linearly or cubicly</p>
       </td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/224.png" alt/>
       </td>
     </tr>
     <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
       <td style="text-align:left">
         <p>
           <img src="../../.gitbook/assets/226.png" alt/>
         </p>
+        <p></p>
         <p>Table Interp2d takes in a vector input (x and y pins) and scales them
           according to the nPoints length matrix. It uses bilinear interpolation
           of the table values at the four neighboring points (above, below, left,
@@ -1490,6 +1488,7 @@ To convert to and from dB10 and dB20, this folder hosts Approx and exact modules
         <p>
           <img src="../../.gitbook/assets/229.png" alt/>
         </p>
+        <p></p>
         <p>TableLookup uses either Linear or nearest interpolation. The user has
           to specify the upper and lower bounds of this table. Set the size of the
           table with the &#x2018;L&#x2019; variable found in the arguments:</p>
@@ -1500,13 +1499,9 @@ To convert to and from dB10 and dB20, this folder hosts Approx and exact modules
       </td>
     </tr>
   </tbody>
-</table>
-
-For non-interpolated lookup tables, an integer index is listed, and output is based on that index’s data value. That data can be float or int type data.
+</table>For non-interpolated lookup tables, an integer index is listed, and output is based on that index’s data value. That data can be float or int type data.
 
 ![TableLookupIntFloat](../../.gitbook/assets/230.png)
-
-#### 
 
 ![TableLookupIntInt](../../.gitbook/assets/231.png)
 
@@ -1526,7 +1521,7 @@ Other nonlinearities which are documented elsewhere are the Abs, TableInterp, So
 
 Trig functions are simple enough to not need much detail. They operate in radians, not degrees. The following trig functions are provided:
 
-#### ![](../../.gitbook/assets/237.png)
+![](../../.gitbook/assets/237.png)
 
 ### Misc
 
@@ -1550,9 +1545,11 @@ This module outputs the number of blocks processed based on the system BlockSize
 
 #### Coeff Table
 
+This module is similar to paramSet, except it sends a vectored variable rather than a singular numeric variable. Set the coeffs to be sent to the variable by typing into the properties sheet, then clicking apply. \(See below.\) 
+
 ![](../../.gitbook/assets/241.png)
 
-This module is similar to paramSet, except it sends a vectored variable rather than a singular numeric variable. Set the coeffs to be sent to the variable by typing into the properties sheet, then clicking apply\(see right\). Upon clicking apply, the coefficient data is sent to whatever module lies within the modVar argument. \(see below\)
+Upon clicking apply, the coefficient data is sent to whatever module lies within the modVar argument. \(See below.\)
 
 ![](../../.gitbook/assets/242.png)
 
