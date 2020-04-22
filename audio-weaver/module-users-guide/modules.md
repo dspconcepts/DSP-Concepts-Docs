@@ -1555,7 +1555,7 @@ Upon clicking apply, the coefficient data is sent to whatever module lies within
 
 #### Counter
 
-This counter module counts at a given interval, with a minimum interval of one msec. This is good for debugging, as it gives a time constant to determine when\(in ms\) an issue arises.
+This counter module counts at a given interval, with a minimum interval of one msec. This is good for debugging, as it gives a time constant to determine when \(in ms\) an issue arises.
 
 #### Cycle Burner
 
@@ -1581,17 +1581,17 @@ This module is used to measure a room based on a periodic output of the input si
 
 The ParamGet module reads the value of a parameter from an existing module and outputs it on a wire for use elsewhere in the system. Which parameter to output is specified in the module properties, with “name of the module”.“parameter to be output”. An example of this module can be found in ParamSet and ParamGet.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/244.png) | ParamGet | Outputs a parameter of a specified module |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/244.png) | ParamGet | Outputs a parameter of a specified module |
 
 ![ParamGet Inspector](../../.gitbook/assets/243.png)
 
 #### Param Set
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/245.png) | ParamSet | Sets a parameter of a specified module |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/245.png) | ParamSet | Sets a parameter of a specified module |
 
 The ParamSet module does the opposite: it takes an input from the system and sets its value to a parameter of an existing module. The key is that this module can set parameters of any type of module, which eliminates the need to create separate controllable versions of each module. An example of this module can be found in ParamSet and ParamGet.
 
@@ -1632,8 +1632,6 @@ Mixers combine separate audio sources into fewer channels, or into each other.
 A Mixer is an M x N array of gains that transform M input channels into N output channels. This is useful for combining signals together, and consolidating many gain values into a single module. Our Mixer module is smoothed, and optimized based on the amount of non-zero coefficients specified by the user. It supports input pin controls or single pin, multi-channel controls. A mixer is good for handling many channels at once, so it excels in the algorithm for downmixing from surround sound 5.1 to stereo. This means transforming 5 input channels to 2 output channels:
 
 ![](../../.gitbook/assets/250.png)
-
-
 
 The Mixer module holds a matrix representing the downmix equations, which are shown in its inspector \(in linear units\):
 
@@ -1703,9 +1701,9 @@ On the module properties for the FIRInterpolator / FIRDecimator specify the up /
 
 The Rebuffer module stores and overlaps buffer data into larger block sizes, allowing for more data to be displayed. It does not change the fundamental block size for the system.
 
-|  | ![](../../.gitbook/assets/261.png) | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/261.png) | Rebuffer | Overlaps data into larger block sizes, allowing for longer time displays. Does not change fundamental block size |
+| ![](../../.gitbook/assets/261.png) | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/261.png) | Rebuffer | Overlaps data into larger block sizes, allowing for longer time displays. Does not change fundamental block size |
 
 The Rebuffer can accept data of any type. In its module properties is a variable called `outBlockSize`, which allows the user to set the output block size for the module. If a positive value is entered, that value is used as the output block size. If a negative value is entered, the value is used as a multiplier to the input block size. For example, an `outBlockSize` of 32 will yield an output of block size 32, and an `outBlockSize` of -8 yields an output with 8 times the block size of the input.
 
@@ -1837,10 +1835,6 @@ Here are a few examples of how to use a multiplexor module in practice. Multiple
 
 ![](../../.gitbook/assets/281.png)
 
-
-
-
-
 In the next example, 2 different versions of an algorithm are compared to see which one sounds better. This is a classical “A/B” comparison in audio.
 
 ![](../../.gitbook/assets/282.png)
@@ -1938,9 +1932,7 @@ The Router module simply copies input channels to output channels. The module so
       </td>
     </tr>
   </tbody>
-</table>
-
-In its most general form, the Router module has M input pins and N output channels. The numbers M and N are specified on the module properties:
+</table>In its most general form, the Router module has M input pins and N output channels. The numbers M and N are specified on the module properties:
 
 ![](../../.gitbook/assets/301.png)
 
@@ -2059,9 +2051,9 @@ If only an instantaneous view of a system value is desired, the Meter module can
 
 The ClipIndicator module also provides instantaneous feedback in real-time, but it only displays whether or not audio is being clipped \(i.e. the signal exceeds 0 dB\).
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/323.png) | ClipIndicator | Shows instances of clipping in real-time |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/323.png) | ClipIndicator | Shows instances of clipping in real-time |
 
 A black box in the inspector indicates no clipping is occurring:
 
@@ -2085,9 +2077,9 @@ This module folder hosts the balance module, used for arranging a stereo space u
 
 The RunningMin/Max module can be used to find minimum and maximum of values being processed in real-time. The module keeps track of the min and max values seen over all time and the process can be restarted using a checkbox on the inspector.
 
-|  | Icon | Name | Description |
-| :--- | :--- | :--- | :--- |
-|  | ![](../../.gitbook/assets/327.png) | RunningMin/Max | Stores the minimum and maximum values seen thus far. Can output the value, but this is off by default |
+| Icon | Name | Description |
+| :--- | :--- | :--- |
+| ![](../../.gitbook/assets/327.png) | RunningMin/Max | Stores the minimum and maximum values seen thus far. Can output the value, but this is off by default |
 
 This module can output the minimum and maximum values as well as storing and displaying them in the inspector, but this is off by default. It can be turned on by selecting the checkbox next to “outputValue – output type” in the module’s module properties:
 
