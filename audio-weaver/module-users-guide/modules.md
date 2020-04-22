@@ -1458,7 +1458,7 @@ To convert to and from dB10 and dB20, this folder hosts Approx and exact modules
         </p>
         <p>The Table Interp module uses a table with clickable/movable points to
           discern how the input values scale into the output pin. For data in between
-          the points, the scaling is interpolated either linearly or cubicly</p>
+          the points, the scaling is interpolated either linearly or cubicly.</p>
       </td>
       <td style="text-align:left">
         <img src="../../.gitbook/assets/224.png" alt/>
