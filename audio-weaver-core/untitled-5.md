@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The AWECore™ is an embedded library enabling Audio Weaver signal processing and remote tuning. This document describes the theory of operation and the basic concepts of Audio Weaver.
+The AWECore is an embedded library enabling Audio Weaver signal processing and remote tuning. This document describes the theory of operation and the basic concepts of Audio Weaver.
 
 The AWECore™ deliverable consists of a set of libraries to be integrated into embedded firmware. It is context-agnostic, so it can be used with an OS or a simple priority-based scheduling scheme.
 
