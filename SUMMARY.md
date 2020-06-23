@@ -6,7 +6,7 @@
 
 * [Module Users Guide](audio-weaver/module-users-guide/README.md)
   * [Modules](audio-weaver/module-users-guide/modules/README.md)
-    * [Router](audio-weaver/module-users-guide/modules/example-detailed-module.md)
+    * [Router](audio-weaver/module-users-guide/modules/router.md)
   * [Examples](audio-weaver/module-users-guide/examples.md)
 
 ## Audio Weaver Designer
