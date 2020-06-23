@@ -15,7 +15,7 @@ An inspector for a Router module with 4 output channels is shown below.  Each ro
 The Router module operates on all 32-bit data types \(floating-point, fract32, and integer\).  The module supports changing the channel mapping at run-time. Keep in mind that this module does not use smoothly and you may get audible pops and clicks.  The RouterSmoothed module has the same functionality but includes smoothing.
 
 {% hint style="info" %}
-Note that the input channels shown in the routing table are updated during pin propagation.  If you do not see the correct channels available, you will need to fullly wire your block diagram and then Propagate Changes.
+Note that the input channels shown in the routing table are updated during pin propagation.  If you do not see the correct channels available, you will need to fully wire your block diagram and then Propagate Changes.
 {% endhint %}
 
 ## Examples
@@ -46,7 +46,7 @@ Supposed you have a 6 channel wiring corresponding to a 5.1 channel signal.  Ass
 
 ### Swapping Left and Right Channels
 
-The output channels do now have to be in the same order as the inputs. For example, suppose you have a stereo signal and you want to swap the order of the left and right channels. Create the Router module with 1 input pin and 2 output channels. Then set:
+The output channels do not have to be in the same order as the inputs. For example, suppose you have a stereo signal and you want to swap the order of the left and right channels. Create the Router module with 1 input pin and 2 output channels. Then set:
 
 ![](../../../.gitbook/assets/image%20%2861%29.png)
 
@@ -76,33 +76,33 @@ The Router module is implemented by the function router\_module.m.  The function
 
 where
 
-NAME - name of the module
+`NAME` - name of the module
 
-NUMINPIN - number of input pins
+`NUMINPIN` - number of input pins
 
-NUMOUTCHANNEL - number of output channels.
+`NUMOUTCHANNEL` - number of output channels.
 
-The module has an array channelIndex of length N.  channelIndex\[k\] specifies the mapping of input channels \(pin and channel\) to output channel k.  Each 32-bit integer value is packed as:
+The module has an array `channelIndex` of length N.  `channelIndex[k]` specifies the mapping of input channels \(pin and channel\) to output channel k.  Each 32-bit integer value is packed as:
 
-channelIndex = \(pinNum &lt;&lt; 16\) + \(channelNum\)
+`channelIndex = (pinNum << 16) + (channelNum)`
 
 or alternatively,
 
-channelIndex = \(pinNum \* 65536\) + \(channelNum\).
+`channelIndex = (pinNum * 65536) + (channelNum).`
 
-pinNum and channelNum are both zero-based.  If channelIndex is out of range, then the corresponding output channel will be muted.  If you desire to mute a specific output channel, then set channelIndex = -1.
+`pinNum` and `channelNum` are both zero-based.  If `channelIndex` is out of range, then the corresponding output channel will be muted.  If you desire to mute a specific output channel, then set `channelIndex = -1`.
 
 ## Type Definition
 
-`typedef struct _ModuleRouter`
+```cpp
+typedef struct _ModuleRouter
 
-`{`
+{
+    ModuleInstanceDescriptor instance;
+    INT32* channelIndex;
+} ModuleRouterClass;
 
-    `ModuleInstanceDescriptor instance;`
-
-    `INT32* channelIndex;`
-
-`} ModuleRouterClass;`
+```
 
 ## See Also
 
