@@ -15,7 +15,7 @@ An inspector for a Router module with 4 output channels is shown below.  Each ro
 The Router module operates on all 32-bit data types \(floating-point, fract32, and integer\).  The module supports changing the channel mapping at run-time. Keep in mind that this module does not use smoothly and you may get audible pops and clicks.  The RouterSmoothed module has the same functionality but includes smoothing.
 
 {% hint style="info" %}
-Note that the contents of the routing table is updated during pin propagation.  You may need to fully wire your block diagram and then Propagate Changes.
+Note that the input channels shown in the routing table are updated during pin propagation.  If you do not see the correct channels available, you will need to fullly wire your block diagram and then Propagate Changes.
 {% endhint %}
 
 ## Examples
