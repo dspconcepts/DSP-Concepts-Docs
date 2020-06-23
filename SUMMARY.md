@@ -5,7 +5,8 @@
 ## Audio Weaver
 
 * [Module Users Guide](audio-weaver/module-users-guide/README.md)
-  * [Modules](audio-weaver/module-users-guide/modules.md)
+  * [Modules](audio-weaver/module-users-guide/modules/README.md)
+    * [Router](audio-weaver/module-users-guide/modules/example-detailed-module.md)
   * [Examples](audio-weaver/module-users-guide/examples.md)
 
 ## Audio Weaver Designer
@@ -19,6 +20,9 @@
 * [Theory of Operation](audio-weaver-core/untitled-5.md)
 * [AWE Core 8 API Quick Start](audio-weaver-core/awe-core-8-api.md)
 * [TODO: formatting API Quick Reference](audio-weaver-core/untitled-2.md)
+
+---
+
 * [Flash Manager Guide](flash-manager-guide.md)
 * [Linux Integration Guide](linux-integration-guide.md)
 * [todo: Command Line Server](command-line-server.md)
