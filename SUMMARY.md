@@ -25,6 +25,6 @@
 
 * [Flash Manager Guide](flash-manager-guide.md)
 * [Linux Integration Guide](linux-integration-guide.md)
-* [todo: Command Line Server](command-line-server.md)
 * [Matlab API](matlab-api.md)
+* [Untitled](untitled.md)
 
