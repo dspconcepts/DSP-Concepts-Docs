@@ -2,9 +2,7 @@
 
 
 
-{% page-ref page="audio-weaver-designer/users-guide.md" %}
-
-{% page-ref page="audio-weaver-designer/changelog.md" %}
+{% page-ref page="audio-weaver/users-guide.md" %}
 
 
 
