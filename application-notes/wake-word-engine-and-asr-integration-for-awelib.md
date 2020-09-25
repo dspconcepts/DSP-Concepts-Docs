@@ -6,7 +6,7 @@ This application note describes how Wake Work Engine and ASR commands work with 
 
 ### **What is a VR State?**
 
-The VR\( Voice Recognition\) State is information from the cloud to the AWElib / AWECore instance and tells it to listen to the ASR commands. As soon as the cloud notifies the AWElib/AWECore instance, the value of the VR State changes to 0/1.
+The VR\( Voice Recognition\) State is information from the cloud to the AWElib / AWECore instance and tells it to listen to the ASR commands. As soon as the cloud notifies the AWElib/AWECore instance, the value of the VR State changes to `0/1`.
 
 ### **Why do we need a VR State**?
 
@@ -16,13 +16,13 @@ As soon as the cloud notifies the AWElib instance to listen to the ASR commands,
 
 ### **Implementation of the VRState**
 
-Figure 1 below shows the implementation of the VR State. As can be seen in the figure, the VR State becomes active as soon as the Trigger Word is detected. When either of the Wake Word Engines are triggered, the application code should set the VR State to “1” and ignore the other WWE to eliminate double triggers.
+Figure 1 below shows the implementation of the VR State. As can be seen in the figure, the VR State becomes active as soon as the Trigger Word is detected. When either of the Wake Word Engines are triggered, the application code should set the VR State to `1` and ignore the other WWE to eliminate double triggers.
 
 Once the VR State becomes active, it listens to the ASR commands. In cloud-based systems, the information on the end of utterance is provided. As soon as the end of utterance information is provided to the Awelib / AWECore instance, the VR State becomes inactive.
 
 ![Figure 1](../.gitbook/assets/0%20%289%29.png)
 
-In the TalkTo Sample App, the VR State becomes 0 once a timeout is reached. However, the most efficient way to implement the VR State is through notification of end of utterance, which is the case in cloud-based systems.
+In the TalkTo Sample App, the VR State becomes `0` once a timeout is reached. However, the most efficient way to implement the VR State is through notification of end of utterance, which is the case in cloud-based systems.
 
 ## **Implementation of the VR State in TalkTo Sample App:**
 
