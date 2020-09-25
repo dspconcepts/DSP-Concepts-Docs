@@ -43,7 +43,7 @@ In the TalkTo Sample App, the VR State becomes `0` once a timeout is reached. Ho
 
 #### **Sensory phrase spotter instances are created by the constructor of the TalkToSampleApp class.**
 
-The code below creates the first instance of Sensory:
+* The code below creates the first instance of Sensory:
 
 ```cpp
 trigger0Spotter = std::make_unique<SensoryPhraseSpotter>(config.trigger0SpotterModelFilename,
@@ -52,7 +52,7 @@ trigger0Spotter = std::make_unique<SensoryPhraseSpotter>(config.trigger0SpotterM
                                                              this);
 ```
 
-The following code creates the second instance of the Sensory:
+* The following code creates the second instance of the Sensory:
 
 ```cpp
 trigger1Spotter = std::make_unique<SensoryPhraseSpotter>(config.trigger1SpotterModelFilename,
@@ -61,7 +61,7 @@ trigger1Spotter = std::make_unique<SensoryPhraseSpotter>(config.trigger1SpotterM
                                                              this);
 ```
 
-The third one is created by the code below:
+* The third one is created by the code below:
 
 ```cpp
 commandSpotter = std::make_unique<SensoryPhraseSpotter>(config.commandSpotterModelFilename,
@@ -72,7 +72,7 @@ commandSpotter = std::make_unique<SensoryPhraseSpotter>(config.commandSpotterMod
 
 **Audio Data:**
 
-The `PumpAudio` function shown below takes the incoming microphone audio data in the input buffer, processes it and the output buffer is fed to the WWE and Command Spotter Engines.
+* The `PumpAudio` function shown below takes the incoming microphone audio data in the input buffer, processes it and the output buffer is fed to the WWE and Command Spotter Engines.
 
 ```cpp
 error = vuiProcessor->PumpAudio(vuiInputBuffer, vuiOutputBuffer,
@@ -80,7 +80,7 @@ error = vuiProcessor->PumpAudio(vuiInputBuffer, vuiOutputBuffer,
                                     config.numVuiOutputChannels * framesPerBuffer);
 ```
 
-The code below shows how we feed the audio data to the Sensory engine. The three buffers- `trigger0SpotterBuffer`, `trigger1SpotterBuffer` and `commandSpotterBuffer` are fed with the outputs of the `PumpAudio` function and the sensory engines process these buffers to spot ASR commands or Wake Words .
+* The code below shows how we feed the audio data to the Sensory engine. The three buffers- `trigger0SpotterBuffer`, `trigger1SpotterBuffer` and `commandSpotterBuffer` are fed with the outputs of the `PumpAudio` function and the sensory engines process these buffers to spot ASR commands or Wake Words .
 
 ```cpp
 error = trigger0Spotter->process(trigger0SpotterBuffer, (int) framesPerBuffer / config.decimationRatio);
@@ -95,7 +95,7 @@ error = trigger0Spotter->process(trigger0SpotterBuffer, (int) framesPerBuffer / 
 
 ####  **Trigger Spotter Callback functions and implementation of Voice Recognition State \(VRState\):**
 
-As shown in the code below, one of the callback functions\(`trigger0SpotterCallback` or `trigger1SpotterCallback`\) is triggered when a keyword is detected.
+* As shown in the code below, one of the callback functions\(`trigger0SpotterCallback` or `trigger1SpotterCallback`\) is triggered when a keyword is detected.
 
 ```cpp
 int TalkToSampleApp::trigger0SpotterCallback(const std::string &phrase, double begin, double end) {
@@ -123,7 +123,7 @@ A timer is used to prevent double triggering of the wake word.
 
 #### **Command Spotter Callback functions and implementation of VR State:**
 
-The Command Spotter Callback function shown below is triggered when an ASR command is spotted.
+* The Command Spotter Callback function shown below is triggered when an ASR command is spotted.
 
 ```cpp
 int TalkToSampleApp::commandSpotterCallback(const std::string &phrase, double begin, double end) {
@@ -140,7 +140,7 @@ else {
 }
 ```
 
-As soon as the ASR command is detected, the timeout value is set to 0, thereby making the VRState inactive.
+* As soon as the ASR command is detected, the timeout value is set to 0, thereby making the VRState inactive.
 
 ![](../.gitbook/assets/2%20%289%29.png)
 
