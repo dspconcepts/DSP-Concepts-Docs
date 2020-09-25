@@ -22,3 +22,7 @@
 * [Linux Integration Guide](linux-integration-guide.md)
 * [Matlab API](matlab-api.md)
 
+## Application Notes
+
+* [Wake Word Engine and ASR Integration for AWELib](application-notes/untitled.md)
+
