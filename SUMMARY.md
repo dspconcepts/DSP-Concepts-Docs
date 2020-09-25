@@ -14,13 +14,11 @@
 
 * [Theory of Operation](audio-weaver-core/untitled-5.md)
 * [AWE Core 8 API Quick Start](audio-weaver-core/awe-core-8-api.md)
-* [API Quick Reference](audio-weaver-core/api-quick-reference.md)
 
 ---
 
 * [Flash Manager Guide](flash-manager-guide.md)
 * [Linux Integration Guide](linux-integration-guide.md)
-* [Matlab API](matlab-api.md)
 
 ## Application Notes
 
