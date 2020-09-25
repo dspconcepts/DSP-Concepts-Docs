@@ -1,6 +1,6 @@
 # Table of contents
 
-* [What is Audio Weaver](README.md)
+* [Welcome to the Audio Weaver Documentation Hub](README.md)
 
 ## Audio Weaver
 
