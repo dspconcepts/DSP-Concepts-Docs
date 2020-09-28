@@ -23,4 +23,5 @@
 ## Application Notes
 
 * [Wake Word Engine and ASR Integration for AWELib](application-notes/wake-word-engine-and-asr-integration-for-awelib.md)
+* [Multicore Support In Audio Weaver 8](application-notes/multicore-support-in-audio-weaver-8.md)
 
