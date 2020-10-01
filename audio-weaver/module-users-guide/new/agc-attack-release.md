@@ -6,13 +6,13 @@ description: Envelope follower with programmable attack and release times.
 
 AGC Attack Release is one of the basic building blocks for creating dynamics processors such as compressors and limiters. The module accepts an N-channel buffer of amplitude samples and produces an output buffer the same size as the input. An envelope detector is applied to each input channel with configurable attack and release times. The attack time applies when the current input value is larger than the output of the envelope detector. Similarly, the release time applies when the current input value is smaller than the output of the envelope detector. To learn more on how this module can be applied to audio applications see the “Audio Weaver User’s Guide”.
 
-**Arguments**
+### **Arguments**
 
 ![](../../../.gitbook/assets/0%20%2812%29.png)
 
 `nchan` - Number of input channels. Each channel is processed separately. Note that this is the initial number of channels. Once the module is wired up, it will inherent the number of channels from the input wire.
 
-**Variables**
+### **Variables**
 
 ![](../../../.gitbook/assets/1%20%2812%29.png)
 
@@ -36,7 +36,7 @@ Another useful application of this module is to be able to track the noise floor
 
 ## Inspector
 
-The inspector for this module can be viewed by double clicking on the module in AWE\_designer. The inspector allows you to adjust the attackTime and releaseTime variables in real time.
+The inspector for this module can be viewed by double clicking on the module in AWE\_designer. The inspector allows you to adjust the `attackTime` and `releaseTime` variables in real time.
 
 ![](../../../.gitbook/assets/4%20%288%29.png)
 
@@ -48,7 +48,7 @@ The function header is:
 
  `M=agc_attack_release_module(NAME, NCHAN)`
 
-Arguments:
+### Arguments:
 
 `NAME` - name of the module.
 

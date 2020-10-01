@@ -11,6 +11,18 @@
   * [New](audio-weaver/module-users-guide/new/README.md)
     * [Adder](audio-weaver/module-users-guide/new/adder.md)
     * [AGC Attack Release](audio-weaver/module-users-guide/new/agc-attack-release.md)
+    * [AGC Limiter Core](audio-weaver/module-users-guide/new/agc-limiter-core.md)
+    * [Balance](audio-weaver/module-users-guide/new/balance.md)
+    * [Block Statistics](audio-weaver/module-users-guide/new/block-statistics.md)
+    * [Butterworth, ButterworthHP](audio-weaver/module-users-guide/new/butterworth-butterworthhp.md)
+    * [ClipAsym](audio-weaver/module-users-guide/new/clipasym.md)
+    * [Db20, Db10, Db20 Approx, Db10 Approx, Undb10, Undb20, Undb10 Approx, Undb20 Approx](audio-weaver/module-users-guide/new/db20-db10-db20-approx-db10-approx-undb10-undb20-undb10-approx-undb20-approx.md)
+    * [DC Source Int](audio-weaver/module-users-guide/new/dc-source-int.md)
+    * [DC Source V2](audio-weaver/module-users-guide/new/dc-source-v2.md)
+    * [Deinterleave, Interleave](audio-weaver/module-users-guide/new/untitdeinterleave-interleaveled.md)
+    * [Delay, DelayMsec](audio-weaver/module-users-guide/new/delay-delaymsec.md)
+    * [Invert, InvertN](audio-weaver/module-users-guide/new/invert-invertn.md)
+    * [MaxAbs](audio-weaver/module-users-guide/new/maxabs.md)
   * [Examples](audio-weaver/module-users-guide/examples.md)
 
 ## Audio Weaver Core

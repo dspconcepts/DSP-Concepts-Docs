@@ -12,7 +12,7 @@ The adder has a variable number of input pins and a single output pin. Each pin 
 
 All input pins must have the same block size and sample rate. The block size and sample rate of the output pin will match the input pins.
 
-Arguments
+### Arguments
 
 ![](../../../.gitbook/assets/0%20%2811%29.png)
 
@@ -33,11 +33,15 @@ The following examples show the difference between the 2 modes of the adder modu
 
  In the figure below, the argument `oneChannelOutput` is set to **false**. Therefore each input pin must have the same number of channels. In this case each input pin has 3 channels. The resulting output pin also has 3 channels. The constant values for the channels of Input pin1 are 1, 2 and 3. The constant values for the channels of input pin2 are 4, 5 and 6. As shown in the sink display plot, there are 3 channels in the output pin.
 
+```text
 Output Channel1 = input pin1 channel1+ input pin2 channel1
 
 Output Channel2 = input pin1 channel2 + input pin2 channel2
 
-Output Channel3 = input pin1 channel3 + input pin2 channel3.
+Output Channel3 = input pin1 channel3 + input pin2 channel3
+```
+
+
 
 ![](../../../.gitbook/assets/1%20%2811%29.png)
 
@@ -45,9 +49,10 @@ Output Channel3 = input pin1 channel3 + input pin2 channel3.
 
 In the figure below the `oneChannelOutput` argument is set to **true**. Therefore each input pin can have a different number of input channels. In this case input pin1 has 3 input channels and input pin 2 has 2 input channels. The resulting output pin also has 1 channel. The constant values for the channels of Input pin1 are 1, 2 and 3. The constant values for the channels of input pin2 are 4 and 5. As shown in the sink display plot, there is 1 channel in the output pin.
 
+```text
 Output Channel 1 = input pin1 channel1 + input pin1 channel2 + input pin1 channel3 +
-
 input pin2 channel1 + input pin2 channel2
+```
 
 ![](../../../.gitbook/assets/2%20%2811%29.png)
 
@@ -59,7 +64,7 @@ The function header is:
 
 `M=adder_module(NAME, NUMIN, ONECHANNELOUTPUT)`
 
-Arguments:
+### Arguments:
 
 `NAME` - name of the module. Must be a string, i.e. ‘adder1’.
 
