@@ -8,6 +8,8 @@
 * [Module Users Guide](audio-weaver/module-users-guide/README.md)
   * [Modules](audio-weaver/module-users-guide/modules/README.md)
     * [Router](audio-weaver/module-users-guide/modules/router.md)
+  * [New](audio-weaver/module-users-guide/new/README.md)
+    * [Adder](audio-weaver/module-users-guide/new/adder.md)
   * [Examples](audio-weaver/module-users-guide/examples.md)
 
 ## Audio Weaver Core
