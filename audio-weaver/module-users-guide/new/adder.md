@@ -66,7 +66,7 @@ The function header is:
 
 ### Arguments:
 
-`NAME` - name of the module. Must be a string, i.e. ‘adder1’.
+`NAME` - name of the module. Must be a string, i.e. `adder1`.
 
 `NUMIN` - number of input pins.
 
