@@ -77,8 +77,8 @@ The function header is:
 ```cpp
 typedef struct _ModuleAdder
 {
-ModuleInstanceDescriptor instance;      
-INT32 oneChannelOutput;            
+    ModuleInstanceDescriptor instance;      
+    INT32 oneChannelOutput;            
 } ModuleAdderClass;
 ```
 

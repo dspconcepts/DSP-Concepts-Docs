@@ -46,10 +46,10 @@ The inspector for the ClipAsym module is shown below. It can be viewed by double
 ```cpp
 typedef struct _ModuleClipAsym
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
- FLOAT32 clipLower; // Lower clipping threshold.
- FLOAT32 clipUpper; // Upper clipping threshold.
+   ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+   // structure
+   FLOAT32 clipLower; // Lower clipping threshold.
+   FLOAT32 clipUpper; // Upper clipping threshold.
 } ModuleClipAsymClass;
 ```
 

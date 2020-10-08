@@ -108,16 +108,17 @@ The arguments for this module are the same as the Block Statistics module above.
 ```cpp
 typedef struct _ModuleBlockStatistics
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
- INT32 statisticsType; // Type of statistics calculated.
- FLOAT32 instantaneousValue; // Instantaneous output value.
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
+    INT32 statisticsType;              // Type of statistics calculated.
+    FLOAT32 instantaneousValue;        // Instantaneous output value.
 } ModuleBlockStatisticsClass;
+
 typedef struct _ModuleBlockStatisticsN
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
- INT32 statisticsType; // Type of statistics calculated.
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
+     INT32 statisticsType;             // Type of statistics calculated.
 } ModuleBlockStatisticsNClass;
 ```
 

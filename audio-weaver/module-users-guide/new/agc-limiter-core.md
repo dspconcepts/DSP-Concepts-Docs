@@ -86,30 +86,24 @@ To create an `AGCLimiterCore` module using Matlab scripts the function `agc_limi
 ```cpp
 typedef struct _ModuleAGCLimiterCore
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance structure
- FLOAT32 threshold; // Amplitude level at which the AGC Limiter Core
- //reduces its output gain value
- FLOAT32 gain; // Value used to scale the output of the AGC
- // Limiter Core
- FLOAT32 slope; // Internal derived variable which holds the
- // slope of the compression curve
- FLOAT32 kneeDepth; // Knee depth controls the sharpness of the
- //transition between no limiting and limiting
- FLOAT32 ratio; // Slope of the output attenuation when the
- // signal is above threshold - derived from the
- // standard compression ratio parameter by the
- // formula slope = 1.0 - (1.0/ratio)
- FLOAT32 attackTime; // Envelope detector attack time constant
- FLOAT32 decayTime; // Envelope detector decay time constant
- FLOAT32 currentGain; // Instantaneous gain computed by the block
- FLOAT32 sharpnessFactor; // Internal derived variable which is used to
- // implement the soft knee
- FLOAT32 attackCoeff; // Internal derived variable which implements
- // the attackTime
- FLOAT32 decayCoeff; // Internal derived variable which implements
- // the decayTime
- FLOAT32 envState; // Holds the instantaneous state of the envelope
- // detector
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance structure
+    FLOAT32 threshold; // Amplitude level at which the AGC Limiter Core
+                       // reduces its output gain value
+    FLOAT32 gain; // Value used to scale the output of the AGC Limiter Core
+    FLOAT32 slope; // Internal derived variable which holds the slope of the compression curve
+    FLOAT32 kneeDepth; // Knee depth controls the sharpness of the
+                       // transition between no limiting and limiting
+    FLOAT32 ratio; // Slope of the output attenuation when the
+    // signal is above threshold - derived from the
+    // standard compression ratio parameter by the
+    // formula slope = 1.0 - (1.0/ratio)
+    FLOAT32 attackTime; // Envelope detector attack time constant
+    FLOAT32 decayTime; // Envelope detector decay time constant
+    FLOAT32 currentGain; // Instantaneous gain computed by the block
+    FLOAT32 sharpnessFactor; // Internal derived variable which is used to implement the soft knee
+    FLOAT32 attackCoeff; // Internal derived variable which implements the attackTime
+    FLOAT32 decayCoeff; // Internal derived variable which implements the decayTime
+    FLOAT32 envState; // Holds the instantaneous state of the envelope detector
 } ModuleAGCLimiterCoreClass;
 ```
 

@@ -73,24 +73,25 @@ The inspector for the Butterworth module is shown below. It can be viewed by dou
 ```cpp
 typedef struct _ModuleButterworthFilter
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module
- // instance structure
- INT32 filterType; // Specifies what type of filter is designed
- // (lowpass=0, highpass=1, allpass=2).
- INT32 order; // Order of the filter.
- FLOAT32 cutoff; // Cutoff frequency of the filter in Hz
- awe_modBiquadCascadeInstance *filt; // Cascade of second order Biquad filters
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module
+    // instance structure
+    INT32 filterType; // Specifies what type of filter is designed
+    // (lowpass=0, highpass=1, allpass=2).
+    INT32 order; // Order of the filter.
+    FLOAT32 cutoff; // Cutoff frequency of the filter in Hz
+    awe_modBiquadCascadeInstance *filt; // Cascade of second order Biquad filters
 } ModuleButterworthFilterClass;
+
 typedef struct _ModuleButterworthFilterHP
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
- INT32 filterType; // Specifies what type of filter is designed
- // (lowpass=0, highpass=1, allpass=2).
- INT32 order; // Order of the filter.
- FLOAT32 cutoff; // Cutoff frequency of the filter in Hz
- awe_modBiquadCascadeHPInstance *filt;// Cascade of second order Biquad filters with
- // high precision implementation
+    ModuleInstanceDescriptor instance;    // Common Audio Weaver module instance
+                                          // structure
+    INT32 filterType;                     // Specifies what type of filter is designed
+                                          // (lowpass=0, highpass=1, allpass=2).
+    INT32 order;                          // Order of the filter.
+    FLOAT32 cutoff;                       // Cutoff frequency of the filter in Hz
+    awe_modBiquadCascadeHPInstance *filt; // Cascade of second order Biquad filters with
+                                          // high precision implementation
 } ModuleButterworthFilterHPClass;
 
 ```
