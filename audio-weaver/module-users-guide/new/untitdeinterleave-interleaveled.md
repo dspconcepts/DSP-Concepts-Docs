@@ -68,8 +68,8 @@ Arguments:
 ```cpp
 typedef struct _ModuleDeinterleave
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- //structure
+  ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                     //structure
 } ModuleDeinterleaveClass;
 typedef struct _ModuleInterleave
 {
