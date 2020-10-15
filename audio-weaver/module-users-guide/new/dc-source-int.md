@@ -50,9 +50,9 @@ Arguments:
 ```cpp
 typedef struct _ModuleDCSourceInt
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
-                                    // structure
- INT32 value;                       // Data Value
+  ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                     // structure
+  INT32 value;                       // Data Value
 } ModuleDCSourceIntClass;
 ```
 

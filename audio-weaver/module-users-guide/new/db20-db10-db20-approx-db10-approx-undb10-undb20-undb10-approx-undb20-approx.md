@@ -125,43 +125,50 @@ Arguments:
 ```cpp
 typedef struct _ModuleDb10
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
 } ModuleDb10Class;
+
 typedef struct _ModuleDb10Approx
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
 } ModuleDb10ApproxClass;
+
 typedef struct _ModuleDb20
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
 } ModuleDb20Class;
+
 typedef struct _ModuleDb20Approx
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
 } ModuleDb20ApproxClass;
+
 typedef struct _ModuleUndb10
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
 } ModuleUndb10Class;
+
 typedef struct _ModuleUndb10Approx
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
 } ModuleUndb10ApproxClass;
+
 typedef struct _ModuleUndb20
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
 } ModuleUndb20Class;
+
 typedef struct _ModuleUndb20Approx
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+    ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                       // structure
 } ModuleUndb20ApproxClass;
 ```
 

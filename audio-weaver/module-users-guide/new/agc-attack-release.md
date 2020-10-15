@@ -60,11 +60,11 @@ The function header is:
 typedef struct _ModuleAGCAttackRelease
 {
     ModuleInstanceDescriptor instance; // Common AWE module instance structure
-    FLOAT32 attackTime; // attack time constant.
-    FLOAT32 releaseTime; // release time constant.
-    FLOAT32 attackCoeff; // Calculated filter coefficient for attack time.
-    FLOAT32 releaseCoeff; // Calculated filter coefficient for release time.
-    FLOAT32* envStates; // State vectors for internal filters.
+    FLOAT32 attackTime;                // attack time constant.
+    FLOAT32 releaseTime;               // release time constant.
+     FLOAT32 attackCoeff;   // Calculated filter coefficient for attack time.
+     FLOAT32 releaseCoeff;  // Calculated filter coefficient for release time.
+     FLOAT32* envStates;    // State vectors for internal filters.
 } ModuleAGCAttackReleaseClass;
 ```
 

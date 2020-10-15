@@ -58,9 +58,9 @@ Creates a source module that allows you to inject DC test data into
 ```cpp
 typedef struct _ModuleDCSourceV2
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
- FLOAT32 value; // Data Value
+  ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                     // structure
+  FLOAT32 value;                     // Data Value
 } ModuleDCSourceV2Class;
 ```
 
