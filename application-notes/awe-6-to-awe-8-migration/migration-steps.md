@@ -1,3 +1,9 @@
+---
+description: >-
+  The following sections are broken into implementation sections to highlight
+  the differences between AWE 6 and AWE 8 API’s.
+---
+
 # Migration Steps
 
 The following sections are broken into implementation sections to highlight the differences between AWE 6 and AWE 8 API’s. For brevity, simple use cases are compared and no error handling is shown.

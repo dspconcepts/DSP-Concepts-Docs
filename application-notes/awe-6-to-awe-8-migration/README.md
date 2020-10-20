@@ -1,3 +1,7 @@
+---
+description: An in-depth guide on how to migrate from AWE6 to AWE8.
+---
+
 # AWE 6 to AWE 8 Migration
 
 The legacy AWE 6 product line, including AWECore for embedded/bare metal targets, and AWELib for rich OS targets \(Linux, Android, Windows\), has been in use for almost 4 years. AWE Core 8 is now replacing AWE Core 6, and AWE Core OS is replacing AWELib.
