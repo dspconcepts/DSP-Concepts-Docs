@@ -48,8 +48,8 @@ Arguments:
 ```cpp
 typedef struct _ModuleMaxAbs
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
+   ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                      // structure
 } ModuleMaxAbsClass;
 ```
 

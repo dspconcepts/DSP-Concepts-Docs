@@ -110,26 +110,27 @@ Arguments:
 ```cpp
 typedef struct _ModuleDelay
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
- INT32 maxDelay; // Maximum delay, in samples. The size of the
- // delay buffer is (maxDelay+1)*numChannels.
- INT32 currentDelay; // Current delay.
- INT32 stateIndex; // Index of the oldest state variable in the
- // array of state variables.
- INT32 stateHeap; // Heap in which to allocate memory.
- FLOAT32* state; // State variable array.
+   ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                      // structure
+   INT32 maxDelay;                    // Maximum delay, in samples. The size of the
+                                      // delay buffer is (maxDelay+1)*numChannels.
+   INT32 currentDelay;                // Current delay.
+   INT32 stateIndex;                  // Index of the oldest state variable in the
+                                      // array of state variables.
+   INT32 stateHeap;                   // Heap in which to allocate memory.
+   FLOAT32* state;                    // State variable array.
 } ModuleDelayClass;
+
 typedef struct _ModuleDelayMsec
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
- FLOAT32 maxDelayTime; // Maximum delay, in milliseconds.
- FLOAT32 currentDelayTime; // Current delay.
- INT32 stateHeap; // Heap in which to allocate state buffer
- // memory.
- awe_modDelayInstance *delay; // Time delay in which the delay is specified
- // in samples.
+   ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                      // structure
+   FLOAT32 maxDelayTime;              // Maximum delay, in milliseconds.
+   FLOAT32 currentDelayTime;          // Current delay.
+   INT32 stateHeap;                   // Heap in which to allocate state buffer
+                                      // memory.
+   awe_modDelayInstance *delay;       // Time delay in which the delay is specified
+                                      // in samples.
 } ModuleDelayMsecClass;
 
 ```

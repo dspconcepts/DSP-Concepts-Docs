@@ -95,31 +95,31 @@ Arguments:
 ```cpp
 typedef struct _ModuleInvert
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure.
- INT32 isInverted; // Boolean that specifies whether the signal
- // is inverted (=1) or not (=0).
- FLOAT32 smoothingTime; // Time constant of the smoothing process.
- FLOAT32 currentGain; // Instantaneous gain applied by the module.
- // This is also the starting gain of the
- // module.
- FLOAT32 smoothingCoeff; // Smoothing coefficient.
+   ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                      // structure.
+   INT32 isInverted;                  // Boolean that specifies whether the signal
+                                      // is inverted (=1) or not (=0).
+   FLOAT32 smoothingTime;             // Time constant of the smoothing process.
+   FLOAT32 currentGain;               // Instantaneous gain applied by the module.
+                                      // This is also the starting gain of the
+                                      // module.
+   FLOAT32 smoothingCoeff;            // Smoothing coefficient.
 } ModuleInvertClass;
 
 typedef struct _ModuleInvertN
 {
- ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
- // structure
- INT32 numControls; // Number of individual invert controls
- FLOAT32 smoothingTime; // Time constant of the smoothing process
- FLOAT32 smoothingCoeff; // Smoothing coefficient.
- INT32* isInverted; // Boolean that specifies whether the signal
- // is inverted (=1) or not (=0). One per each
- // pin.
- FLOAT32* currentGain; // Instantaneous gain applied by the module.
- // This is also the starting gain of the
- // module.
- FLOAT32* gain; // Target gain.
+   ModuleInstanceDescriptor instance; // Common Audio Weaver module instance
+                                      // structure
+   INT32 numControls;                 // Number of individual invert controls 
+   FLOAT32 smoothingTime;             // Time constant of the smoothing process
+   FLOAT32 smoothingCoeff;            // Smoothing coefficient.
+   INT32* isInverted;                 // Boolean that specifies whether the signal
+                                      // is inverted (=1) or not (=0). One per each
+                                      // pin.
+   FLOAT32* currentGain;              // Instantaneous gain applied by the module.
+                                      // This is also the starting gain of the
+                                      // module.
+   FLOAT32* gain;                     // Target gain.
 } ModuleInvertNClass;
 ```
 
