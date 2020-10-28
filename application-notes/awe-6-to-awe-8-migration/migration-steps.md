@@ -234,8 +234,6 @@ INT32 awe_initPin(IOPinDescriptor *pPin, UINT32 channels, const char *name);
 
 
 
-[AWE Core 6 vs AWE Core 8 Detailed Discussion](https://docs.google.com/document/d/1SMeZVkrGHtXNMz3L3qZ25NDOJqOKfEr18Z_7t3aJw3E/edit?usp=sharing)
-
 
 
 ### Loading Layouts
