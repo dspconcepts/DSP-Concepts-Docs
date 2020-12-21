@@ -50,6 +50,7 @@
 ## Application Notes
 
 * [AWE 6 to AWE 8 Migration](application-notes/awe-6-to-awe-8-migration/README.md)
+  * [Quick Start Video](application-notes/awe-6-to-awe-8-migration/quick-start-video.md)
   * [Where are the Docs?](application-notes/awe-6-to-awe-8-migration/where-are-the-docs.md)
   * [Migration Steps](application-notes/awe-6-to-awe-8-migration/migration-steps.md)
 * [Multicore Support In Audio Weaver 8](application-notes/multicore-support-in-audio-weaver-8.md)
