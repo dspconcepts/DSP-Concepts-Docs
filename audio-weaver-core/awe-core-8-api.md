@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document is meant to be a "Quick-Start" on how to integrate AWE Core. Advanced concepts are left out. Before reading this document, please see the [Theory Of Operation](untitled-5.md).
+This document is meant to be a "Quick-Start" on how to integrate AWE Core. Advanced concepts are left out. Before reading this document, please see the [Theory Of Operation](theory-of-operation.md).
 
 The AWE Core™ is a hardware-independent, reconfigurable audio-processing engine. The AWE Core includes over 400 audio-processing Modules, from mixers and filters to compressors and FFTs, that can be combined to easily create complex signal processing flows. The AWE Core operates by passing audio through a user-defined sequence of these Modules, as directed by Configuration-data at run-time.
 

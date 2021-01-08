@@ -39,7 +39,7 @@
 
 ## Audio Weaver Core
 
-* [Theory of Operation](audio-weaver-core/untitled-5.md)
+* [Theory of Operation](audio-weaver-core/theory-of-operation.md)
 * [AWE Core 8 API Quick Start](audio-weaver-core/awe-core-8-api.md)
 
 ---
