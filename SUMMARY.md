@@ -28,6 +28,7 @@
     * [MultiplexorV2](audio-weaver/module-users-guide/new/multiplexorv2.md)
     * [MuteSmoothed MuteNSmoothed](audio-weaver/module-users-guide/new/mutesmoothed-mutensmoothed.md)
     * [NullSink NullSinkV2](audio-weaver/module-users-guide/new/nullsink-nullsinkv2.md)
+    * [ParamGet](audio-weaver/module-users-guide/new/paramget.md)
     * [ParamSet](audio-weaver/module-users-guide/new/paramset.md)
     * [PeriodicFunctionGen](audio-weaver/module-users-guide/new/periodicfunctiongen.md)
     * [PinkNoise](audio-weaver/module-users-guide/new/pinknoise.md)
