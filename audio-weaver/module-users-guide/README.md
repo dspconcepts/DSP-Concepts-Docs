@@ -40,7 +40,7 @@ Audio Weaver Designer has two modes: Design mode and Tuning mode. In Design mode
 
 ### Viewing Module Properties
 
-![](../../.gitbook/assets/assets_dsp-concepts_-m2bisi4gerfijm66kfl_-m2bkmkkrbyodjb4gbz7_3.png)
+![](../../.gitbook/assets/3%20%281%29%20%281%29.png)
 
 An audio module gets instantiated when dragged to the canvas from the Module Browser, located on the left hand side of the canvas. **Module** _**arguments**_ **can only be changed in Design mode and affect memory allocation, pins, and wiring. Module** _**variables**_ **are tunable parameters which can be changed in either mode.** Arguments tend to define memory allocation for the module, which can’t be changed during runtime. For example, in an FIR filter, the length of the filter \(number of taps\) is specified as an argument. This length affects memory allocation and as a result setting these arguments is only allowed in Design mode. The FIR coefficients \(a variable\) can change at any time.
 
@@ -109,7 +109,7 @@ Connections between audio modules are called _wires_ and correspond to buffers o
 
 Wire information is resolved through a process known as _pin propagation._ The wire information is known from the system input and this information is propagated in module order until it reaches the system output pin. **To trigger pin propagation, click on the Propagate changes button \(** ![](../../.gitbook/assets/10.png) **\) on the toolbar.** Alternatively, right-click on an empty part of the canvas and select “Redraw” from the context menu. If there is a wiring error and pin propagation is unable to complete, an error sound will play. To find out more details to this error, run the system.
 
-![](../../.gitbook/assets/13%20%281%29.png)
+![](../../.gitbook/assets/399.png)
 
 #### Feedback Wires
 

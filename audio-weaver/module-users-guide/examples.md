@@ -124,12 +124,12 @@ The modules used are:
 
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/375.jpeg) | ![](../../.gitbook/assets/376.png) | AGCAttackRelease | Creates envelope detector with specified attack and release times |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/377.jpeg) | ![](../../.gitbook/assets/378.png) | Db20 | Converts from linear units to dB |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/379.jpeg) | ![](../../.gitbook/assets/380.png) | TwoPieceInterp | Applies two-piece piecewise function |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/381.jpeg) | ![](../../.gitbook/assets/382.png) | TableInterp | Applies function from specified table interpolation |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/383.jpeg) | ![](../../.gitbook/assets/384.png) | Subtract | Dynamically determines a gain based on a piecewise function in order to limit a signal |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/385.jpeg) | ![](../../.gitbook/assets/386.png) | Undb20 | Converts from dB to linear units |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/209%20%2827%29.jpeg) | ![](../../.gitbook/assets/376.png) | AGCAttackRelease | Creates envelope detector with specified attack and release times |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/209%20%282%29.jpeg) | ![](../../.gitbook/assets/378.png) | Db20 | Converts from linear units to dB |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/209%20%2812%29.jpeg) | ![](../../.gitbook/assets/380.png) | TwoPieceInterp | Applies two-piece piecewise function |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/209%20%2813%29.jpeg) | ![](../../.gitbook/assets/382.png) | TableInterp | Applies function from specified table interpolation |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/209%20%2826%29.jpeg) | ![](../../.gitbook/assets/384.png) | Subtract | Dynamically determines a gain based on a piecewise function in order to limit a signal |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../.gitbook/assets/209%20%289%29.jpeg) | ![](../../.gitbook/assets/386.png) | Undb20 | Converts from dB to linear units |
 
 With the TwoPieceInterp module specify the slow of the gain curve above and below the threshold. One simple change can expand the functionality even further. Using a TableInterp module instead of the TwoPieceInterp allows the user to visually map out exactly the desired behavior:
 
@@ -207,7 +207,7 @@ Below is an example of a system using feedback. This system creates a series of 
 
 Right-click on the wire at the output of the ScalerV2 module, select “Feedback,” and then specify the feedback properties. In this case, the feedback wire is stereo and has the properties shown below.
 
-![](../../.gitbook/assets/399.png)
+![](../../.gitbook/assets/399%20%281%29.png)
 
 The system can then be redrawn and the feedback wire will be marked in blue.
 

@@ -61,7 +61,7 @@ If the MultiplexorV2 has 2 pins to select from, then the inspector will be a che
 
 If the MultiplexorV2 has more pins, then instead of a checkbox, you will have a droplist:
 
-![](../../../.gitbook/assets/8%20%287%29.png)
+![](../../../.gitbook/assets/8%20%287%29%20%281%29.png)
 
 ## Matlab Usage
 

@@ -76,11 +76,11 @@ _**Downward expander \(and noise gate\)**_ – reduce small signal levels and be
 
 
 
-![](../../../.gitbook/assets/22%20%283%29.png)
+![](../../../.gitbook/assets/32%20%283%29%20%281%29.png)
 
 _**Limiter**_ – restrict peak signal levels to avoid digital clipping \(_limiters generally have a horizontal or flat slope, which means high ratio_\)
 
-![](../../../.gitbook/assets/23%20%283%29.png)
+![](../../../.gitbook/assets/31%20%282%29%20%281%29.png)
 
 _**Ducker**_ **-** use a trigger signal to determine when to boost or reduce gain of another signal.
 
@@ -90,13 +90,13 @@ _**AGC**_ ****_**Core**_– adjust the gain to keep the signal within a specifie
 
 
 
-![](../../../.gitbook/assets/25%20%281%29.png)
+![](../../../.gitbook/assets/35%20%282%29.png)
 
 #### Compressors
 
 A compressor reduces the signal’s dynamic range, meaning that it lowers the level of loud signals and boosts quiet ones, reducing the difference between loud and soft signals. Make-up gain is usually applied after for increasing the perceived loudness. This can be used for scenarios when keeping the overall volume low is desired but hearing small details is still important, such as night-time movie watching. The behavior of the compressor is best understood by looking at its input-output response:
 
-![](../../../.gitbook/assets/26.png)
+![](../../../.gitbook/assets/21%20%282%29.png)
 
 Above the threshold the compressor reduces the signal level; below the threshold the compressor increases the signal level \(it’s expanding the system\). This brings all output signals closer to the threshold level and reduces the overall dynamic range. The AGCCompressorCore module is wired the same way as the limiter module, receiving its input from an Abs or MaxAbs module and outputting to a multiplier, as shown below:
 
@@ -142,7 +142,7 @@ One use of this module is for filtering out low-level noise while retaining a lo
 
 This module has a slowly varying volume control which transfers the **input signal** level towards a targetLevel, a specified RMS level. The input RMS is smoothed via the smoothing time variable. This allows the gain to change gradually. The gain is limited to the range \[-maxAttenuation and maxGain\]. The ratio control determines the speed of the gain change for all signals above the **activation Threshold**. When the level of the input signal falls below **activationThreshold**, the AGCCore holds the last gain setting. If the enableRecovery checkbox is checked, the gain will slowly return to 0 dB when not activated. The rate of return is governed by recoveryRate.
 
-![](../../../.gitbook/assets/35%20%282%29.png)
+![](../../../.gitbook/assets/35%20%282%29%20%281%29.png)
 
 #### ![](../../../.gitbook/assets/34%20%281%29.png)
 
@@ -665,8 +665,8 @@ Audio Weaver provides 3 different transform modules for converting between the t
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
 |  | ![](../../../.gitbook/assets/117.png) | Cfft | Complex FFT. Supports both forward and inverse transforms |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/118.jpeg) | ![](../../../.gitbook/assets/119.png) | Fft | Forward FFT of real data |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/120.jpeg) | ![](../../../.gitbook/assets/121.png) | Ifft | Inverse FFT yielding real data |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2824%29.jpeg) | ![](../../../.gitbook/assets/119.png) | Fft | Forward FFT of real data |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2815%29.jpeg) | ![](../../../.gitbook/assets/121.png) | Ifft | Inverse FFT yielding real data |
 
 The complex FFT takes a complex N-point input and generates a complex N-point output. The module is configured on the module properties as either a forward or inverse transform.
 
@@ -760,7 +760,7 @@ The frequency domain modules have a large number of modules which operate on com
     </tr>
     <tr>
       <td style="text-align:left">
-        <img src="../../../.gitbook/assets/picture2.png" alt/>
+        <img src="../../../.gitbook/assets/picture2 (2).png" alt/>
       </td>
       <td style="text-align:left">ComplexMagSquared</td>
       <td style="text-align:left"></td>
@@ -1209,7 +1209,7 @@ For the above modules, the gain to apply is specified by an inspector variable. 
 | :--- | :--- | :--- | :--- |
 |  | ![](../../../.gitbook/assets/174.png) | ScalerControl | Controllable scaler with linear gain |
 |  | ![](../../../.gitbook/assets/175.png) | ScalerDBControl | Controllable scaler with dB gain |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/176.jpeg) | ![](../../../.gitbook/assets/177.png) | Invert | Smoothing scales between +1 and -1 and provides a phase inversion. |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%285%29.jpeg) | ![](../../../.gitbook/assets/177.png) | Invert | Smoothing scales between +1 and -1 and provides a phase inversion. |
 |  | ![](../../../.gitbook/assets/178.png) | ScaleOffset | Multiplies the signal by a fixed scale factor and adds an offset. |
 
 These modules are frequently used to invert or add an offset to a signal by setting the scale factor equal to 1.0. This is easier than using separate DCSource and Adder modules.
@@ -1220,7 +1220,7 @@ Several other modules exist which do smoothing scaling of signals between fixed 
 
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/179.jpeg) | ![](../../../.gitbook/assets/180.png) | MuteSmoothed | Smoothly mutes and unmutes a signal. |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%283%29.jpeg) | ![](../../../.gitbook/assets/180.png) | MuteSmoothed | Smoothly mutes and unmutes a signal. |
 |  | ![](../../../.gitbook/assets/181.png) | MuteNSmoothed | Multichannel mute with separate controls for each channel. Similar to ScalerNSmoothed. |
 
 The SoloMute module allows muting of all channels except one \(like soloing on a soundboard\). The SoloMute module can have multiple input pin, where each input can have multiple channels. Or, if it has a single input pin, the soloing functionality is applied to individual channels.
@@ -1305,7 +1305,7 @@ At full volume \(0 dB\) there is no bass boost. As the signal level drops more b
 
 A sink module can be appended to the output of the table interpolation to show in real-time the computed gain. Note that when the sink module is given a control signal as input, it will only display the single value, rather than the graph it normally displays.
 
-![](../../../.gitbook/assets/195.png)
+![](../../../.gitbook/assets/186%20%281%29.png)
 
 This has accomplished the boosting of the bass frequencies, and the same strategy can be employed to boost the treble frequencies. This SOFControl will be set to alter the treble frequencies, with a filter type of “Shelf High” and a frequency of 6000 Hz:.
 
@@ -1340,7 +1340,7 @@ The BooleanSource module is a source module that supplies a buffer of Boolean da
 | Icon | Name | Description |
 | :--- | :--- | :--- |
 | ![](../../../.gitbook/assets/202.png) | LogicCompare | Compares input values |
-| ![](../../../.gitbook/assets/203.png) | LogicConstCompare | Compares input to constant |
+| ![](../../../.gitbook/assets/202%20%281%29.png) | LogicConstCompare | Compares input to constant |
 
 The LogicCompare module performs one of many possible comparisons on two input values. In its Inspector is a drop-down menu of the possible comparisons: EQUAL, NOTEQUAL, LESSTHAN, LESSOREQUAL, GREATERTHAN, and GREATEROREQUAL.
 
@@ -1414,9 +1414,9 @@ These modules perform basic math operations.
 
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209.jpeg) | ![](../../../.gitbook/assets/210.png) | Adder | Adds signals |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209.jpeg) | ![](../../../.gitbook/assets/212.png) | Subtract | Subtracts signals |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209.jpeg) | ![](../../../.gitbook/assets/214.png) | Multiplier | Multiplies signals |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2828%29.jpeg) | ![](../../../.gitbook/assets/210.png) | Adder | Adds signals |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2828%29.jpeg) | ![](../../../.gitbook/assets/212.png) | Subtract | Subtracts signals |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2828%29.jpeg) | ![](../../../.gitbook/assets/214.png) | Multiplier | Multiplies signals |
 |  | ![](../../../.gitbook/assets/215.png) | Divide | Divides signals |
 |  | ![](../../../.gitbook/assets/reciprocal.png)  | Reciprocal | Computes 1/x |
 
@@ -1469,7 +1469,7 @@ To convert to and from dB10 and dB20, this folder hosts Approx and exact modules
           the points, the scaling is interpolated either linearly or cubicly.</p>
       </td>
       <td style="text-align:left">
-        <img src="../../../.gitbook/assets/224.png" alt/>
+        <img src="../../../.gitbook/assets/223.png" alt/>
       </td>
     </tr>
     <tr>
@@ -1521,9 +1521,9 @@ Modules which implement point nonlinearities and are stateless and easy to under
 
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/232.jpeg) | ![](../../../.gitbook/assets/233.png) | ClipAsym | Hard clipper |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2821%29.jpeg) | ![](../../../.gitbook/assets/233.png) | ClipAsym | Hard clipper |
 |  | ![](../../../.gitbook/assets/234.png) | Polynomial | Polynomial f\(x\) |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/235.jpeg) | ![](../../../.gitbook/assets/236.png) | Square | Squares a signal x\*x |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2818%29.jpeg) | ![](../../../.gitbook/assets/236.png) | Square | Squares a signal x\*x |
 
 Other nonlinearities which are documented elsewhere are the Abs, TableInterp, SoftClip, and TwoPieceInterp modules.
 
@@ -1692,8 +1692,8 @@ There are 4 modules which can be used to change the sampling rate and still main
 | :--- | :--- | :--- | :--- |
 |  | ![](../../../.gitbook/assets/253.png) | Upsampler | Inserts zeros between samples. No filtering |
 |  | ![](../../../.gitbook/assets/254.png) | Downsampler | Discards samples. No filtering. |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/255.jpeg) | ![](../../../.gitbook/assets/256.png) | FIRInterpolator | Upsampler followed by an FIR interpolating filter |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/257.jpeg) | ![](../../../.gitbook/assets/258.png) | FIRDecimator | FIR filter followed by a Downsampler |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%284%29.jpeg) | ![](../../../.gitbook/assets/256.png) | FIRInterpolator | Upsampler followed by an FIR interpolating filter |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%281%29.jpeg) | ![](../../../.gitbook/assets/258.png) | FIRDecimator | FIR filter followed by a Downsampler |
 
 The Upsampler and Downsampler modules insert zeros and discard samples, respectively. Specify the up and downsampling factors on the module properties. The downsampling factor must be chosen so that it divides the input block size and yields an integer number of output samples. Consider the system shown below:
 
@@ -1889,8 +1889,8 @@ Two of the most basic modules are the Interleave and Deinterleave modules.
 
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/291.jpeg) | ![](../../../.gitbook/assets/292.png) | Deinterleave | Turns multichannel signals into separate mono signals. |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/293.jpeg) | ![](../../../.gitbook/assets/294.png) | Interleave | Combines multiple mono channels into a single interleaved signal. |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2810%29.jpeg) | ![](../../../.gitbook/assets/292.png) | Deinterleave | Turns multichannel signals into separate mono signals. |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2822%29.jpeg) | ![](../../../.gitbook/assets/294.png) | Interleave | Combines multiple mono channels into a single interleaved signal. |
 
 These modules are part of the default system which is created when starting a new design. For the Deinterleave module specify the number of output channels on module properties and it must match the number of input channels. If there is a mismatch an error will pop up when the system is built.
 
@@ -1920,7 +1920,7 @@ The Router module simply copies input channels to output channels. The module so
   <tbody>
     <tr>
       <td style="text-align:left">
-        <img src="../../../.gitbook/assets/297.jpeg" alt="http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg"
+        <img src="../../../.gitbook/assets/209 (25).jpeg" alt="http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg"
         />
       </td>
       <td style="text-align:left">
@@ -2021,8 +2021,8 @@ Sink modules have an input pin but no output. Sinks are used to tie off unused m
 
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/308.jpeg) | ![](../../../.gitbook/assets/309.png) | NullSink | Ties off unused module outputs. No internal buffer. |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/310.jpeg) | ![](../../../.gitbook/assets/311.png) | Sink | Copies Floating point data from the wire to an internal buffer. Can be used as a scope display. |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2817%29.jpeg) | ![](../../../.gitbook/assets/309.png) | NullSink | Ties off unused module outputs. No internal buffer. |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2823%29.jpeg) | ![](../../../.gitbook/assets/311.png) | Sink | Copies Floating point data from the wire to an internal buffer. Can be used as a scope display. |
 |  | ![C:\Users\peaston\AppData\Local\Temp\Clipboarder.2016.10.11-002.png](../../../.gitbook/assets/312.png) | Boolean Sink | Triggers a light \(via inspector\) on if “true” and off if “false” |
 |  | ![](../../../.gitbook/assets/313.png) | Triggered Sink | Sink that copies data when input control is nonzero, else it does nothing. |
 |  | ![C:\Users\peaston\AppData\Local\Temp\Clipboarder.2016.10.11-003.png](../../../.gitbook/assets/314.png) | Sink Int | Copies Int Data from wire to internal buffer. Can be used as a scope display. |
@@ -2031,7 +2031,7 @@ Sink modules have an input pin but no output. Sinks are used to tie off unused m
 
 One of the examples from above used a NullSink module to tie off an unused output pin:
 
-![](../../../.gitbook/assets/315.png)
+![](../../../.gitbook/assets/315%20%281%29.png)
 
 The left channel output is attached to a NullSink module and completely ignored. The NullSink does no processing and uses very little memory \(only for its instance structure\).
 
@@ -2057,7 +2057,7 @@ If only an instantaneous view of a system value is desired, the Meter module can
 
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/319.jpeg) | ![](../../../.gitbook/assets/320.png) | Meter | Shows instantaneous dB level in inspector; has multichannel input and separately meters each channel |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209.jpeg) | ![](../../../.gitbook/assets/320.png) | Meter | Shows instantaneous dB level in inspector; has multichannel input and separately meters each channel |
 
  The Meter module’s instantaneous display is shown in its inspector and the inspector expands to include multiple channels.
 
@@ -2079,7 +2079,7 @@ A red box alerts the user to clipping:
 
 One of the examples from above used a NullSink module to tie off an unused output pin:
 
-![](../../../.gitbook/assets/326.png)
+![](../../../.gitbook/assets/315.png)
 
 The left channel output is attached to a NullSink module and completely ignored. The NullSink does no processing and uses very little memory \(only for its instance structure\).
 
@@ -2117,18 +2117,18 @@ The following source modules are available in the Source folder:
 
 |  | Icon | Name | Description |
 | :--- | :--- | :--- | :--- |
-|  | ![](../../../.gitbook/assets/329.png) | SineGen | Sine wave generator with no smoothing |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/330.jpeg) | ![](../../../.gitbook/assets/331.png) | SineSmoothedGen | Sine wave generator with smoothing |
+|  | ![](../../../.gitbook/assets/345%20%281%29.png) | SineGen | Sine wave generator with no smoothing |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%286%29.jpeg) | ![](../../../.gitbook/assets/331%20%281%29.png) | SineSmoothedGen | Sine wave generator with smoothing |
 |  | ![](../../../.gitbook/assets/332.png) | Source | Continuously copies data from internal buffer to output wire |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/333.jpeg) | ![](../../../.gitbook/assets/334.png) | DCSource | Continuously outputs DC value to output wire |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2820%29.jpeg) | ![](../../../.gitbook/assets/354%20%281%29.png) | DCSource | Continuously outputs DC value to output wire |
 |  | ![](../../../.gitbook/assets/335.png) | ImpulseSource | Periodically outputs an impulse; period specified in samples |
 |  | ![](../../../.gitbook/assets/336.png) | ImpulseMsecSource | Periodically outputs an impulse; period specified in msec |
 |  | ![](../../../.gitbook/assets/337.png) | PeriodicSource | Continuously outputs a stored array of data. The internal buffer length is specified by module properties. |
 |  | ![](../../../.gitbook/assets/338.png) | PulseGen | Generates periodic rectangular pulse, with period and on time specified in msec |
-|  | ![](../../../.gitbook/assets/339.png) | Randi | Generates slowly varying random noise with linear interpolation between sample values |
+|  | ![](../../../.gitbook/assets/356.png) | Randi | Generates slowly varying random noise with linear interpolation between sample values |
 |  | ![](../../../.gitbook/assets/340.png) | Sawtooth | Generates a sawtooth wave \(ramps up linearly from 0 to 1, then repeats\) with specified frequency |
 |  | ![](../../../.gitbook/assets/341.png) | WhiteNoise | Generates uniformly distributed white noise |
-| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/342.jpeg) | ![](../../../.gitbook/assets/343.png) | PinkNoise | Generates pink noise by applying an IIR filter to internally generated white noise |
+| ![http://images.clipartpanda.com/clipart-star-Star-clip-art-5.jpg](../../../.gitbook/assets/209%20%2816%29.jpeg) | ![](../../../.gitbook/assets/352%20%281%29.png) | PinkNoise | Generates pink noise by applying an IIR filter to internally generated white noise |
 |  | ![](../../../.gitbook/assets/344.png) | Oscillator | Generates oscillations with specified frequency and start phase |
 
 
@@ -2150,7 +2150,7 @@ A table of sample waveform outputs from some of the most basic sources follows:
         </p>
         <p>
           <img src="../../../.gitbook/assets/345.png" alt/>
-          <img src="../../../.gitbook/assets/346.png" alt/>
+          <img src="../../../.gitbook/assets/331.png" alt/>
         </p>
       </td>
       <td style="text-align:left">
@@ -2162,7 +2162,7 @@ A table of sample waveform outputs from some of the most basic sources follows:
         <p><b>Sawtooth</b>
         </p>
         <p>
-          <img src="../../../.gitbook/assets/348.png" alt/>
+          <img src="../../../.gitbook/assets/340 (1).png" alt/>
         </p>
       </td>
       <td style="text-align:left">
@@ -2174,7 +2174,7 @@ A table of sample waveform outputs from some of the most basic sources follows:
         <p><b>WhiteNoise</b>
         </p>
         <p>
-          <img src="../../../.gitbook/assets/350.png" alt/>
+          <img src="../../../.gitbook/assets/341 (1).png" alt/>
         </p>
       </td>
       <td style="text-align:left">
@@ -2211,7 +2211,7 @@ A table of sample waveform outputs from some of the most basic sources follows:
         <p><b>Randi</b>
         </p>
         <p>
-          <img src="../../../.gitbook/assets/356.png" alt/>
+          <img src="../../../.gitbook/assets/356 (1).png" alt/>
         </p>
       </td>
       <td style="text-align:left">

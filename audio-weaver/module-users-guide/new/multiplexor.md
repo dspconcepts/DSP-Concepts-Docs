@@ -42,11 +42,11 @@ Two very important points are shown in this example:
 
 The inspector for the Multiplexor module is shown below. It can be viewed by double clicking on the module in AWE\_designer. The inspector allows you to view and change the index value in real time. If the multiplexor has 2 pins to select from, then the inspector will be a checkbox. Unchecked selects pin 0; checked selects pin 1.
 
-![](../../../.gitbook/assets/3%20%2825%29.png)
+![](../../../.gitbook/assets/7%20%288%29%20%281%29.png)
 
 If the multiplexor has more pins, then instead of a checkbox, you will have a droplist:
 
-![](../../../.gitbook/assets/4%20%2818%29.png)
+![](../../../.gitbook/assets/8%20%287%29.png)
 
 ## Matlab Usage
 
