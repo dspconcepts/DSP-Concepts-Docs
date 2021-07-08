@@ -45,8 +45,6 @@ Test result may vary depending on the interface used for tuning. TCP/IP is the r
 
 ![Figure 4: USB \(HID\) tuning interface as tested on RT685](../.gitbook/assets/d01a9520-b685-45a7-a5c5-90f2c65a2b78.png)
 
-
-
 ![Figure 5: Serial UART at 115200 Baud Rate as Tested on Raspberry Pi 4 ](../.gitbook/assets/85e68a4f-9d75-41b6-a5a7-3bc705d6db1d.png)
 
 If the test result on the target platform is slower with the corresponding interface than what is shown above, it should be investigated. Please reach out to the DSP Concepts support team for assistance if needed.
